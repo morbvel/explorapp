@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>{%block title%}{%endblock%}</title>
+		<meta name="author" content="Miguel Orbañanos">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}" />
+		
+		
+		<!--Importarmos nuestra hoja de estilos-->
+		<link rel="stylesheet" type="text/css" media="(max-width: 3500px)" href="{{ asset('css/estilosEscritorio.css') }}"/>
+		<!-- bxSlider CSS file -->
+		<link href="{{ asset('css/jquery.bxslider.css') }}" rel="stylesheet" />
+		
+		
+		
+		<!-- Archivo con nuestros métodos Javascript -->
+		<script src="{{ asset('js/metodosJavaScript.js') }}" ></script>
+		<!--descargamos la versión más reciente de jQuery-->
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		
+		
+		
+		
+		<!--Script para ocultar o mostrar enlaces-->
+		<script>
+			$(function() {
+				document.getElementById("enlaceCerrarSesion").style.display = "{{ visibleCerrarSesion }}";
+			});
+		</script>
+
+		<!--Script para dejar fijo el menu-->
+		<script>
+			$(window).bind('scroll', function () {
+				var w = $(window).width();
+				if( w > 1300 && $(window).scrollTop() > 80 ){
+					$('.contenedorMenu2').addClass('menuFijo2');
+				}
+				else if ( w < 1300 && $(window).scrollTop() > 100 ){
+					$('.contenedorMenu2').addClass('menuFijo2');
+				}
+				else{
+					$('.contenedorMenu2').removeClass('menuFijo2');
+				}
+			});
+		</script>
+		
+		
+		<!--Script para la apertura de nuevas paginas o capas-->
+		<script>
+			$(document).ready(function(){
+				$('#abrirPopUp').click(function(){
+					$('#popup').fadeIn('slow');
+					$('.popup-overlay').fadeIn('slow');
+					$('.popup-overlay').height($(window).height());
+					return false;
+				});
+				
+				$('#abrirPerfilUsuarios').click(function(){
+					window.open ({%block urlDestino%}{%endblock%}, '_self', config='height=100, width=400, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, directories=no, status=no')
+				});
+				
+				$('#close').click(function(){
+					$('#popupSubirImagenes').fadeOut('slow');
+					$('.popup-overlay').fadeOut('slow');
+					return false;
+				});
+				
+				
+			});
+		</script>
+
+
+
+		<!--Script para la edicion de datos de la oferta-->
+		<script>
+			function editarOferta(){
+				alert({{oferta.descripcionOfertas}});			
+			}
+		</script>
+		
+		<!--FIN DEL HEAD-->
+	</head>
+	
+	
+	<body>
+		<!--Capa del PopUp-->
+		<div id="popup">
+			<div class="content-popup">
+				<div class="close"><a href="#" id="close">&nbsp;X&nbsp;</a></div>
+				<h2>Inserte sus datos personales</h2>
+				
+				<form action="{{path('pc_autentificar')}}" method="post" id="formLogin" {{ form_enctype(formLogin) }}>
+					{%block inputHidden%}{%endblock%}
+					{{form_widget(formLogin)}}
+					<input type="submit" id="enviarLogin" name="enviarlogin" value="Aceptar"/>
+					<input type="submit" id="nuevoRegistro" name="nuevoRegistro" value="Nuevo Registro"/>
+				</form>
+			</div>
+		</div>
+
+		
+		<!--Barra Inicial-->
+		<div id="barraInicial">
+			<div id="contenedorInicial">
+				<a href="{{path('pc_homepage')}}" ><img id="logoEmpresa" src="{{ asset('img/logoCerveza.jpg') }}" /></a>
+			</div>
+		</div>
+		
+
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------->
+		<!--Barra del Menu-->
+		<div class="contenedorMenu2">
+			<nav>
+				<ul>
+					<li><a href="{{path('pc_restaurantes')}}" id="botonGrande">Restaurantes</a></li>
+					<li><a href="{{path('pc_hoteles')}}" id="botonMediano">Hoteles</a></li>
+					<li><a href="{{path('pc_bares')}}" id="botonPequeño">Bares</a></li>
+				</ul>
+				<input type="image" id="{{ idFotoBarraMenu }}" class="enlaceAccederIndex" src="{{ asset(rutaImagenPerfil) }}" title="Acceder a la zona de usuarios" />
+				<a href="{{path('pc_cerrarsesion')}}" id="enlaceCerrarSesion" >Cerrar Sesi&oacute;n</a>
+			</nav>
+		</div>
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------->		
+		
+		
+		
+		<!--Cuerpo de la Pagina-->
+		{%block cuerpoPagina%}
+		{%endblock%}
+		
+		<a href="#barraInicial" class="boton-top">▲</a>
+		
+		<!--Codigo jQuery para crear el boton 'Hacia arriba'-->
+		<script>	
+			$(window).scroll(function(){
+				if ($(this).scrollTop() > 400) {
+					$('.boton-top').fadeIn();
+				} else {
+					$('.boton-top').fadeOut();
+				}
+			});
+		</script>
+		
+		<!--FIN DEL BODY-->
+	</body>
+</html>

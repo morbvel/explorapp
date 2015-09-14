@@ -1,0 +1,42 @@
+{% extends 'PCBundle::plantillaRegistros.html.twig' %}
+
+
+{%block titleRegistros%}
+	Nuevo Registro Hoteles
+{%endblock%}
+
+
+{%block videoRegistro%}
+	<video id="videoFondo" autoplay loop>
+		<source src="{{ asset('videos/videoNuevoRegistroHoteles.mp4') }}" type="video/mp4"></source>
+	</video>
+{%endblock%}
+
+{%block tituloRegistro%}
+	Nuevo Registro Hoteles
+{%endblock%}
+
+
+{%block urlDestino%}
+	'{{path('pc_perfilusuario')}}'
+{%endblock%}
+
+
+{%block inputHidden%}
+	<input type="hidden" name="loginNuevoRegistroHoteles" value="1000at200j">	
+{%endblock%}			
+
+
+{%block textoAcceder%}
+	<p id="parrafoAccederUsuarios">Para registrar un nuevo hotel, primero debe iniciar sesión o darse de alta como usuario en <a id="abrirPopUpEnlace" href="#">este enlace</a>.</p>
+{%endblock%}
+
+{%block formularioRegistro%}			
+	<form action="{{path('pc_nuevoregistrohoteles')}}" method="post" id="formNuevoRegistroHoteles" {{ form_enctype(formNuevoRegistroHoteles) }}>
+		
+		{{form_widget(formNuevoRegistroHoteles)}}
+		<input type="submit" id="aceptarNuevoRegistroHoteles" name="nuevoRegistroHoteles" value="Aceptar Nuevo Registro"/>
+	</form>
+{%endblock%}
+
+

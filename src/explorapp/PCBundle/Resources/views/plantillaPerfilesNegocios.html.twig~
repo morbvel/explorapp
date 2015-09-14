@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>{%block titlePerfiles%}{%endblock%}</title>
+		<meta name="author" content="Miguel Orbañanos">
+		<link rel="shortcut icon" href="./img/favicon.ico" />
+		
+		<!--Importarmos nuestra hoja de estilos-->
+		<link rel="stylesheet" type="text/css" media="(max-width: 3500px)" href="{{ asset('css/estilosEscritorio.css') }}"/>
+		<link rel="stylesheet" type="text/css" media="(max-width: 1030px)" href="{{ asset('css/estilosTablets1.css') }}"/>
+		<link rel="stylesheet" type="text/css" media="(max-width: 770px)" href="{{ asset('css/estilosTablets2.css') }}"/>
+		
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		
+		<!-- Archivo con nuestros métodos Javascript -->
+		<script src="{{ asset('js/metodosJavaScript.js') }}"></script>
+		<!--descargamos la versión más reciente de jQuery-->
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		
+		
+		
+		
+		
+		<!--Script para dejar fijo el menu-->
+		<script>
+			$(window).bind('scroll', function () {
+				var w = $(window).width();
+				if( w > 1300 && $(window).scrollTop() > 80 ){
+					$('.contenedorMenu2').addClass('menuFijo2');
+				}
+				else if ( w < 1300 && $(window).scrollTop() > 100 ){
+					$('.contenedorMenu2').addClass('menuFijo2');
+				}
+				else{
+					$('.contenedorMenu2').removeClass('menuFijo2');
+				}
+			});
+		</script>
+		
+		
+		<!--Script para la apertura de nuevas paginas o capas-->
+		<script>
+			$(document).ready(function(){
+
+				$('#abrirPopUp').click(function(){
+					$('#popup').fadeIn('slow');
+					$('.popup-overlay').fadeIn('slow');
+					$('.popup-overlay').height($(window).height());
+					return false;
+				});
+
+				$('#abrirPerfilUsuarios').click(function(){
+					window.open ({%block urlDestino%}{%endblock%}, '_self', config='height=100, width=400, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, directories=no, status=no')
+				});
+				
+				//Abrir PopUp de subir imagenes
+				$('#imagenPerfil').click(function(){
+					$('#popupSubirImagenes').fadeIn('slow');
+					$('.popup-overlay').fadeIn('slow');
+					$('.popup-overlay').height($(window).height());
+					return false;
+				});
+				
+				$('#close').click(function(){
+					$('#popupSubirImagenes').fadeOut('slow');
+					$('.popup-overlay').fadeOut('slow');
+					return false;
+				});
+
+
+				$('#closeLogin').click(function(){
+					$('#popup').fadeOut('slow');
+					$('.popup-overlay').fadeOut('slow');
+					return false;
+				});
+				
+
+				$('#botonEditarPerfilNegocio').click(function(){
+					document.getElementById("tablaDatosNegocios").style.display = 'none';
+					document.getElementById("formuEditarPerfilNegocio").style.display = 'inherit';
+					document.getElementById("cancelarCambiosPerfilNegocio").style.display = 'inherit';
+					document.getElementById("aceptarCambiosPerfilNegocio").style.display = 'inherit';
+					document.getElementById("eliminarDatosPerfilNegocio").style.display = 'inherit';
+					document.getElementById("botonEditarPerfilNegocio").style.display = 'none';
+					document.getElementById("spanNegociosAdvertencia").style.display = 'inherit';
+					return false;
+				});				
+
+
+				document.getElementById("enlaceCerrarSesion").style.display = "{{ visibleCerrarSesion }}";
+				document.getElementById("botonEditarPerfilNegocio").style.display = "{{ visibleEditarPerfilNegocio }}";
+				document.getElementById("botonNuevoProductoOferta").style.display = "{{ visibleEditarPerfilNegocio }}";
+			});
+		</script>
+
+		
+		<!--JavaScript para mostar la contraseña-->
+		<script>
+
+			function cancelarInput(){
+				document.getElementById("tablaDatosNegocios").style.display = 'inherit';
+					document.getElementById("formuEditarPerfilNegocio").style.display = 'none';
+					document.getElementById("cancelarCambiosPerfilNegocio").style.display = 'none';
+					document.getElementById("aceptarCambiosPerfilNegocio").style.display = 'none';
+					document.getElementById("eliminarDatosPerfilNegocio").style.display = 'none';
+					document.getElementById("botonEditarPerfilNegocio").style.display = 'inherit';
+					document.getElementById("spanNegociosAdvertencia").style.display = 'none';
+					return false;
+			}	
+		</script>
+		
+		
+		
+	</head>
+	<body>
+
+		<!--Capa del PopUp-->
+		<div id="popup">
+			<div class="content-popup">
+				<div class="close"><a href="#" id="closeLogin">&nbsp;X&nbsp;</a></div>
+				<h2>Inserte sus datos personales</h2>
+				
+				<form action="{{path('pc_autentificar')}}" method="post" id="formLogin" {{ form_enctype(formLogin) }}>
+					{%block inputHidden%}{%endblock%}
+					{{form_widget(formLogin)}}
+					<input type="submit" id="enviarLogin" name="enviarlogin" value="Aceptar"/>
+					<input type="submit" id="nuevoRegistro" name="nuevoRegistro" value="Nuevo Registro"/>
+				</form>
+			</div>
+		</div>
+	
+		<!--Capa del PopUp de subir imagenes-->
+		<div id="popupSubirImagenes">
+			<div class="content-popup">
+				<div class="close"><a href="#" id="close">&nbsp;X&nbsp;</a></div>
+				
+				<header class="contenidoSubirImagenes">
+					<h2>Cambiar la imagen de perfil de usuario</h2>
+				</header>
+				
+				<form name="formularioFicheros" id="formularioFicheros" action="{{ path('pc_subirimagen', {'isNegocio': isNegocio}) }}" method="post" enctype="multipart/form-data">
+					<table id="tablaCambiarFoto">
+						<tr>
+							<td>
+								<output id="list"></output>
+								<img src="{{ asset(rutaImagenPerfil) }}" name="imagen" id="previsualizarImagenPerfil">
+							</td>
+						</tr>
+						<tr>
+							<td><input type="file" name="files" id="files" ></td>
+							<td><input type="submit" value="Subir Fichero"></td>
+						</tr>
+					</table>
+				</form>
+				
+				
+			</div>
+		</div>
+	
+	
+		<!--Capa del PopUp de aceptar eliminar perfil-->
+		<div id="popupEliminarPerfil">
+			<div class="content-popup">
+				<div class="close"><a href="#" id="closeCapaPerfil">&nbsp;X&nbsp;</a></div>
+				
+				<form action="eliminarPerfil.php" method="POST">
+					<input type="hidden" name="codigoEliminarPerfil" value="1000at200j">
+					
+					<table id="tablaPopupEliminarPerfil">
+						<tr>
+							<td colspan="2" ><h2>Esperamos haber sido de gran utilidad tanto para ti como para tu bolsillo. ¡Hasta pronto!</h2></td>
+						</tr>
+						<tr>
+							<td><input type="submit" id="aceptarEliminarPerfil" value="Darse de baja"></input></td>
+							<td><input type="button" id="cancelarEliminarPerfil" value="Cancelar"></input></td>
+						</tr>
+					</table>
+				</form>
+				
+			</div>
+		</div>
+	
+		<div id="barraInicial">
+			<div id="contenedorInicial">
+				<a href="{{ path('pc_homepage') }}" ><img id="logoEmpresa" src="{{ asset('img/logoCerveza.jpg') }}" /></a>
+			</div>
+		</div>
+		
+		<!--Barra del Menu-->
+		<div class="contenedorMenu2">
+			<nav>
+				<ul>
+					<li><a href="{{ path('pc_restaurantes') }}" id="botonGrande">Restaurantes</a></li>
+					<li><a href="{{ path('pc_hoteles') }}" id="botonMediano">Hoteles</a></li>
+					<li><a href="{{ path('pc_bares') }}" id="botonPequeño">Bares</a></li>
+				</ul>
+				<input type="image" id="{{ idFotoBarraMenu }}" class="enlaceAccederIndex" src="{{ asset(rutaImagenPerfilUsuario) }}" title="Acceder a la zona de usuarios" />
+				<a href="{{ path('pc_cerrarsesion') }}" id="enlaceCerrarSesion" >Cerrar Sesi&oacute;n</a>
+			</nav>
+		</div>
+		
+		
+		
+		<div id="{%block idCuerpoPerfil%}{%endblock%}" class="{{ tipoNegocio }}">
+		
+			<input type="image" id="imagenPerfil" class="enlaceAcceder" src="{{ asset(rutaImagenPerfil) }}"/>
+			
+																	
+			<form action="{{ path('pc_editarperfilnegocio') }}" method="POST" {{ form_enctype(formEditarDatosNegocio) }}>
+				{%block hiddenPerfiles%}{%endblock%}
+				
+				{%block tablaDatosPerfil%}{%endblock%}
+				
+
+				{{form_widget(formEditarDatosNegocio)}}
+
+				<input type="button" value="Editar Perfil" id="botonEditarPerfilNegocio" name="botonEditarPerfilNegocio" />
+				<input type="submit" value="Aceptar Cambios" id="aceptarCambiosPerfilNegocio" name="aceptarCambiosPerfilNegocio" />
+				<input type="button" value="Cancelar Cambios" id="cancelarCambiosPerfilNegocio" name="cancelarCambiosPerfilNegocio" onclick="cancelarInput()" />
+				<input type="submit" value="Darse de Baja" id="eliminarDatosPerfilNegocio" name="eliminarDatosPerfilNegocio" />
+				<input type="button" value="Añadir Nuevo Producto" id="botonNuevoProductoOferta" name="botonNuevoProductoOferta" onclick="window.open ({%block urlDestino2%}{%endblock%}, '_self', config='height=100, width=400, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, directories=no, status=no')" />
+
+				
+			
+			</form>
+			
+			<span id="spanNegociosAdvertencia">Recuerde que, si cambia el nombre del negocio, tendrá que volver a subir la imagen de perfil del mismo. </span>				
+			
+			
+		</div>
+		
+		
+		
+		
+		<script>
+            function archivo(evt) {
+                var files = evt.target.files; // FileList object
+             
+                // Obtenemos la imagen del campo "file".
+                for (var i = 0, f; f = files[i]; i++) {
+					//Solo admitimos imágenes.
+                    if (!f.type.match('image.*')) {
+                        continue;
+                    }
+             
+                    var reader = new FileReader();
+             
+                    reader.onload = (function(theFile) {
+                        return function(e) {
+							// Insertamos la imagen
+							document.getElementById("list").innerHTML = ['<img src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
+							document.getElementById("previsualizarImagenPerfil").style.display = 'none';
+						};
+                    })(f);
+             
+                    reader.readAsDataURL(f);
+                }
+            }
+             
+            document.getElementById('files').addEventListener('change', archivo, false);
+		</script>
+
+	
+	
+		
+		
+		
+		
+	</body>
+</html>

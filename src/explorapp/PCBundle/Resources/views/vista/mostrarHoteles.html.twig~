@@ -1,0 +1,63 @@
+{% extends 'PCBundle::platillaMostrarNegocios.html.twig' %}
+
+{%block title%}
+	Hoteles
+{%endblock%}
+
+{%block urlDestino%}
+	'{{path('pc_perfilusuario')}}'
+{%endblock%}
+
+{%block inputHidden%}
+	<input type="hidden" name="loginMostrarHoteles" value="1000at200j">	
+{%endblock%}
+
+
+{%block barraMenu%}
+	<div class="contenedorMenu">
+		<nav id="navHoteles">
+			<ul>
+				<li><a href="{{ path('pc_restaurantes') }}" id="botonGrande">Restaurantes</a></li>
+				<li><a href="{{ path('pc_hoteles') }}" id="botonMediano">Hoteles</a></li>
+				<li><a href="{{ path('pc_bares') }}" id="botonPequeño">Bares</a></li>
+			</ul>
+			<input type="image" id="{{ idFotoBarraMenu }}" class="enlaceAcceder" src="{{ asset(rutaImagenPerfil) }}" title="Acceder a la zona de usuarios" />
+			<a href="{{path('pc_cerrarsesion')}}" id="enlaceCerrarSesion" >Cerrar Sesi&oacute;n</a>
+		</nav>
+	</div>
+{%endblock%}
+
+
+
+
+{%block cuerpoPagina%}
+	<div class="{{ tipoNegocio }}">
+		<table id="tablaHoteles" class="tablaNegocios">
+		    <thead>
+			<tr>
+				<th></th>
+			    	<th>Nombre Hotel</th>
+				<th>Ciudad Hotel</th>
+			    	<th>Direccion Hotel</th>
+				<th></th>
+			</tr>
+		    </thead>
+		    <tbody>
+			{% for hotel in listadoHoteles %}
+				<tr>
+					{% for usuario in usuarios %}
+						{%if usuario.Id == hotel.idUsuario%}
+							{% set rutaImagen = 'DirectoriosUsuarios/'~usuario.userName~'/Negocios/'~hotel.nombreNegocio~'.jpg' %}
+							<td><input type="image" src="{{ asset(rutaImagen) }}" class="imagenListadoNegocios" onclick="location.href='{{ path('pc_perfilnegocio', {'nombreNegocio': hotel.nombreNegocio, 'idUsuario':hotel.idUsuario}) }}';"/></td>
+						{%endif%}
+					{%endfor%}
+				    <td>{{hotel.nombreNegocio}}</td>
+					<td>{{hotel.ciudadNegocio}}</td>
+				    <td>{{hotel.direccionNegocio}}</td>
+					<td><input type="button" class="botonIrPerfilNegocio" value="Ir a su perfil" onclick="location.href='{{ path('pc_perfilnegocio', {'idNegocio': hotel.idNegocio, 'idUsuario':hotel.idUsuario}) }}';"/></td>
+				</tr>
+			{%endfor%}
+		    </tbody>
+		</table>
+	</div>
+{%endblock%}

@@ -1,0 +1,156 @@
+{% extends 'MobileBundle::plantillaInicial.html.twig' %}
+
+{%block tituloPagina%}
+	Página Principal
+{%endblock%}
+
+
+
+{%block contenidoInicial%}
+	<ul data-role="listview" data-inset="true" >
+		<li>
+			<a href="{{path('mobile_formlogin')}}">
+				<img src="{{asset(rutaImagenPerfil)}}" alt="Login" class="ui-li-icon">
+				{{textoRecuadro}}
+			</a>
+		</li>
+	</ul>
+
+	<p>Explorapp es tu nuevo compañero de ocio en tu ciudad.</p>
+	<p>Empezar a ahorrar y a disfrutar más de tu dinero es tan fácil como hacer unos pocos clicks</p>
+	<p>Date de alta o inicia sesión para descubrir lugares increíbles a precios que nunca imaginaste.</p>
+{%endblock%}
+
+{%block menuCabecera%}
+	<ul data-role="listview" data-inset="true">
+		<li>
+			<a href="#restaurantes">
+				<img src="{{asset('img/restauranteMenu.png')}}" alt="Restaurantes" class="ui-li-icon">
+				Restaurantes
+			</a>
+		</li>
+		<li>
+			<a href="#hoteles">
+				<img src="{{asset('img/hotelMenu.png')}}" alt="Hoteles" class="ui-li-icon">
+				Hoteles
+			</a>
+		</li>
+		<li>
+			<a href="#bares">
+				<img src="{{asset('img/barMenu.png')}}" alt="Bares" class="ui-li-icon">
+				Bares
+			</a>
+		</li>
+	</ul>
+
+	
+{%endblock%}
+
+
+
+
+{%block contenidoFooterInicial%}
+	<ul data-role="listview" data-inset="true" style="display: {{cerrarSesion}}">
+		<li><a href="{{path('mobile_cerrarsesion')}}" data-transition="fade">Terminar la Sesión</a></li>
+	</ul>
+{%endblock%}
+
+
+
+{%block menuRestaurantes%}
+	<ul data-role="listview" data-inset="true">
+		<li><a href="#" data-transition="fade">Listado de Restaurantes</a></li>
+		<li><a href="#">Busqueda de Restaurantes</a></li>
+		<li><a href="#">Darse de Alta</a></li>
+	</ul>
+{%endblock%}
+
+{%block contenidoCuerpo1%}
+	<ul data-role="listview" data-inset="true" >
+		<li>
+			<a href="{{path('mobile_formlogin')}}">
+				<img src="{{asset(rutaImagenPerfil)}}" alt="Login" class="ui-li-icon">
+				{{textoRecuadro}}
+			</a>
+		</li>
+	</ul>
+
+	<p>Hay un restaurante especial para cada uno. Ese en el que te declaraste, aquel al que fuiste con tu hijo por primera vez o donde os juntáis los amigos una vez al año.</p>
+	<p>En Explorapp, te están esperando ofertas y descuentos increíbles de ese y otros muchos restaurantes.</p>
+
+	<img src="{{asset('img/restaurante3.jpg')}}" ></img>
+{%endblock%}
+
+{%block contenidoFooter1%}
+	<ul data-role="listview" data-inset="true" style="display: {{cerrarSesion}}">
+		<li><a href="{{path('mobile_cerrarsesion')}}" data-transition="fade">Terminar la Sesión</a></li>
+	</ul>
+{%endblock%}
+
+
+
+
+
+
+{%block menuHoteles%}
+	<ul data-role="listview" data-inset="true">
+		<li><a href="#" data-transition="fade">Listado de Hoteles</a></li>
+		<li><a href="#">Busqueda de Hoteles</a></li>
+		<li><a href="#">Darse de Alta</a></li>
+	</ul>
+{%endblock%}
+
+{%block contenidoCuerpo2%}
+	<ul data-role="listview" data-inset="true" >
+		<li>
+			<a href="{{path('mobile_formlogin')}}">
+				<img src="{{asset(rutaImagenPerfil)}}" alt="Login" class="ui-li-icon">
+				{{textoRecuadro}}
+			</a>
+		</li>
+	</ul>
+
+	<p>Un fin de semana a la playa, una escapada con tu pareja a una casa rural o una noche a la capital. A todos nos gusta desconectar de la rutina, pero sin sudar la gota gorda.</p>
+	<p>Para cualquier plan que se te ocurra, Explorapp cuenta con los mejores alojamientos con unas ofertas que jamás creerías.</p>
+
+	<img src="{{asset('img/hotel4.jpg')}}" ></img>
+{%endblock%}
+
+{%block contenidoFooter2%}
+	<ul data-role="listview" data-inset="true" style="display: {{cerrarSesion}}">
+		<li><a href="{{path('mobile_cerrarsesion')}}" data-transition="fade">Terminar la Sesión</a></li>
+	</ul>
+{%endblock%}
+
+
+
+
+{%block menuBares%}
+	<ul data-role="listview" data-inset="true">
+		<li><a href="#" data-transition="fade">Listado de Bares</a></li>
+		<li><a href="#">Busqueda de Bares</a></li>
+		<li><a href="#">Darse de Alta</a></li>
+	</ul>
+{%endblock%}
+
+{%block contenidoCuerpo3%}
+	<ul data-role="listview" data-inset="true" >
+		<li>
+			<a href="{{path('mobile_formlogin')}}">
+				<img src="{{asset(rutaImagenPerfil)}}" alt="Login" class="ui-li-icon">
+				{{textoRecuadro}}
+			</a>
+		</li>
+	</ul>
+
+	<p>Partidas eternas de dardos, cervezas que no paran de aparecer y la música que te gusta. El encanto de los bares es algo único, y en Explorapp lo sabemos.</p>
+	<p>Por eso, tenemos miles de bares dispuestos a hacerte ahorrar dinero y así disfrutar más de tu experiencia.</p>
+
+	<img src="{{asset('img/bar3.jpg')}}" ></img>
+{%endblock%}
+
+{%block contenidoFooter3%}
+	<ul data-role="listview" data-inset="true" style="display: {{cerrarSesion}}">
+		<li><a href="{{path('mobile_cerrarsesion')}}" data-transition="fade">Terminar la Sesión</a></li>
+	</ul>
+{%endblock%}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>{%block title%}{%endblock%}</title>
+		<meta name="author" content="Miguel Orbañanos">
+		<link rel="shortcut icon" href="{{ asset('/img/favicon.ico') }}" />
+		
+		<!--Importarmos nuestra hoja de estilos-->
+		<link rel="stylesheet" type="text/css" media="(max-width: 3500px)" href="{{ asset('css/estilosEscritorio.css') }}"/>
+	</head>
+
+	<body id="cuerpoPDF">
+		<div class="contenedorPDF">
+			<img src="{{ asset(rutaImagenNegocio) }}" id="fotoNegocio"></img>
+			<img src="{{ asset('img/logoCerveza.jpg') }}" id="logoExplorapp"></img>
+		</div>
+	</body>
+
+</html>

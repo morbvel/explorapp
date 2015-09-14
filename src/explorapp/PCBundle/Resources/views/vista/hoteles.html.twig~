@@ -1,0 +1,97 @@
+{% extends 'PCBundle::plantillaInicial.html.twig' %}
+
+{%block title%}
+	Hoteles
+{%endblock%}
+
+
+{%block slider%}
+	<ul class="bxslider">	
+		<li class="contenedorSlider">
+			<img src="{{ asset('img/hotel2.jpg') }}" />
+			<span>Hoteles en Promoción</span>
+			<a href="#cuerpo1">Ir a sección Hoteles en Promoción</a>
+		</li>
+		<li class="contenedorSlider">
+			<img src="{{ asset('img/hotel3.jpg') }}" />
+			<span>Alojamientos Únicos</span>
+			<a href="#cuerpo2">Ir a sección Alojamientos Únicos</a>
+		</li>
+		<li class="contenedorSlider">
+			<img src="{{ asset('img/hotel4.jpg') }}" />
+			<span>Darse de Alta</span>
+			<a href="#cuerpo3">Ir a Darse de Alta</a>
+		</li>
+	</ul>
+{%endblock%}
+
+
+{%block urlDestino%}
+	'{{path('pc_perfilusuario')}}'
+{%endblock%}
+
+{%block urlBusqueda%}
+	{{path('pc_buscarhoteles')}}
+{%endblock%}
+
+
+{%block barraMenu%}
+	<div class="contenedorMenu">
+		<nav id="navHoteles">
+			<ul>
+				<li><a href="#cuerpo1" class="botonMenuSeccionHoteles">Hoteles en Promoción</a></li>
+				<li><a href="#cuerpo2" class="botonMenuSeccionHoteles">Búsqueda de Hotel</a></li>
+				<li><a href="#cuerpo3" class="botonMenuSeccionHoteles">Darse de Alta</a></li>
+			</ul>
+			<input type="image" id="{{ idFotoBarraMenu }}" class="enlaceAcceder" src="{{ asset(rutaImagenPerfil) }}" title="Acceder a la zona de usuarios" />
+			<a href="{{path('pc_cerrarsesion')}}" id="enlaceCerrarSesion" >Cerrar Sesi&oacute;n</a>
+		</nav>
+	</div>
+{%endblock%}
+
+
+{%block inputHidden%}
+	<input type="hidden" name="loginHoteles" value="1000at200j">	
+{%endblock%}
+
+
+{%block cuerpoPagina%}
+	<div id="relleno1" class="pagina imagenRellenoHoteles1 parallax" data-movimiento="10">
+	</div>
+		
+	<div id="cuerpo1">
+	<h1>Hoteles en Promocion</h1>
+	<table class="tablaCuerpos">
+		<tr>
+			<td>¿Una noche de trabajo o una semana en Budapest? Seguro que con nosotros encuentras ese hotel irrepetible a un precio insuperable.</td>
+			<td><a class="botonSecciones" href="{{ path('pc_mostrarhoteles') }}">Ir a Hoteles en Promoción</a></td>
+		</tr>
+	</table>
+	</div>
+		
+	<div id="relleno2" class="pagina imagenRellenoHoteles2 parallax" data-movimiento="10">
+	</div>
+		
+	<div id="cuerpo2">
+		<h1>Alojamientos Únicos</h1>
+		<table class="tablaCuerpos">
+			<tr>
+				<td>Hay un hotel que siempre tendrás en la memoria. Búscale con nosotros y vuelve a enamorate de las vacaciones al mejor precio.</td>
+				<td><a class="botonSecciones" id="abrirPopUpBusqueda" href="#">Búsqueda de Hotel</a></td>
+			</tr>
+		</table>
+	</div>
+		
+	<div id="relleno3" class="pagina imagenRellenoHoteles3 parallax" data-movimiento="10">
+	</div>
+		
+	<div id="cuerpo3">
+		<h1>Darse de Alta</h1>
+		<table class="tablaCuerpos">
+			<tr>
+				<td>Pasar a formar parte de la gran familia ExplorApp es un gran paso tanto para ti como para tu restaurante. ¡Bienvenido al mundo de los descuentos!</td>
+				<td><a class="botonSecciones" href="{{path('pc_nuevoregistrohoteles')}}">Ir a Darse de Alta</a></td>
+			</tr>
+		</table>
+	</div>
+{%endblock%}

@@ -1,0 +1,240 @@
+<?php
+
+	namespace explorapp\PCBundle\Entity;
+
+	use Doctrine\Common\Collections\ArrayCollection;
+	use Doctrine\ORM\Mapping as ORM;
+
+	/**
+	* @ORM\Entity
+	* @ORM\Table(name="productos")
+	*/
+	 
+	class Producto{
+		/** 
+		* @ORM\ID
+		* @ORM\GeneratedValue(strategy="IDENTITY")
+		* @ORM\Column(name="idProductos", type="integer") 
+		*/
+		private $idProductos;
+		
+		/** @ORM\Column(name="nombreProducto", type="string", length=45, nullable=false) */
+		private $nombreProducto;
+		
+		/** @ORM\Column(name="descripcionProducto", type="string", length=45, nullable=false) */
+		private $descripcionProducto;
+		
+		/** @ORM\Column(name="precioProducto", type="integer", length=11, nullable=false) */
+		private $precioProducto;
+
+		/** @ORM\Column(name="alergenosProducto", type="string", length=11, nullable=true) */
+		private $alergenosProducto;
+
+		/** @ORM\Column(name="idNegocio", type="integer", length=11, nullable=false) */
+		private $idNegocio;
+		
+		
+		/**
+		* @ORM\ManyToOne(targetEntity="Negocio", inversedBy="prodcuto")
+		* @ORM\JoinColumn(name="idNegocio", referencedColumnName="idNegocio")
+		*/
+		private $Negocio;
+
+		/**
+	    	* @ORM\OneToMany(targetEntity="Oferta", mappedBy="Producto")
+	    	**/
+		protected $oferta;
+		
+		
+		
+		
+		public function __construct(){
+			$this->oferta = new ArrayCollection();		
+		}
+		
+		
+		/**
+		* Get idProductos
+		*
+		* @ORM\return integer 
+		*/	
+		public function getID()
+		{
+			return $this->idProductos;
+		}
+		
+		/**
+		* Set idProductos
+		*
+		* @ORM\return integer 
+		*/	
+		public function setID($value)
+		{
+			$this->idProductos = $value;
+		}
+		
+		
+		
+		/**
+		* Get nombreProducto
+		*
+		* @ORM\return string 
+		*/	
+		public function getNombreProducto()
+		{
+			return $this->nombreProducto;
+		}
+		
+		/**
+		* Set nombreProducto
+		*
+		* @ORM\return string 
+		*/	
+		public function setNombreProducto($value)
+		{
+			$this->nombreProducto = $value;
+		}
+		
+		
+		
+		
+		/**
+		* Get descripcionProducto
+		*
+		* @ORM\return string 
+		*/	
+		public function getDescripcionProducto()
+		{
+			return $this->descripcionProducto;
+		}
+		
+		/**
+		* Set descripcionProducto
+		*
+		* @ORM\return string 
+		*/	
+		public function setDescripcionProducto($value)
+		{
+			$this->descripcionProducto = $value;
+		}
+		
+		
+		
+		
+		/**
+		* Get precioProducto
+		*
+		* @ORM\return integer 
+		*/	
+		public function getPrecioProducto()
+		{
+			return $this->precioProducto;
+		}
+		
+		/**
+		* Set precioProducto
+		*
+		* @ORM\return integer 
+		*/	
+		public function setPrecioProducto($value)
+		{
+			$this->precioProducto = $value;
+		}
+		
+		
+		
+		
+		/**
+		* Get alergenosProducto
+		*
+		* @ORM\return string 
+		*/	
+		public function getAlergenosProducto()
+		{
+			return $this->alergenosProducto;
+		}
+		
+		/**
+		* Set alergenosProducto
+		*
+		* @ORM\return string 
+		*/	
+		public function setAlergenosProducto($value)
+		{
+			$this->alergenosProducto = $value;
+		}
+		
+		
+		
+		
+		
+		/**
+		* Set idNegocio
+		*
+		* @ORM\param integer $value
+		*/	
+		public function getIdNegocio()
+		{
+			return $this->idNegocio;
+		}
+
+		/**
+		* Set idNegocio
+		*
+		* @ORM\param integer $value
+		*/
+		public function setIdNegocio($value){
+			$this->idNegocio = $value;
+		}
+
+
+
+		
+		
+		
+		
+		/**
+		* Get Negocio
+		*
+		* @ORM\return PDOCTRINE\Entidades\Negocio 		
+		*/			
+		public function getNegocio()
+		{
+			return $this->Negocio;
+		}
+
+		/**
+		* Set Negocio
+		*
+		* @ORM\param PDOCTRINE\Entidades\Negocio $value
+		*/	
+		public function setNegocio($value)
+		{
+			$this->Negocio = $value;
+		}
+
+
+
+		/**
+		* Get oferta
+		*
+		* @return PDOCTRINE\Entidades\Oferta
+		*/
+		public function getOferta(){
+			return $this->oferta;
+		}
+	
+		/**
+		* Add oferta
+		*
+		* @param PDOCTRINE\Entidades\Oferta $value
+		*/	
+		public function addOferta($value)
+		{
+			$this->oferta[] = $value;
+		}
+
+		
+	}
+
+?>

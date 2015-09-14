@@ -1,0 +1,57 @@
+{% extends 'PCBundle::plantillaPerfilesProductos.html.twig' %}
+
+{%block titlePerfiles%}
+	{{ producto.nombreProducto }}
+{%endblock%}
+
+{%block idCuerpoPerfil%}
+cuerpoPerfilProducto{%endblock%}
+
+{%block urlDestino%}
+	'{{path('pc_perfilusuario')}}'
+{%endblock%}
+
+{%block urlDestino2%}
+	'{{path('pc_nuevoregistroofertas')}}'
+{%endblock%}
+
+
+{%block urlDestino3%}
+	'{{ path('pc_perfilofertas', {'nombreProducto': producto.nombreProducto, 'idNegocio':producto.idNegocio}) }}'
+{%endblock%}
+
+
+{%block inputHidden%}
+	<input type="hidden" name="codigoLoginPerfilProducto" value="1000at200j">
+{%endblock%}
+
+
+{%block hiddenPerfiles%}
+	<input type="hidden" name="codigoPerfilNegocio" value="1000at200j">
+{%endblock%}
+
+
+
+{%block tablaDatosProducto%}
+
+	<table id="tablaDatosProductos">
+		<tr>
+			<td>Nombre: </td>
+			<td><span class="textoDatoProducto" id="spanNombreProducto" >{{ producto.nombreProducto }}</span></td>
+		</tr>
+		<tr>
+			<td>Descripción: </td>
+			<td><span class="textoDatoProducto" id="spanDescripcionProducto">{{ producto.descripcionProducto }}</span></td>
+		</tr>
+		<tr>
+			<td>Precio: </td>
+			<td><span class="textoDatoProducto" id="spanPrecioProducto">{{ producto.precioProducto }}</span></td>
+		</tr>
+		<tr>
+			<td>Alérgenos: </td>
+			<td><span class="textoDatoProducto" id="spanAlergenosProducto">{{ producto.alergenosProducto }}</span></td>
+		</tr>
+					
+	</table>
+
+{%endblock%}

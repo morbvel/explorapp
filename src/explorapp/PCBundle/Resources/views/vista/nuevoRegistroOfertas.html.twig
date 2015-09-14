@@ -1,0 +1,46 @@
+{% extends 'PCBundle::plantillaRegistros.html.twig' %}
+
+
+{%block titleRegistros%}
+	Nuevo Registro Oferta
+{%endblock%}
+
+
+{%block videoRegistro%}
+	<video id="videoFondo" autoplay loop>
+		<source src="{{ asset('videos/videoNuevoRegistroOfertas.mp4') }}" type="video/mp4"></source>
+	</video>
+{%endblock%}
+
+{%block tituloRegistro%}
+	Nuevo Registro Oferta
+{%endblock%}
+
+
+{%block urlDestino%}
+	'{{path('pc_perfilusuario')}}'
+{%endblock%}
+
+{%block urlDestino2%}
+	'{{path('pc_nuevoregistroofertas')}}'
+{%endblock%}
+
+
+{%block inputHidden%}
+	<input type="hidden" name="loginNuevoRegistroOfertas" value="1000at200j">	
+{%endblock%}			
+
+
+{%block textoAcceder%}
+	<p id="parrafoAccederUsuarios">Para registrar una nueva oferta, primero debe iniciar sesión o darse de alta como usuario en <a id="abrirPopUpEnlace" href="#">este enlace</a>.</p>
+{%endblock%}
+
+{%block formularioRegistro%}			
+	<form action="{{path('pc_guardarregistroofertas')}}" method="post" id="formNuevoRegistroOfertas" {{ form_enctype(formNuevoRegistroOfertas) }}>
+		
+		{{form_widget(formNuevoRegistroOfertas)}}
+		<input type="submit" id="aceptarNuevoRegistroOfertas" name="nuevoRegistroOfertas" value="Aceptar Nuevo Registro"/>
+	</form>
+{%endblock%}
+
+

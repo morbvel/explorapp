@@ -1,0 +1,232 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>{%block title%}{%endblock%}</title>
+		<meta name="author" content="Miguel Orbañanos">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}" />
+		
+		
+		<!--Importarmos nuestra hoja de estilos-->
+		<link rel="stylesheet" type="text/css" media="(max-width: 3500px)" href="{{ asset('css/estilosEscritorio.css') }}"/>
+		<!-- bxSlider CSS file -->
+		<link href="{{ asset('css/jquery.bxslider.css') }}" rel="stylesheet" />
+		
+		
+		
+		<!-- Archivo con nuestros métodos Javascript -->
+		<script src="{{ asset('js/metodosJavaScript.js') }}" ></script>
+		<!--descargamos la versión más reciente de jQuery-->
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<!-- bxSlider Javascript file -->
+		<script src="{{ asset('js/jquery.bxslider.min.js') }}"></script>
+		<!-- ligthbox Javascript file -->
+		<script src="{{ asset('js/jquery.lightbox_me.js') }}"></script>
+		
+		
+		
+		
+		
+		<!--Script para llamar al Slider-->
+		<script>
+			$(function() {
+				$('.bxslider').bxSlider();
+			});
+		</script>
+		
+		
+		
+		<!--Codigo jQuery para animar los enlaces internos-->
+		<script>
+			$(function(){
+
+				$('a[href*=#]').click(function() 
+				{
+					if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname)
+					{
+						var $target = $(this.hash);
+						$target = $target.length && $target || $('[name=' + this.hash.slice(1) +']');
+						if ($target.length)
+						{
+							var targetOffset = $target.offset().top;
+							$('html,body').animate({scrollTop: targetOffset}, 1000);
+							return false;
+						}
+					}
+				});
+			});
+		</script>
+		
+		
+		
+		<!--Script para dejar fijo el menu-->
+		<script>
+			$(window).bind('scroll', function () {
+				var w = $(window).width();
+				// Pantallas de mas de 1300 pixeles
+				if ( w > 1700 && $(window).scrollTop() > 1000 )
+					$('.contenedorMenu').addClass('menuFijo');
+				else if( w < 1700 && w > 1400 && $(window).scrollTop() > 897)
+					$('.contenedorMenu').addClass('menuFijo');
+				else if( w < 1400 && w > 1000 && $(window).scrollTop() > 760)
+					$('.contenedorMenu').addClass('menuFijo');
+				else if( w < 1300 && $(window).scrollTop() > 700 )
+					$('.contenedorMenu').addClass('menuFijo');
+				else
+					$('.contenedorMenu').removeClass('menuFijo');
+			});
+		</script>
+		
+		<!--Script para ocultar o mostrar el enlace de cerrar sesion-->
+		<script>
+			$(function() {
+				document.getElementById("enlaceCerrarSesion").style.display = "{{ visibleCerrarSesion }}";
+			});
+		</script>
+		
+		<!--Script para crear el efecto parallax-->
+		<script>
+			$(document).ready(function(){
+				$pantalla = $(window);
+				$('.parallax').each(function(){
+					var $this = $(this);
+					$pantalla.scroll(function() {
+						var y;
+						if ($(window).width() > 3500){
+							y = -($pantalla.scrollTop() / $this.data('movimiento')); 
+							y2 = y;
+							y3 = y;
+						}
+						else if ($(window).width() < 3500){
+							y = -(($pantalla.scrollTop() - 0) / $this.data('movimiento')); 
+							y2 = -(($pantalla.scrollTop() - 2000) / $this.data('movimiento'));
+							y3 = -(($pantalla.scrollTop() - 2500) / $this.data('movimiento'));
+							var altura = '500px';
+							$this.css({height: altura});
+						}
+						var xy = '50% '+ y + 'px';
+						var xy2 = '50% '+ y2 + 'px';
+						var xy3 = '50% '+ y3 + 'px';
+						
+						document.getElementById('relleno1').style.backgroundPosition = xy;
+						document.getElementById('relleno2').style.backgroundPosition = xy2;
+						document.getElementById('relleno3').style.backgroundPosition = xy3;
+				   });
+				});
+			});
+		</script>
+		
+		
+		<!--Script para la creacion del PopUp o de la apertura de la pagina de usuario-->
+		<script>
+			$(document).ready(function(){
+				$('#abrirPopUp').click(function(){
+					$('#popup').fadeIn('slow');
+					$('.popup-overlay').fadeIn('slow');
+					$('.popup-overlay').height($(window).height());
+					return false;
+				});
+
+				$('#abrirPopUpBusqueda').click(function(){
+					$('#popup2').fadeIn('slow');
+					$('.popup-overlay').fadeIn('slow');
+					$('.popup-overlay').height($(window).height());
+					return false;
+				});
+				
+				
+				$('#close').click(function(){
+					$('#popup').fadeOut('slow');
+					
+					$('.popup-overlay').fadeOut('slow');
+					return false;
+				});
+
+				$('#close2').click(function(){
+					$('#popup2').fadeOut('slow');
+					$('.popup-overlay').fadeOut('slow');
+					return false;
+				});
+
+				$('#abrirPerfilUsuarios').click(function(){
+					window.open ({%block urlDestino%}{%endblock%}, '_self', config='height=100, width=400, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, directories=no, status=no')
+				});
+			});
+		</script>
+		
+		<!--FIN DEL HEAD-->
+	</head>
+	
+	
+	<body>
+		<!--Capa del PopUp-->
+		<div id="popup">
+			<div class="content-popup">
+				<div class="close"><a href="#" id="close">&nbsp;X&nbsp;</a></div>
+				<h2>Inserte sus datos personales</h2>
+				
+				<form action="{{path('pc_autentificar')}}" method="post" id="formLogin" {{ form_enctype(formLogin) }}>
+					{%block inputHidden%}{%endblock%}
+					{{form_widget(formLogin)}}
+					<input type="submit" id="enviarLogin" name="enviarlogin" value="Aceptar"/>
+					<input type="submit" id="nuevoRegistro" name="nuevoRegistro" value="Nuevo Registro"/>
+				</form>
+			</div>
+		</div>
+
+		<!--PopUp de Búsqueda de Negocios-->
+		<div id="popup2">
+			<div class="content-popup">
+				<div class="close"><a href="#" id="close2">&nbsp;X&nbsp;</a></div>
+				<h2>Introduzca el nombre o ciudad del Negocio</h2>
+				
+				<form action="{%block urlBusqueda%}{%endblock%}" method="post" id="formBusqueda" {{ form_enctype(formBusqueda) }}>
+					{{form_widget(formBusqueda)}}
+					<input type="submit" id="enviarBusqueda" name="enviarBusqueda" value="Buscar"/>
+				</form>
+			</div>
+		</div>
+		
+		<!--Barra Inicial-->
+		<div id="barraInicial">
+			<div id="contenedorInicial">
+				<a href="{{path('pc_homepage')}}" ><img id="logoEmpresa" src="{{ asset('img/logoCerveza.jpg') }}" /></a>
+			</div>
+		</div>
+		
+
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------->
+		<!--Plantillas para el slider-->
+		{%block slider%}{%endblock%}
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------->		
+
+
+
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------->
+		<!--Barra del Menu-->
+		{%block barraMenu%}{%endblock%}
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------->		
+		
+		
+		
+		<!--Cuerpo de la Pagina-->
+		{%block cuerpoPagina%}
+		{%endblock%}
+		
+		<a href="#barraInicial" class="boton-top">▲</a>
+		
+		<!--Codigo jQuery para crear el boton 'Hacia arriba'-->
+		<script>	
+			$(window).scroll(function(){
+				if ($(this).scrollTop() > 400) {
+					$('.boton-top').fadeIn();
+				} else {
+					$('.boton-top').fadeOut();
+				}
+			});
+		</script>
+		
+		<!--FIN DEL BODY-->
+	</body>
+</html>

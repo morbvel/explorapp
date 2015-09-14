@@ -1,0 +1,63 @@
+{% extends 'PCBundle::platillaMostrarNegocios.html.twig' %}
+
+{%block title%}
+	Restaurantes
+{%endblock%}
+
+{%block urlDestino%}
+	'{{path('pc_perfilusuario')}}'
+{%endblock%}
+
+{%block inputHidden%}
+	<input type="hidden" name="loginMostrarRestaurantes" value="1000at200j">	
+{%endblock%}
+
+
+{%block barraMenu%}
+	<div class="contenedorMenu">
+		<nav id="navRestaurantes">
+			<ul>
+				<li><a href="{{ path('pc_restaurantes') }}" id="botonGrande">Restaurantes</a></li>
+				<li><a href="{{ path('pc_hoteles') }}" id="botonMediano">Hoteles</a></li>
+				<li><a href="{{ path('pc_bares') }}" id="botonPequeño">Bares</a></li>
+			</ul>
+			<input type="image" id="{{ idFotoBarraMenu }}" class="enlaceAcceder" src="{{ asset(rutaImagenPerfil) }}" title="Acceder a la zona de usuarios" />
+			<a href="{{path('pc_cerrarsesion')}}" id="enlaceCerrarSesion" >Cerrar Sesi&oacute;n</a>
+		</nav>
+	</div>
+{%endblock%}
+
+
+
+
+{%block cuerpoPagina%}
+	<div class="{{ tipoNegocio }}">
+		<table id="tablaRestaurantes" class="tablaNegocios">
+		    <thead>
+			<tr>
+				<th></th>
+			    	<th>Nombre Restaurante</th>
+				<th>Ciudad Restaurante</th>
+			    	<th>Direccion Restaurante</th>
+				<th></th>
+			</tr>
+		    </thead>
+		    <tbody>
+			{% for restaurante in listadoRestaurantes %}
+				<tr>
+					{% for usuario in usuarios %}
+						{%if usuario.Id == restaurante.idUsuario%}
+							{% set rutaImagen = 'DirectoriosUsuarios/'~usuario.userName~'/Negocios/'~restaurante.nombreNegocio~'.jpg' %}
+							<td><input type="image" src="{{ asset(rutaImagen) }}" class="imagenListadoNegocios" onclick="location.href='{{ path('pc_perfilnegocio', {'nombreNegocio': restaurante.nombreNegocio, 'idUsuario':restaurante.idUsuario}) }}';" /></td>
+						{%endif%}
+					{%endfor%}
+				    <td>{{restaurante.nombreNegocio}}</td>
+					<td>{{restaurante.ciudadNegocio}}</td>
+				    <td>{{restaurante.direccionNegocio}}</td>
+					<td><input type="button" class="botonIrPerfilNegocio" value="Ir a su perfil" onclick="location.href='{{ path('pc_perfilnegocio', {'idNegocio': restaurante.idNegocio, 'idUsuario':restaurante.idUsuario}) }}';"/></td>
+				</tr>
+			{%endfor%}
+		    </tbody>
+		</table>
+	</div>
+{%endblock%}

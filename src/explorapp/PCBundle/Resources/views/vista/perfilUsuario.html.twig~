@@ -1,0 +1,99 @@
+{% extends 'PCBundle::plantillaPerfiles.html.twig' %}
+
+
+{%block titlePerfiles%}
+	Perfil de Usuario
+{%endblock%}
+
+
+{%block idCuerpoPerfil%}
+cuerpoPerfilUsuario{%endblock%}
+
+
+{%block urlDestino%}
+'{{path('pc_perfilusuario')}}'{%endblock%}
+
+
+
+
+
+{%block hiddenPerfiles%}
+	<input type="hidden" name="codigoPerfilUsuario" value="1000at200j">
+{%endblock%}
+
+
+{%block tablaDatosPerfil%}
+
+	<table id="tablaDatosPersonales">
+		<tr>
+			<td>Nombre: </td>
+			<td><span class="textoDatoPersonal" id="spanNombre" >{{ datospersonales.nombrePersonal }}</span></td>
+		</tr>
+		<tr>
+			<td>Apellidos: </td>
+			<td><span class="textoDatoPersonal" id="spanApellido">{{ datospersonales.apellido1Personal~'  '~datospersonales.apellido2Personal }}</span></td>
+		</tr>
+		<tr>
+			<td>Sexo: </td>
+			<td><span class="textoDatoPersonal" id="spanSexo">{{ datospersonales.sexoPersonal }}</span></td>
+		</tr>
+		<tr>
+			<td>Fecha de Nacimiento: </td>
+			<td><span class="textoDatoPersonal" id="spanFechaNacimiento">{{ datospersonales.fechaNacimientoPersonal|date("d/m/Y") }}</span></td>
+		</tr>
+		<tr>
+			<td>DNI: </td>
+			<td><span class="textoDatoPersonal" id="spanDNI">{{ datospersonales.DNIPersonal }}</span></td>
+		</tr>
+		<tr>
+			<td>Tel&eacute;fono: </td>
+			<td><span class="textoDatoPersonal" id="spanTelefono">{{ datospersonales.telefonoPersonal }}</span></td>
+		</tr>
+		<tr>
+			<td colspan="2" class="barraSeparacion">-----------</td>
+		</tr>
+		<tr>
+			<td>Correo Electr&oacute;nico: </td>
+			<td><span class="textoDatoPersonal colorOscuro">{{ datospersonales.correoPersonal }}</span></td></tr>
+		<tr>
+			<td>Contraseña: </td>
+			<td><span id="contrasena" class="textoDatoPersonal colorOscuro contrasena" title="Haga click para mostrar la contraseña" onclick="showPass()" >*************</span></td>
+		</tr>
+		
+		{%if negocios|length>0%}
+			<tr>
+				<td colspan="2" class="barraSeparacion">-----------</td>
+			</tr>
+			{% set contador=0 %}
+			{% for negocio in negocios %}
+				
+				<tr>	
+					<td></td>
+					<td><span id="{{"negocio%d"|format(contador)}}" class="textoDatoPersonal textoNegocio" title="Click para acceder a la página del negocio" onclick="location.href='{{ path('pc_perfilnegocio', {'idNegocio': negocio.idNegocio, 'idUsuario':negocio.idUsuario}) }}';" >{{ negocio.idNegocio }}</span></td>
+				</tr>
+				{% set contador=contador+1 %}
+			{%endfor%}
+		{%endif%}
+
+
+
+		{%if ofertasCliente|length>0%}
+			<tr>
+				<td colspan="2" class="barraSeparacion">-----------</td>
+			</tr>
+			{% set contador=0 %}
+			{% for ofertaCliente in ofertasCliente %}
+				
+				<tr>	
+					<td></td>
+					<td><span id="{{"ofertaCliente%d"|format(contador)}}" class="textoDatoPersonal textoNegocio" style="margin-right: 100px;" title="Click para ver el PDF de la oferta" onclick="location.href='{{ path('pc_crearpdf', {'idOferta': ofertaCliente.getOfertas().idOfertas, 'idUsuario': ofertaCliente.getUsuarios().userName}) }}';" >{{ofertaCliente.getOfertas().descripcionOfertas}}</span></td>
+					<td><input type="image" src="{{ asset('img/erase.png') }}" class="iconoBorrarOferta" /></td>
+				</tr>
+				{% set contador=contador+1 %}
+			{%endfor%}
+		{%endif%}		
+					
+</table>
+
+{%endblock%}
+				

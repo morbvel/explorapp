@@ -1,0 +1,13 @@
+{% extends 'PCBundle::plantillaPDF.html.twig' %}
+
+{%block title%}
+	Reserva de la Oferta
+{%endblock%}
+
+
+
+{%block cuerpoOferta%}
+	<p class="textoAgradecimiento">Desde Explorapp queremos agradecer la confianza depositada en nuestros servicios y esperamos que disfrutes plenamente de la oferta a la que te acabas de suscribir.</p>
+	<p>Esta oferta es válida únicamente entre las fechas {{oferta.fechaInicialOferta|date("d/m/Y")}} y {{oferta.fechaFinalOferta|date("d/m/Y")}} para el producto {{producto.nombreProducto}} del negocio {{negocio.nombreNegocio}}, al cual se le aplica la oferta de {{oferta.descripcionOfertas}}.</p>
+	<p>Además, dada la naturaleza única de las ofertas, esta sólo podrá ser canjeable por {{datospersonales.nombrePersonal}} {{datospersonales.apellido1Personal}} {{datospersonales.apellido2Personal}}, con DNI {{datospersonales.DNIPersonal}}, el cual se suscribió a la oferta anterior el día {{ofertasCliente.fechaOfertaCliente|date("d/m/Y")}}</p>
+{%endblock%}

@@ -1,0 +1,5 @@
+{% extends 'PCBundle::plantillaErrorLogin.html.twig' %}
+
+{%block title%}
+	Hoteles
+{%endblock%}

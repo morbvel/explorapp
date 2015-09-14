@@ -1,0 +1,194 @@
+pc_homepage:
+  path: /
+  defaults: { _controller: PCBundle:generico:generico }
+  methods: [GET]
+
+
+pc_autentificar:
+  path: /
+  defaults: { _controller: PCBundle:autentificar:autentificar }
+  methods: [POST]
+
+
+pc_perfilusuario:
+  path: /perfil-usuario
+  defaults: { _controller: PCBundle:buscardatos:buscardatosperfilusuario }
+  methods: [GET]
+
+pc_editarperfilusuario:
+  path: /perfil-usuario
+  defaults: { _controller: PCBundle:guardardatos:editarDatosPersonales }
+  methods: [POST]
+
+
+pc_subirimagen:
+  path: /subir-imagen/{isNegocio}
+  defaults: { _controller: PCBundle:guardardatos:subirfotos }
+  methods: [POST]
+
+
+pc_subirimagenproducto:
+  path: /subir-imagen/
+  defaults: { _controller: PCBundle:guardardatos:subirFotosProductos }
+  methods: [POST]
+
+
+
+pc_restaurantes:
+  path: /restaurantes
+  defaults: { _controller: PCBundle:generico:generico }
+  methods: [GET]
+
+pc_buscarrestaurantes:
+  path: /restaurantes/mostrar
+  defaults: { _controller: PCBundle:buscardatos:buscarRestaurante }
+  methods: [POST]
+
+pc_hoteles:
+  path: /hoteles
+  defaults: { _controller: PCBundle:generico:generico }
+  methods: [GET]
+
+pc_buscarhoteles:
+  path: /hoteles/mostrar
+  defaults: { _controller: PCBundle:buscardatos:buscarHotel }
+  methods: [POST]
+
+pc_bares:
+  path: /bares
+  defaults: { _controller: PCBundle:generico:generico }
+  methods: [GET]
+
+pc_buscarbares:
+  path: /bares/mostrar
+  defaults: { _controller: PCBundle:buscardatos:buscarBar }
+  methods: [POST]
+
+
+pc_nuevoregistro:
+  path: /nuevo-registro
+  defaults: { _controller: PCBundle:generico:generico }
+  methods: [GET]
+
+
+pc_nuevoregistroguardar:
+  path: /nuevo-registro
+  defaults: { _controller: PCBundle:guardardatos:nuevoRegistro }
+  methods: [POST]
+
+
+
+pc_nuevoregistrorestaurantes:
+  path: /restaurantes/nuevo-registro
+  defaults: { _controller: PCBundle:generico:generico }
+  methods: [GET]
+
+pc_guardardatosrestaurantes:
+  path: /restaurantes/nuevo-registro
+  defaults: { _controller: PCBundle:guardardatos:nuevoRegistroRestaurantes }
+  methods: [POST]
+
+
+pc_nuevoregistrohoteles:
+  path: /hoteles/nuevo-registro
+  defaults: { _controller: PCBundle:generico:generico }
+  methods: [GET]
+
+pc_guardardatoshoteles:
+  path: /hoteles/nuevo-registro
+  defaults: { _controller: PCBundle:guardardatos:nuevoRegistroHoteles }
+  methods: [POST]
+
+
+pc_nuevoregistrobares:
+  path: /bares/nuevo-registro
+  defaults: { _controller: PCBundle:generico:generico }
+  methods: [GET]
+
+pc_guardardatosbares:
+  path: /bares/nuevo-registro
+  defaults: { _controller: PCBundle:guardardatos:nuevoRegistroBares }
+  methods: [POST]
+
+
+pc_perfilnegocio:
+  path: /perfil-negocio/{nombreNegocio}/{idUsuario}
+  defaults: { _controller: PCBundle:buscardatos:buscarDatosNegocio }
+
+
+pc_editarperfilnegocio:
+  path: /perfil-negocio
+  defaults: { _controller: PCBundle:guardardatos:editarDatosNegocios }
+  methods: [POST]
+
+
+pc_editarperfilproducto:
+  path: /perfil-producto
+  defaults: { _controller: PCBundle:guardardatos:editarDatosProductos }
+  methods: [POST]
+
+
+
+pc_mostrarrestaurantes:
+  path: /restaurantes/mostrar
+  defaults: { _controller: PCBundle:buscardatos:buscarRestaurantes }
+
+pc_mostrarhoteles:
+  path: /hoteles/mostrar
+  defaults: { _controller: PCBundle:buscardatos:buscarHoteles }
+
+pc_mostrarbares:
+  path: /bares/mostrar
+  defaults: { _controller: PCBundle:buscardatos:buscarBares }
+
+pc_mostrarofertas:
+  path: /{nombreProducto}/{idNegocio}/mostrar
+  defaults: { _controller: PCBundle:buscardatos:buscarOfertas }
+
+
+
+pc_nuevoregistroproductos:
+  path: /nuevo-registro-productos
+  defaults: { _controller: PCBundle:generico:generico }
+  methods: [GET]
+
+pc_guardarregistroproductos:
+  path: /nuevo-registro-productos
+  defaults: { _controller: PCBundle:guardardatos:nuevoRegistroProductos }
+  methods: [POST]
+
+
+
+pc_perfilproducto:
+  path: /perfil-producto/{nombreProducto}/{idNegocio}
+  defaults: { _controller: PCBundle:buscardatos:buscarDatosProducto }
+
+pc_nuevoregistroofertas:
+  path: /nuevo-registro-ofertas
+  defaults: { _controller: PCBundle:generico:generico }
+  methods: [GET]
+
+pc_guardarregistroofertas:
+  path: /nuevo-registro-ofertas
+  defaults: { _controller: PCBundle:guardardatos:nuevoRegistroOferta }
+  methods: [POST]
+
+pc_eliminaroferta:
+  path: /eliminar-oferta/{descripcionOfertas}/{idProducto}
+  defaults: { _controller: PCBundle:guardardatos:eliminarOferta }
+
+pc_apuntarseoferta:
+  path: /apuntarse-oferta/{descripcionOfertas}/{idProducto}
+  defaults: { _controller: PCBundle:guardardatos:apuntarseOferta }
+
+pc_crearpdf:
+  path: /mostrar-oferta/{idOferta}/{idUsuario}
+  defaults: { _controller: PCBundle:crearPDF:crearPDF }
+
+
+
+
+
+pc_cerrarsesion:
+  path: /cerrar-sesion
+  defaults: { _controller: PCBundle:cerrarsesion:cerrarsesion }

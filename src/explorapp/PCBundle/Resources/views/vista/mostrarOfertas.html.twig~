@@ -1,0 +1,59 @@
+{% extends 'PCBundle::platillaMostrarNegocios.html.twig' %}
+
+{%block title%}
+	Ofertas
+{%endblock%}
+
+{%block urlDestino%}
+	'{{path('pc_perfilusuario')}}'
+{%endblock%}
+
+{%block inputHidden%}
+	<input type="hidden" name="loginMostrarOfertas" value="1000at200j">	
+{%endblock%}
+
+
+{%block barraMenu%}
+	<div class="contenedorMenu">
+		<nav id="navRestaurantes">
+			<ul>
+				<li><a href="{{ path('pc_restaurantes') }}" id="botonGrande">Restaurantes</a></li>
+				<li><a href="{{ path('pc_hoteles') }}" id="botonMediano">Hoteles</a></li>
+				<li><a href="{{ path('pc_bares') }}" id="botonPequeño">Bares</a></li>
+			</ul>
+			<input type="image" id="{{ idFotoBarraMenu }}" class="enlaceAcceder" src="{{ asset(rutaImagenPerfil) }}" title="Acceder a la zona de usuarios" />
+			<a href="{{path('pc_cerrarsesion')}}" id="enlaceCerrarSesion" >Cerrar Sesi&oacute;n</a>
+		</nav>
+	</div>
+{%endblock%}
+
+
+
+
+{%block cuerpoPagina%}
+	<div class="{{ tipoNegocio }}">
+		<table id="tablaOfertas" class="tablaNegocios">
+		    <thead>
+			<tr>
+			    	<th>Fecha de Inicio</th>
+				<th>Fecha de Fin</th>
+			    	<th>Rango de Edades</th>
+				<th>Descripción de la Oferta</th>
+				<th></th>
+			</tr>
+		    </thead>
+		    <tbody>
+			{% for oferta in listadoOfertas %}
+				<tr>
+					<td>{{oferta.fechaInicialOferta|date("d/m/Y")}}</td>
+					<td>{{oferta.fechaFinalOferta|date("d/m/Y")}}</td>
+					<td>{{oferta.edadPublicoOfertas}}</td>
+					<td>{{oferta.descripcionOfertas}}</td>
+					<td><input type="button" class="botonApuntarOferta" value="Eliminar la Oferta" style="display: {{ visibleEditarOferta }}" onclick="location.href='{{ path('pc_eliminaroferta', {'descripcionOfertas': oferta.descripcionOfertas, 'idProducto':oferta.idProducto}) }}';" /></td>
+					<td><input type="button" class="botonApuntarOferta" value="Apuntarse a la Oferta" style="display: {{ visibleApuntarOferta }}" /></td>
+				</tr>
+			{%endfor%}
+		    </tbody>
+		</table>
+	</div>
+{%endblock%}

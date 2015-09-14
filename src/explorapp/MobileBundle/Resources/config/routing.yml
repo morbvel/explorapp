@@ -1,0 +1,20 @@
+mobile_homepage:
+    path:     /
+    defaults: { _controller: MobileBundle:Generico:generico }
+
+mobile_formlogin:
+    path:     /login
+    defaults: { _controller: MobileBundle:Generico:generico }
+
+mobile_autentificar:
+    path:     /login
+    defaults: { _controller: MobileBundle:Autentificar:Autentificar }
+    methods: [POST]
+
+mobile_nuevoregistro:
+    path:     /nuevo-registro
+    defaults: { _controller: MobileBundle:Generico:generico }
+
+mobile_cerrarsesion:
+    path:     /cerrar-sesion
+    defaults: { _controller: MobileBundle:cerrarSesion:cerrarSesion }

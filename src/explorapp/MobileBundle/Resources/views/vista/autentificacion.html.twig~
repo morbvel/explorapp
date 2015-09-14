@@ -1,0 +1,20 @@
+{% extends 'MobileBundle::plantillaRegistros.html.twig' %}
+
+
+{%block tituloPagina%}
+	Acceso al sistema
+{%endblock%}
+
+{%block urlDestino%}
+{{path('mobile_autentificar')}}
+{%endblock%}
+
+{%block nombreFormulario%}
+	{{ form_enctype(UsuariosForm) }}
+{%endblock%}
+
+{%block formulario%}
+	{{form_widget(UsuariosForm)}}
+	<input type="submit" id="enviarLogin" name="enviarlogin" value="Aceptar" data-icon="check" data-iconpos="right" data-inline="true"/>
+	<input type="button" id="nuevoRegistro" name="nuevoRegistro" value="Nuevo Registro" data-icon="check" data-iconpos="right" data-inline="true"/>
+{%endblock%}

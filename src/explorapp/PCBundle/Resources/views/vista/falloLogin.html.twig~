@@ -1,0 +1,10 @@
+{% extends 'PCBundle::plantillaErrorLogin.html.twig' %}
+
+{%block title%}
+	Usuario Existente
+{%endblock%}
+
+
+{%block textoFallo%}
+	Alguien se te ha adelantado con ese nombre de usuario.<br/><br/>Prueba a introducir otro nuevo.
+{%endblock%}

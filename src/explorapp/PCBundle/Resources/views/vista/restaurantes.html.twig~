@@ -1,0 +1,100 @@
+{% extends 'PCBundle::plantillaInicial.html.twig' %}
+
+{%block title%}
+	Restaurantes
+{%endblock%}
+
+
+{%block slider%}
+	<ul class="bxslider">	
+		<li class="contenedorSlider">
+			<img src="{{ asset('img/restaurante2.jpg') }}" />
+			<span>Restaurantes Asociados</span>
+			<a href="#cuerpo1">Ir a sección Restaurantes Asociados</a>
+		</li>
+		<li class="contenedorSlider">
+			<img src="{{ asset('img/restaurante3.jpg') }}" />
+			<span>¿Algo Especial?</span>
+			<a href="#cuerpo2">Ir a ¿Algo Especial?</a>
+		</li>
+		<li class="contenedorSlider">
+			<img src="{{ asset('img/restaurante4.jpg') }}" />
+			<span>Darse de Alta</span>
+			<a href="#cuerpo3">Ir a Darse de Alta</a>
+		</li>
+	</ul>
+{%endblock%}
+
+
+{%block urlDestino%}
+	'{{path('pc_perfilusuario')}}'
+{%endblock%}
+
+
+{%block urlBusqueda%}
+	{{path('pc_buscarrestaurantes')}}
+{%endblock%}
+
+
+{%block barraMenu%}
+	<div class="contenedorMenu">
+		<nav id="navRestaurantes">
+			<ul>
+				<li><a href="#cuerpo1" class="botonMenuSeccionRestaurantes">Restaurantes Asociados</a></li>
+				<li><a href="#cuerpo2" class="botonMenuSeccionRestaurantes">Búsqueda de Restaurantes</a></li>
+				<li><a href="#cuerpo3" class="botonMenuSeccionRestaurantes">Darse de Alta</a></li>
+			</ul>
+			<input type="image" id="{{ idFotoBarraMenu }}" class="enlaceAcceder" src="{{ asset(rutaImagenPerfil) }}" title="Acceder a la zona de usuarios" />
+			<a href="{{path('pc_cerrarsesion')}}" id="enlaceCerrarSesion" >Cerrar Sesi&oacute;n</a>
+		</nav>
+	</div>
+{%endblock%}
+
+
+
+{%block inputHidden%}
+	<input type="hidden" name="loginRestaurantes" value="1000at200j">	
+{%endblock%}
+
+
+
+{%block cuerpoPagina%}
+	<div id="relleno1" class="pagina imagenRellenoRestaurantes1 parallax" data-movimiento="10">
+	</div>
+		
+	<div id="cuerpo1">
+	<h1>Restaurantes Asociados</h1>
+	<table class="tablaCuerpos">
+		<tr>
+			<td>En esta sección podrás encontrar todo tipo de restaurante en los que empezar a disfrutar de los descuentos más increíbles que conseguirás gracias a Explorapp.</td>
+			<td><a class="botonSecciones" href="{{ path('pc_mostrarrestaurantes') }}">Ir a Restaurantes Asociados</a></td>
+		</tr>
+	</table>
+	</div>
+		
+	<div id="relleno2" class="pagina imagenRellenoRestaurantes2 parallax" data-movimiento="10">
+	</div>
+		
+	<div id="cuerpo2">
+		<h1>Búsqueda de Restaurantes</h1>
+		<table class="tablaCuerpos">
+			<tr>
+				<td>¿Hace cuánto que no sales a cenar con tu familia o amigos? Descubre las ofertas que tenemos para con  tu sitio de toda la vida.</td>
+				<td><a class="botonSecciones" href="#">Búsqueda de Restaurante</a></td>
+			</tr>
+		</table>
+	</div>
+		
+	<div id="relleno3" class="pagina imagenRellenoRestaurantes3 parallax" data-movimiento="10">
+	</div>
+		
+	<div id="cuerpo3">
+		<h1>Darse de Alta</h1>
+		<table class="tablaCuerpos">
+			<tr>
+				<td>Pasar a formar parte de la gran familia ExplorApp es un gran paso tanto para ti como para tu restaurante. ¡Bienvenido al mundo de los descuentos!</td>
+				<td><a class="botonSecciones" href="{{path('pc_nuevoregistrorestaurantes')}}">Ir a Darse de Alta</a></td>
+			</tr>
+		</table>
+	</div>
+{%endblock%}

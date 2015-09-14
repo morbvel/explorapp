@@ -1,0 +1,98 @@
+{% extends 'PCBundle::plantillaInicial.html.twig' %}
+
+{%block title%}
+	Bares
+{%endblock%}
+
+
+{%block slider%}
+	<ul class="bxslider">	
+		<li class="contenedorSlider">
+			<img src="{{ asset('img/bar2.jpg') }}" />
+			<span>Bares Cercanos a Ti</span>
+			<a href="#cuerpo1">Ir a sección Bares Cercanos a Ti</a>
+		</li>
+		<li class="contenedorSlider">
+			<img src="{{ asset('img/bar3.jpg') }}" />
+			<span>Vida Nocturna</span>
+			<a href="#cuerpo2">Ir a sección Vida Nocturna</a>
+		</li>
+		<li class="contenedorSlider">
+			<img src="{{ asset('img/bar4.jpg') }}" />
+			<span>Darse de Alta</span>
+			<a href="#cuerpo3">Ir a Darse de Alta</a>
+		</li>
+	</ul>
+{%endblock%}
+
+
+{%block urlDestino%}
+	'{{path('pc_perfilusuario')}}'
+{%endblock%}
+
+{%block urlBusqueda%}
+	{{path('pc_buscarbares')}}
+{%endblock%}
+				
+
+
+{%block barraMenu%}
+	<div class="contenedorMenu">
+		<nav id="navBares">
+			<ul>
+				<li><a href="#cuerpo1" class="botonMenuSeccionRestaurantes">Bares Cercanos a Ti</a></li>
+				<li><a href="#cuerpo2" class="botonMenuSeccionRestaurantes">Búsqueda de Bares</a></li>
+				<li><a href="#cuerpo3" class="botonMenuSeccionRestaurantes">Darse de Alta</a></li>
+			</ul>
+			<input type="image" id="{{ idFotoBarraMenu }}" class="enlaceAcceder" src="{{ asset(rutaImagenPerfil) }}" title="Acceder a la zona de usuarios" />
+			<a href="{{path('pc_cerrarsesion')}}" id="enlaceCerrarSesion" >Cerrar Sesi&oacute;n</a>
+		</nav>
+	</div>
+{%endblock%}
+
+
+{%block inputHidden%}
+	<input type="hidden" name="loginBares" value="1000at200j">	
+{%endblock%}
+
+
+{%block cuerpoPagina%}
+	<div id="relleno1" class="pagina imagenRellenoBares1 parallax" data-movimiento="10">
+	</div>
+		
+	<div id="cuerpo1">
+	<h1>Bares Cercanos a Ti</h1>
+	<table class="tablaCuerpos">
+		<tr>
+			<td>Tienes toda la tarde por delante y amigos esperándote. Entra aquí y descubre cuáles son los bares que más destacan cerca de ti.</td>
+			<td><a class="botonSecciones" href="{{ path('pc_mostrarbares') }}">Ir a Bares Cercanos a Ti</a></td>
+		</tr>
+	</table>
+	</div>
+		
+	<div id="relleno2" class="pagina imagenRellenoBares2 parallax" data-movimiento="10">
+	</div>
+		
+	<div id="cuerpo2">
+		<h1>Búsqueda de Bares</h1>
+		<table class="tablaCuerpos">
+			<tr>
+				<td>¿Ya conoces ese bar ideal en el que tomar un café o una copa con tus amigos? Simplemente introduce el nombre o la ciudad del mismo y Explorapp se encargará de lo demñas</td>
+				<td><a class="botonSecciones" id="abrirPopUpBusqueda" href="#">Ir a Búsqueda de Bares</a></td>
+			</tr>
+		</table>
+	</div>
+		
+	<div id="relleno3" class="pagina imagenRellenoBares3 parallax" data-movimiento="10">
+	</div>
+		
+	<div id="cuerpo3">
+		<h1>Darse de Alta</h1>
+		<table class="tablaCuerpos">
+			<tr>
+				<td>Pasar a formar parte de la gran familia ExplorApp es un gran paso tanto para ti como para tu restaurante. ¡Bienvenido al mundo de los descuentos!</td>
+				<td><a class="botonSecciones" href="{{path('pc_nuevoregistrobares')}}">Ir a Darse de Alta</a></td>
+			</tr>
+		</table>
+	</div>
+{%endblock%}

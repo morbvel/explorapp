@@ -1,0 +1,43 @@
+{% extends 'PCBundle::plantillaRegistros.html.twig' %}
+
+
+{%block titleRegistros%}
+	Nuevo Registro Bares
+{%endblock%}
+
+
+{%block videoRegistro%}
+	<video id="videoFondo" autoplay loop>
+		<source src="{{ asset('videos/videoNuevoRegistroBares.mp4') }}" type="video/mp4"></source>
+	</video>
+{%endblock%}
+
+{%block tituloRegistro%}
+	Nuevo Registro Bares
+{%endblock%}
+
+
+{%block urlDestino%}
+	'{{path('pc_perfilusuario')}}'
+{%endblock%}
+
+
+
+{%block inputHidden%}
+	<input type="hidden" name="loginNuevoRegistroBares" value="1000at200j">	
+{%endblock%}			
+
+
+{%block textoAcceder%}
+	<p id="parrafoAccederUsuarios">Para registrar un nuevo bar, primero debe iniciar sesión o darse de alta como usuario en <a id="abrirPopUpEnlace" href="#">este enlace</a>.</p>
+{%endblock%}
+
+{%block formularioRegistro%}			
+	<form action="{{path('pc_nuevoregistrobares')}}" method="post" id="formNuevoRegistroBares" {{ form_enctype(formNuevoRegistroBares) }}>
+		
+		{{form(formNuevoRegistroBares)}}
+		<input type="submit" id="aceptarNuevoRegistroBares" name="nuevoRegistroBares" value="Aceptar Nuevo Registro"/>
+	</form>
+{%endblock%}
+
+

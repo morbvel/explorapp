@@ -1,0 +1,102 @@
+{% extends 'PCBundle::plantillaInicial.html.twig' %}
+
+
+
+{%block title%}
+	P&aacute;gina Principal
+{%endblock%}
+
+
+
+
+{%block slider%}
+	<ul class="bxslider">	
+		<li class="contenedorSlider">
+			<img src="{{ asset('img/restaurante1.jpg') }}" />
+			<span>Restaurantes</span>
+			<a href="#cuerpo1">Ir a sección Restaurantes</a>
+		</li>
+		<li class="contenedorSlider">
+			<img src="{{ asset('img/hotel1.jpg') }}" />
+			<span>Hoteles</span>
+			<a href="#cuerpo2">Ir a sección Hoteles</a>
+		</li>
+		<li class="contenedorSlider">
+			<img src="{{ asset('img/bar1.jpg') }}" />
+			<span>Bares</span>
+			<a href="#cuerpo3">Ir a sección Bares</a>
+		</li>
+	</ul>
+{%endblock%}
+
+
+
+{%block urlDestino%}
+	'{{path('pc_perfilusuario')}}'
+{%endblock%}
+
+
+{%block barraMenu%}
+	<div class="contenedorMenu">
+		<nav>
+			<ul>
+				<li><a href="#cuerpo1" id="botonGrande">Restaurante</a></li>
+				<li><a href="#cuerpo2" id="botonMediano">Hoteles</a></li>
+				<li><a href="#cuerpo3" id="botonPequeño">Bares</a></li>
+			</ul>
+			<input type="image" id="{{ idFotoBarraMenu }}" class="enlaceAccederIndex" src="{{ asset(rutaImagenPerfil) }}" title="Acceder a la zona de usuarios" />
+			<a href="{{path('pc_cerrarsesion')}}" id="enlaceCerrarSesion" >Cerrar Sesi&oacute;n</a>
+		</nav>
+	</div>
+{%endblock%}		
+
+
+
+{%block inputHidden%}
+	<input type="hidden" name="loginIndex" value="1000at200j">	
+{%endblock%}
+
+
+
+{%block cuerpoPagina%}
+	<div id="relleno1" class="pagina imagenRelleno1 parallax" data-movimiento="10">
+	</div>
+		
+	<div id="cuerpo1">
+	<h1>Restaurantes</h1>
+	<table class="tablaCuerpos">
+		<tr>
+			<td>En ExplorApp!, contamos con los mejores restaurantes que se ajustan a tus gustos y necesidades de cada momento. Entra y compruébalo.</td>
+			<td><a class="botonSecciones" href="{{path('pc_restaurantes')}}">Ir a Restaurantes</a></td>
+		</tr>
+	</table>
+	</div>
+		
+	<div id="relleno2" class="pagina imagenRelleno2 parallax" data-movimiento="10">
+	</div>
+		
+	<div id="cuerpo2">
+		<h1>Hoteles</h1>
+		<table class="tablaCuerpos">
+			<tr>
+				<td>Un viaje, una escapada o un pequeño gran lujo. Estos placeres son posibles al mejor precio gracias a ExplorApp!.</td>
+				<td><a class="botonSecciones" href="{{path('pc_hoteles')}}">Ir a Hoteles</a></td>
+			</tr>
+		</table>
+	</div>
+		
+	<div id="relleno3" class="pagina imagenRelleno3 parallax" data-movimiento="10">
+	</div>
+		
+	<div id="cuerpo3">
+		<h1>Bares</h1>
+		<table class="tablaCuerpos">
+			<tr>
+				<td>¿Un libro con café caliente o una cerveza de barril con tus amigos? Da igual cómo, cuándo y con quién sea el plan, mientras sea con los enormes descuentos de Explorapp!</td>
+				<td><a class="botonSecciones" href="{{path('pc_bares')}}">Ir a Bares</a></td>
+			</tr>
+		</table>
+	</div>
+{%endblock%}
+		
+

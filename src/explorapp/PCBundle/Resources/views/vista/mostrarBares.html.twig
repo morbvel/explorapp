@@ -1,0 +1,63 @@
+{% extends 'PCBundle::platillaMostrarNegocios.html.twig' %}
+
+{%block title%}
+	Bares
+{%endblock%}
+
+{%block urlDestino%}
+	'{{path('pc_perfilusuario')}}'
+{%endblock%}
+
+{%block inputHidden%}
+	<input type="hidden" name="loginMostrarBares" value="1000at200j">	
+{%endblock%}
+
+
+{%block barraMenu%}
+	<div class="contenedorMenu">
+		<nav id="navBares">
+			<ul>
+				<li><a href="{{ path('pc_restaurantes') }}" id="botonGrande">Restaurantes</a></li>
+				<li><a href="{{ path('pc_hoteles') }}" id="botonMediano">Hoteles</a></li>
+				<li><a href="{{ path('pc_bares') }}" id="botonPequeño">Bares</a></li>
+			</ul>
+			<input type="image" id="{{ idFotoBarraMenu }}" class="enlaceAcceder" src="{{ asset(rutaImagenPerfil) }}" title="Acceder a la zona de usuarios" />
+			<a href="{{path('pc_cerrarsesion')}}" id="enlaceCerrarSesion" >Cerrar Sesi&oacute;n</a>
+		</nav>
+	</div>
+{%endblock%}
+
+
+
+
+{%block cuerpoPagina%}
+	<div class="{{ tipoNegocio }}">
+		<table id="tablaBares" class="tablaNegocios">
+		    <thead>
+			<tr>
+				<th></th>
+			    	<th>Nombre Bar</th>
+				<th>Ciudad Bar</th>
+			    	<th>Direccion Bar</th>
+				<th></th>
+			</tr>
+		    </thead>
+		    <tbody>
+			{% for bar in listadoBares %}
+				<tr>
+					{% for usuario in usuarios %}
+						{%if usuario.Id == bar.idUsuario%}
+							{% set rutaImagen = 'DirectoriosUsuarios/'~usuario.userName~'/Negocios/'~bar.nombreNegocio~'.jpg' %}
+							<td><input type="image" src="{{ asset(rutaImagen) }}" class="imagenListadoNegocios" onclick="location.href='{{ path('pc_perfilnegocio', {'idNegocio': bar.idNegocio, 'idUsuario':bar.idUsuario}) }}';"/></td>
+						{%endif%}
+					{%endfor%}
+				    <td>{{bar.nombreNegocio}}</td>
+					<td>{{bar.ciudadNegocio}}</td>
+				    <td>{{bar.direccionNegocio}}</td>
+					<td><input type="button" class="botonIrPerfilNegocio" value="Ir a su perfil" onclick="location.href='{{ path('pc_perfilnegocio', {'idNegocio': bar.idNegocio, 'idUsuario':bar.idUsuario}) }}';"/></td>
+				</tr>
+			{%endfor%}
+		    </tbody>
+		</table>
+	</div>
+{%endblock%}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{%block tituloPagina%}{%endblock%}</title>
+
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	<link rel="stylesheet" href="{{asset('css/estilosMobile.css')}}" />
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+    </head>
+
+    <body>
+	<div data-role="page" id="paginaInicial"> 
+		<div data-role="content">
+			<a href="#paginaInicial" data-transition="fade"><img src="{{asset('img/logoCerveza.jpg')}}" ></img></a>
+			{%block contenidoInicial%}{%endblock%}
+			{%block menuCabecera%}{%endblock%}
+		</div>
+	</div>
+
+	<div data-role="page" id="restaurantes"> 
+
+		<div data-role="content">	
+			<a href="#paginaInicial" data-transition="fade"><img src="{{asset('img/logoCerveza.jpg')}}" ></img></a>
+			{%block contenidoCuerpo1%}{%endblock%}
+			{%block menuRestaurantes%}{%endblock%}
+		</div>
+
+		<div data-role="footer">	
+			{%block contenidoFooter1%}{%endblock%}
+		</div>
+
+	</div>
+
+	<div data-role="page" id="hoteles"> 
+
+		<div data-role="content">	
+			<a href="#paginaInicial" data-transition="fade"><img src="{{asset('img/logoCerveza.jpg')}}" ></img></a>
+			{%block contenidoCuerpo2%}{%endblock%}
+			{%block menuHoteles%}{%endblock%}
+		</div>
+
+		<div data-role="footer">	
+			{%block contenidoFooter2%}{%endblock%}
+		</div>
+
+	</div>
+
+	<div data-role="page" id="bares"> 
+
+		<div data-role="content">	
+			<a href="#paginaInicial" data-transition="fade"><img src="{{asset('img/logoCerveza.jpg')}}" ></img></a>
+			{%block contenidoCuerpo3%}{%endblock%}
+			{%block menuBares%}{%endblock%}
+		</div>
+
+		<div data-role="footer">	
+			{%block contenidoFooter3%}{%endblock%}
+		</div>
+
+	</div>
+
+    </body>
+</html>

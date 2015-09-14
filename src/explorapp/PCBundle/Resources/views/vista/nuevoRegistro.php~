@@ -1,0 +1,6 @@
+ 'PCBundle::plantillaRegistros.html.twig' %}
+
+
+{%block titleRegistros%}
+	Nuevo Registro
+{%endblock%}

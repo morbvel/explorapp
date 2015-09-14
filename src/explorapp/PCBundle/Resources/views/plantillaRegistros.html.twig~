@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>{%block titleRegistros%}{%endblock%}</title>
+		<meta name="author" content="Miguel Orbañanos">
+		<link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}" />
+		
+		<!--Importarmos nuestra hoja de estilos-->
+		<link rel="stylesheet" type="text/css" media="(max-width: 3500px)" href="{{ asset('css/estilosEscritorio.css') }}"/>
+		
+		<!-- Archivo con nuestros métodos Javascript -->
+		<script src="{{ asset('js/metodosJavaScript.js') }}"></script>
+		<!--descargamos la versión más reciente de jQuery-->
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		
+		
+		<!--Script para dejar fijo el menu-->
+		<script>
+			$(window).bind('scroll', function () {
+				var w = $(window).width();
+				// Pantallas de mas de 1300 pixeles
+				if ( w > 1400 && $(window).scrollTop() > 90 )
+					$('.contenedorMenu2').addClass('menuFijo2');
+				else if( w < 1400 && w > 1000 && $(window).scrollTop() > 90)
+					$('.contenedorMenu2').addClass('menuFijo2');
+				else if( w < 1300 && $(window).scrollTop() > 90 )
+					$('.contenedorMenu2').addClass('menuFijo2');
+				else
+					$('.contenedorMenu2').removeClass('menuFijo2');
+			});
+		</script>
+		
+		
+		
+		<!--Script para ocultar o mostrar enlaces-->
+		<script>
+			$(function() {
+				document.getElementById("enlaceCerrarSesion").style.display = "{{ visibleCerrarSesion }}";
+				document.getElementById("parrafoAccederUsuarios").style.display = "{{ visibleParrafoAcceder }}";
+			});
+		</script>
+		
+		
+		<!--Script para la creacion del PopUp o de la apertura de la pagina de usuario-->
+		<script>
+			$(document).ready(function(){
+				$('#abrirPopUp').click(function(){
+					$('#popup').fadeIn('slow');
+					$('.popup-overlay').fadeIn('slow');
+					$('.popup-overlay').height($(window).height());
+					return false;
+				});
+				
+
+				$('#close').click(function(){
+					$('#popup').fadeOut('slow');
+					$('.popup-overlay').fadeOut('slow');
+					return false;
+				});
+
+				$('#abrirPerfilUsuarios').click(function(){
+					window.open ({%block urlDestino%}{%endblock%}, '_self', config='height=100, width=400, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, directories=no, status=no')
+				});
+
+			});
+		</script>
+		
+	</head>
+	
+	<body onload="bgadj();">
+		<!--Capa del PopUp-->
+		<div id="popup">
+			<div class="content-popup">
+				<div class="close"><a href="#" id="close">&nbsp;X&nbsp;</a></div>
+				<h2>Inserte sus datos personales</h2>
+				
+				<form action="{{path('pc_autentificar')}}" method="post" id="formLogin" {{ form_enctype(formLogin) }}>
+					{%block inputHidden%}{%endblock%}
+					{{form_widget(formLogin)}}
+					<input type="submit" id="enviarLogin" name="enviarlogin" value="Aceptar"/>
+					<input type="submit" id="nuevoRegistro" name="nuevoRegistro" value="Nuevo Registro"/>
+				</form>
+			</div>
+		</div>
+	
+		<div id="barraInicial">
+			<div id="contenedorInicial">
+				<a href="{{path('pc_homepage')}}" ><img id="logoEmpresa" src="{{ asset('img/logoCerveza.jpg') }}" /></a>
+			</div>
+		</div>
+		
+		<!--Barra del Menu-->
+		<div class="contenedorMenu2">
+			<nav>
+				<ul>
+					<li><a href="{{path('pc_restaurantes')}}" id="botonGrande">Restaurantes</a></li>
+					<li><a href="{{path('pc_hoteles')}}" id="botonMediano">Hoteles</a></li>
+					<li><a href="{{path('pc_bares')}}" id="botonPequeño">Bares</a></li>
+				</ul>
+				<input type="image" id="{{ idFotoBarraMenu }}" class="enlaceAccederIndex" src="{{ asset(rutaImagenPerfil) }}" title="Acceder a la zona de usuarios" />
+				<a href="{{path('pc_cerrarsesion')}}" id="enlaceCerrarSesion" >Cerrar Sesi&oacute;n</a>
+			</nav>
+		</div>
+		
+		<!--Capa de los datos a añadir-->
+		<div id="capaNuevoRegistro">
+		
+			<!--Capa para añadir el video de fondo-->
+			{%block videoRegistro%}
+			{%endblock%}
+			
+			<!--Texto para añadir (si necesario) la autentificación del usuario-->
+			{%block textoAcceder%}{%endblock%}
+			
+			<h2>{%block tituloRegistro%}{%endblock%}</h2>
+			<!--En este bloque se añade el formulario adecuado a cada registro-->
+			{%block formularioRegistro%}{%endblock%}
+		</div>
+	</body>
+</html>

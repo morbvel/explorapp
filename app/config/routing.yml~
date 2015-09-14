@@ -1,0 +1,11 @@
+mobile:
+    resource: "@MobileBundle/Resources/config/routing.yml"
+    prefix:   .mobile/
+
+pc:
+    resource: "@PCBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

@@ -1,0 +1,2096 @@
+/*------------------------------------------------------------PARTES GENERALES----------------------------------------------------------*/
+@font-face{
+	font-family: Simplifica;
+	src: local("?"), url(SIMPLIFICA%20Typeface.ttf) format("woff");
+}
+
+@charset "UTF-8";
+
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	font-family: Simplifica;
+	background-color: #CEB48D;
+	color: #eeeeee;
+}
+
+.boton-top{
+	display: none;
+	position: fixed;
+	bottom: 50px;
+	right: 50px;
+	width: 60px;
+	height: 60px;
+	text-align: center;
+	line-height: 50px;
+	color: #fff;
+	border-radius: 10px;
+	background: #000;
+	cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*------------------------------------------------------------PAGINA PRINCIPAL----------------------------------------------------------*/
+#barraInicial{
+	width: 100%;
+	height: 100px;
+	background-color: #B29562;
+}
+
+#contenedorInicial{
+	width: 20%;
+	margin: 0 auto 0;
+}
+#logoEmpresa{
+	width: 250px;
+	border: 0px;
+}
+
+.bxslider{
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+.contenedorSlider img{
+	position: relative;
+	z-index: 1;
+	max-width: 100%;
+	height: auto;
+}
+.contenedorSlider span{
+	font-family: Simplifica; 
+	position: absolute;
+	margin-top: -350px;
+	height: 50px;
+	width: 35%;
+	background-color: rgba(170, 177, 176, 0.8);
+	z-index: 5;
+	text-align: right;
+	font-size: 200%;
+	color: #000;
+	padding-top: 12px;
+	padding-right: 18px;
+}
+.contenedorSlider a{
+	font-family: Simplifica;
+	position: absolute;
+	margin-top: -250px;
+	margin-left: 215px;
+	border-radius: 20px;
+	width: 18%;
+	height: 35px;
+	background-color: rgba(0, 107, 182, 0.8);
+	z-index: 5;
+	text-align: right;
+	font-size: 125%;
+	padding-top: 12px;
+	padding-right: 12px;
+	text-decoration: none;
+	font-style: bold;
+	color: #FFFFFF;
+}
+.contenedorSlider a:hover{
+	background-color: rgba(33, 3, 154, 0.8);
+	color: #47EEFA;
+}
+
+
+/* Limpiamos float y ocultamos el enlace que se mostrara cuando se ajuste la pantalla */
+.clear:before, .clear:after {
+    content: " ";
+    display: table;
+}
+ 
+.clear:after {
+    clear: both;
+}
+ 
+.clear {
+    *zoom: 1;
+}
+
+
+.contenedorMenu{
+	position: absolute;
+	width: 100%;
+	height: 100px;
+	background-color: rgba(178, 149, 98, 0.7);
+	z-index: 5;
+}
+.menuFijo{
+    position: fixed;
+    top: 0;
+}
+nav {
+    width: 100%;
+    height: 110px;
+	margin: 0 auto 0;
+}
+nav ul {
+    margin: 0 auto 0;
+    width: 70%;
+    height: 40px;
+}
+nav li {
+    display: inline;
+    float: left;
+	width: 15%;
+	height: auto;
+	margin-top: 23px;
+	margin-left: 12%;
+}
+nav li a{
+	font-family: Simplifica;
+	text-decoration: none;
+	font-weight: bold;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 30px;
+	padding-right: 30px;
+	color: #eeeeee;
+	border-radius: 20px;
+	font-size: 150%;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-transition-property: box-shadow;
+	transition-property: box-shadow;
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+
+nav #enlaceCerrarSesion{
+	float: right;
+	margin-right: 30px;
+	margin-top: -15px;
+	border: 1px solid #000;
+	border-radius: 50px;
+	text-decoration: none;
+	background-color: rgba(155, 152, 149, 0.7);
+	padding: 5px;
+	color: #FFFFFF;
+	font-size: 120%;
+}
+
+#botonMediano{
+	padding-left: 35px;
+	padding-right: 35px;
+}
+#botonPequeño{
+	padding-left: 50px;
+	padding-right: 50px;
+}
+nav li a:hover, nav li a:focus, nav li a:active{
+	background-color: #FFAB1A;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 1);
+}
+
+.enlaceAcceder{
+	float: right;
+	width: 65px;
+	height: 65px;
+	margin-right: -4%;
+	margin-top: -25px;
+	border-radius: 50%;
+    border: 1px black dashed;
+    box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.8);
+}
+.enlaceAccederIndex{
+	float: right;
+	width: 65px;
+	height: 65px;
+	margin-right: 12%;
+	margin-top: -25px;
+	border-radius: 50%;
+    border: 1px black dashed;
+    box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.8);
+}
+
+/*Estilos del PopUp con el formulario del Login*/
+#popup {
+	display: none;
+    position: fixed;
+    width: 100%;
+	height: 100%;
+    z-index: 1001;
+	background-color: rgba(132, 132, 132, 0.7);
+}
+#popup .content-popup{
+	background-color: #eeeeee;
+	margin: 0px auto;
+	margin-top: 200px;
+	position: relative;
+	padding: 10px;
+	width: 500px;
+	height: 300px;
+	border-radius: 20px;
+	background-color: #FFFFFF;
+	box-shadow: 0 2px 5px #666666;
+}
+
+
+#popup2 {
+	display: none;
+    position: fixed;
+    width: 100%;
+	height: 100%;
+    z-index: 1001;
+	background-color: rgba(132, 132, 132, 0.7);
+}
+
+#popup2 .content-popup{
+	background-color: #eeeeee;
+	margin: 0px auto;
+	margin-top: 200px;
+	position: relative;
+	padding: 10px;
+	width: 500px;
+	height: 300px;
+	border-radius: 20px;
+	background-color: #FFFFFF;
+	box-shadow: 0 2px 5px #666666;
+}
+
+
+.popup-overlay {
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    display: none;
+    background-color: #777777;
+    cursor: pointer;
+    opacity: 0.7;
+}
+h2{
+	text-align: center;
+	color: #523605;
+	font-style: italic;
+	font-size: 220%;
+	padding-bottom: 10px;
+}
+
+#formuLogin{
+	width: 100%;
+	height: 175px;
+	background-color: #CEB48D;
+	border-radius: 20px;
+}
+
+#formuLogin label{
+	font-size: 180%;
+	font-weight: bold;
+	padding: 20px 0 0 25px;
+}
+
+#formuLogin input{
+	width: 75%;
+	text-align: center;
+	height: 25px;
+	margin-left: 60px;
+}
+
+
+#enviarLogin,#nuevoRegistro{
+	margin-left: 110px;
+	margin-top: 20px;
+	padding: 7px;
+	background-color: #A4A4A4;
+	color: #FFFFFF;
+	border-radius: 5px;
+	cursor: pointer;
+}
+#enviarLogin:hover,#nuevoRegistro:hover{
+	background-color: rgba(178, 149, 98, 1);
+}
+#close {
+    position: absolute;
+    right: 15px;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 1px 4px;
+	border: 2px solid #000;
+	border-radius: 25px;
+	color: #424242;
+}
+#close2 {
+    position: absolute;
+    right: 15px;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 1px 4px;
+	border: 2px solid #000;
+	border-radius: 25px;
+	color: #424242;
+}
+#closeLogin {
+    position: absolute;
+    right: 15px;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 1px 4px;
+	border: 2px solid #000;
+	border-radius: 25px;
+	color: #424242;
+}
+
+#formBusqueda{
+	width: 100%;
+	height: 125px;
+	background-color: #CEB48D;
+	color: #CEB48D;
+	border-radius: 20px;
+}
+#formBusqueda input{
+	width: 75%;
+	margin-top: 25px;
+	text-align: center;
+	margin-left: 70px;
+}
+#formBusqueda #enviarBusqueda{
+	width: 30%;
+	margin-top: 25px;
+	text-align: center;
+	margin-left: 175px;
+}
+
+/*--------------------------------Distintas Partes del Cuerpo de la Paginas---------------------------------*/
+#cuerpo1, #cuerpo2, #cuerpo3{
+	font-family: Simplifica;
+	font-weight: bold;
+	height:450px;
+	background-color: #CEB48D;
+}
+#cuerpo1 h1, #cuerpo2 h1, #cuerpo3 h1{
+	width:100%;
+	text-align: center;
+	padding-top: 150px;
+	font-size: 300%;
+}
+.tablaCuerpos{
+	width: 100%;
+}
+.tablaCuerpos td{
+	font-size: 200%;
+	width: 50%;
+	text-align: left;
+	padding-left: 5%;
+	padding-top: 5%;
+}
+.botonSecciones{
+	text-decoration: none;
+	font-weight: bold;
+	padding: 15px;
+	margin-left: 35%;
+	color: #eeeeee;
+	border-radius: 20px;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-transition-property: box-shadow;
+	transition-property: box-shadow;
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+.botonSecciones:hover{
+	background-color: #FFAB1A;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 1);
+}
+.pagina{
+	width: 100%;
+	height: 600px;
+	background-repeat: no-repeat;
+	background-position: 50% 0;
+	background-size: cover;
+	background-attachment: fixed;
+}
+.imagenRelleno1{
+	background-image: url("../img/relleno1.jpg");
+}
+.imagenRelleno2{
+	background-image: url("../img/relleno2.jpg");
+}
+.imagenRelleno3{
+	background-image: url("../img/relleno3.jpg");
+}
+
+
+
+
+
+/*--------------------------------------------------------------------------------Estilos Perfil Usuario-----------------------------------------------------------------------------------------------*/
+
+.contenedorMenu2{
+	position: absolute;
+	width: 100%;
+	height: 100px;
+	background-color: rgba(178, 149, 98, 0.7);
+	z-index: 5;
+}
+
+.menuFijo2{
+    position: fixed;
+    top: 0;
+}
+#cuerpoPerfilUsuario{
+	width: 100%;
+	background-image: url("../img/cafe2.jpg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	height: auto;
+}
+#cuerpoPerfilUsuario{
+	overflow:hidden;
+}
+
+#imagenPerfil{
+	float: left;
+	margin-top: 8%;
+	margin-left: 180px;
+	position: fixed;
+	width: 200px;
+	height : 200px;
+	border: 1px solid #000;
+	border-radius: 100px;
+}
+
+#tablaDatosPersonales{
+	float: right;
+	margin-top: 9%;
+	background-color: rgba(0,0,0,0.6);
+	border-radius: 10px;
+	width: 40%;
+	font-size: 200%;
+	color: #eeeeee;
+	font-weight: bold;
+	height: auto;
+}
+#tablaDatosPersonales td{
+	padding-top: 5%;
+	width: 50%;
+	text-align: right;
+}
+.textoDatoPersonal{
+	float: left;
+	padding-left: 15px;
+}
+.textoNegocio{
+	cursor: pointer;
+}
+.textoNegocio:hover{
+	background-color: rgba(49,196,69, 0.7);
+	color: #eeeeee;
+	font-style: italic;
+	padding-right: 5px;
+	padding-left: 5px;
+	border-radius: 20px;
+}
+
+#tablaDatosPersonales td input,select{
+	margin-left: -15%;
+	height: 20px;
+	width: 65%;
+	text-align: center;
+}
+
+.barraSeparacion{
+	font-weight: bold;
+	font-size: 500%;
+}
+
+.colorOscuro{
+	color: #65AC53;
+	font-weight: bold;
+}
+
+.contrasena{
+	cursor: pointer;
+}
+
+.inputDatoPersonal{
+	display: none;
+	clear: both;
+	margin-right: 60px;
+	width: 65%;
+}
+
+#botonEditarPerfilUsuario{
+	float: left;
+	margin-top: 27%;
+	margin-left: 210px;
+	position: fixed;
+	width: 120px;
+	height : 60px;
+	border: 1px solid #000;
+	border-radius: 20px;
+	font-family: Simplifica;
+	font-size: 150%;
+	background-color: rgba(92, 0, 0, 0.5);
+	color: #eeeeee;
+}
+#botonEditarPerfilUsuario:hover{
+	background-color: rgba(255, 137, 0, 0.5);
+}
+
+#aceptarCambiosPerfilUsuario{
+	display: none;
+	float: right;
+	margin-top: 52%;
+	margin-right: -25%;
+	width: 150px;
+	height : 60px;
+	border-radius: 20px;
+	font-family: Simplifica;
+	font-size: 150%;
+	background-color: rgba(31, 176, 65, 0.3);
+	color: #eeeeee;
+	border: 0px solid white;
+}
+#aceptarCambiosPerfilUsuario:hover{
+	background-color: rgba(85, 255, 0, 0.6);
+}
+
+#cancelarCambiosPerfilUsuario{
+	display: none;
+	float: right;
+	margin-top: 52%;
+	margin-right: -50%;
+	width: 150px;
+	height : 60px;
+	border: 1px solid #FFFFF;
+	border-radius: 20px;
+	font-family: Simplifica;
+	font-size: 150%;
+	background-color: rgba(177, 74, 74, 0.3);
+	color: #eeeeee;
+	border: 0px solid white;
+}
+#cancelarCambiosPerfilUsuario:hover{
+	background-color: rgba(255, 0, 0, 0.6);
+}
+
+#eliminarDatosPerfilUsuario{
+	display: none;
+	float: right;
+	margin-top: 52%;
+	margin-right: -38%;
+	width: 150px;
+	height : 60px;
+	border: 1px solid #FFFFF;
+	border-radius: 20px;
+	font-family: Simplifica;
+	font-size: 150%;
+	background-color: rgba(255, 255, 255, 0.3);
+	color: #eeeeee;
+	border: 0px solid white;
+}
+#eliminarDatosPerfilUsuario:hover{
+	background-color: rgba(255, 255, 255, 0.6);
+	color: #000;
+}
+
+#closeCapaPerfil {
+    position: absolute;
+    right: 15px;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 1px 4px;
+	border: 2px solid #000;
+	border-radius: 25px;
+	color: #424242;
+}
+
+#tablaPopupEliminarPerfil{
+	width: 97%;
+	height: 230px;
+	margin-top: 40px;
+	margin-left: 10px;
+	background-color: rgba(206, 180, 141, 0.4);
+	font-family: Simplifica;
+	text-align: center;
+}
+#tablaPopupEliminarPerfil h2{
+	color: #523605;
+	font-weight: bold;
+	text-decoration: italic;
+	font-size: 170%;
+}
+#tablaPopupEliminarPerfil input{
+	margin-left: 35px;
+	margin-top: 25px;
+	padding: 7px;
+	background-color: #A4A4A4;
+	color: #FFFFFF;
+	border-radius: 5px;
+	cursor: pointer;
+}
+#tablaPopupEliminarPerfil input:hover{
+	background-color: rgba(178, 149, 98, 1);
+}
+
+#popupEliminarPerfil {
+	display: none;
+    position: fixed;
+    width: 100%;
+	height: 100%;
+    z-index: 1001;
+	background-color: rgba(132, 132, 132, 0.7);
+}
+
+
+#popupSubirImagenes {
+	display: none;
+    	position: fixed;
+    	width: 100%;
+	height: 100%;
+    	z-index: 1001;
+	background-color: rgba(132, 132, 132, 0.7);
+}
+
+#popupSubirImagenes .content-popup{
+	background-color: #eeeeee;
+	margin: 0px auto;
+	margin-top: 200px;
+	position: relative;
+	padding: 10px;
+	width: 525px;
+	height: 375px;
+	border-radius: 20px;
+	background-color: #FFFFFF;
+	box-shadow: 0 2px 5px #666666;
+}
+#popupSubirImagenes header h2{
+	color: black;
+	text-align: center;
+	font-style: italic;
+	margin: 30px auto 5px;
+}
+
+#popupSubirImagenes table{
+	width: 100%;
+	height: 225px;
+	margin-top: 25px;
+	background-color: rgba(235, 222, 222, 0.7);
+}
+
+#popupSubirImagenes table tr td img{
+	width: 200px;
+	height: auto;
+	margin-left: 150px;
+}
+
+#popupSubirImagenes table tr td input{
+	margin-left: 10px;
+	margin-top: 25px;
+	padding: 7px;
+	background-color: #A4A4A4;
+	color: #FFFFFF;
+	border-radius: 5px;
+	cursor: pointer;
+}
+#popupSubirImagenes table tr td input:hover{
+	background-color: rgba(178, 149, 98, 1);
+}
+
+
+#formuEditarPerfilUsuario{
+	display: none;
+	float: right;
+	margin-top: 9%;
+	background-color: rgba(0,0,0,0.6);
+	border-radius: 10px;
+	width: 60%;
+	font-size: 200%;
+	color: #eeeeee;
+	font-weight: bold;
+	height: 1000px;
+}
+
+#formuEditarPerfilUsuario input{
+	width: 35%;
+	height: 40px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	margin-right: 10%;
+	float: right;
+	text-align: center;
+}
+#formuEditarPerfilUsuario select{
+	width: 35%;
+	height: 40px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	margin-right: 10%;
+	float: right;
+}
+
+#formuEditarPerfilUsuario #formuEditarPerfilUsuario_fechaNacimientoPersonal_year, #formuEditarPerfilUsuario #formuEditarPerfilUsuario_fechaNacimientoPersonal_month, #formuEditarPerfilUsuario #formuEditarPerfilUsuario_fechaNacimientoPersonal_day{
+	width: 11%;
+	display: inline;
+}
+
+#formuEditarPerfilUsuario #formuEditarPerfilUsuario_fechaNacimientoPersonal_year{
+	margin-right: -20%;
+}
+
+#formuEditarPerfilUsuario #formuEditarPerfilUsuario_fechaNacimientoPersonal_month{
+	margin-right: -8%;
+}
+
+#formuEditarPerfilUsuario #formuEditarPerfilUsuario_fechaNacimientoPersonal_day{
+	margin-right: 4.1%;
+}
+
+#formuEditarPerfilUsuario label{
+	margin-top: 15px;
+	margin-bottom: 15px;
+	width: 50%;
+	float: left;
+	text-align: center;
+	font-weight: bold;
+}
+
+.botonBorrarOferta{
+	width: 100px;
+	margin-right: 25px;
+}
+
+/*--------------------------------------------------------------------------------Estilos Nuevo Registro-----------------------------------------------------------------------------------------------*/
+#videoFondo {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	z-index: -100;
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+	background-size: cover;
+}
+
+
+#capaNuevoRegistro{
+	width: 100%;
+	height: 1000px;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	color: #eeeeee;
+}
+#capaNuevoRegistro h2{
+	font-family: Simplifica;
+	font-size: 450%;
+	padding-top: 8%;
+	text-align: center;
+	color: #eeeeee;
+}
+
+
+#capaNuevoRegistro #aceptarNuevoRegistro{
+	font-size: 200%;
+	font-family: Simplifica;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	margin-left: 45%;
+	width: 250px;
+	border-radius: 20px;
+}
+
+#capaNuevoRegistro #aceptarNuevoRegistro:hover{
+	background-color: #AF3C3C;
+	color: #eeeeee;
+}
+
+
+#formuNuevoRegistroUsuarios{
+	width: 100%;
+	margin-top: 50px;
+	font-size: 200%;
+	font-style: italic;
+}
+
+#formuNuevoRegistroUsuarios input{
+	width: 35%;
+	height: 40px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	margin-right: 10%;
+	float: right;
+	text-align: center;
+}
+#formuNuevoRegistroUsuarios select{
+	width: 35%;
+	height: 40px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	margin-right: 10%;
+	float: right;
+}
+
+#formuNuevoRegistroUsuarios #formuNuevoRegistroUsuarios_fechaNacimientoPersonal_year, #formuNuevoRegistroUsuarios #formuNuevoRegistroUsuarios_fechaNacimientoPersonal_month, #formuNuevoRegistroUsuarios #formuNuevoRegistroUsuarios_fechaNacimientoPersonal_day{
+	width: 11%;
+	display: inline;
+}
+
+#formuNuevoRegistroUsuarios #formuNuevoRegistroUsuarios_fechaNacimientoPersonal_year{
+	margin-right: -20%;
+}
+
+#formuNuevoRegistroUsuarios #formuNuevoRegistroUsuarios_fechaNacimientoPersonal_month{
+	margin-right: -8%;
+}
+
+#formuNuevoRegistroUsuarios #formuNuevoRegistroUsuarios_fechaNacimientoPersonal_day{
+	margin-right: 4.1%;
+}
+
+
+#formuNuevoRegistroUsuarios label{
+	margin-top: 15px;
+	margin-bottom: 15px;
+	width: 50%;
+	float: left;
+	text-align: center;
+	font-weight: bold;
+}
+
+
+/*--------------------------------------------------------------------------------Estilos Fallo Login-----------------------------------------------------------------------------------------------*/
+.cuerpoFalloLogin{
+	background: url('../img/empty-pub.jpg') no-repeat fixed;
+}
+
+.cuadroFalloLogin{
+	background-color: #B29562;
+	width: 550px;
+	height: 250px;
+	border: 3px solid #000;
+	border-radius: 20px;
+	margin: 15% auto 0px;
+	color: #eeeeee;
+}
+
+.cuadroFalloLogin p{
+	text-align: center;
+	padding-top: 25px;
+	font-size: 200%;
+	font-weight: bold;
+}
+
+
+/*--------------------------------------------------------------------------------Estilos Seccion Restaurantes-----------------------------------------------------------------------------------------------*/
+
+#navRestaurantes {
+    width: 80%;
+    height: 100px;
+}
+#navRestaurantes ul {
+    width: 90%;
+    height: 40px;
+}
+#navRestaurantes li {
+    display: inline;
+    float: left;
+	width: 30%;
+	height: auto;
+	margin-top: 23px;
+	margin-left: 5px;
+}
+.botonMenuSeccionRestaurantes{
+	font-size: 200%;
+	font-family: Simplifica;
+	text-decoration: none;
+	font-weight: bold;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 30px;
+	padding-right: 30px;
+	color: #eeeeee;
+	border-radius: 20px;
+	font-size: 150%;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-transition-property: box-shadow;
+	transition-property: box-shadow;
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+#menuFijoRestaurantes{
+    position: fixed;
+    top: 0;
+	width: 100%;
+}
+
+.imagenRellenoRestaurantes1{
+	background-image: url("../img/restaurante6.jpg");
+}
+.imagenRellenoRestaurantes2{
+	background-image: url("../img/restaurante5.jpg");
+}
+.imagenRellenoRestaurantes3{
+	background-image: url("../img/restaurante7.jpg");
+}
+
+
+/*--------------------------------------------------------------------------------Estilos Seccion Nuevo Registro Restaurantes-----------------------------------------------------------------------------------------------*/
+#capaNuevoRegistro p{
+	text-align: center;
+	padding-top: 150px;
+	margin-bottom: -80px;
+	font-size: 250%;
+	font-style: italic;
+	font-weight: bold;
+}
+#capaNuevoRegistro a{
+	color: #74FF51;
+}
+#capaNuevoRegistro h2{
+	text-align: center;
+	font-family: Simplifica;
+	font-size: 300%;
+	font-weight: bold;
+	margin-top: 50px;
+}
+
+
+#formNuevoRegistroRestaurantes div{
+	width: 100%;
+	margin-top: 50px;
+	font-size: 140%;
+	font-style: italic;
+}
+#formNuevoRegistroRestaurantes div input{
+	width: 35%;
+	float: right;
+	height: 40px;
+	text-align: center;
+	margin-right: 12%;
+	
+}
+#formNuevoRegistroRestaurantes div label{
+	margin-left: 19%;
+	font-weight: bold;
+}
+
+#aceptarNuevoRegistroRestaurantes{
+	font-size: 200%;
+	font-family: Simplifica;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	margin-left: 40%;
+	width: 250px;
+	border-radius: 20px;
+}
+
+#aceptarNuevoRegistroRestaurantes:hover{
+	background-color: #AF3C3C;
+	color: #eeeeee;
+}
+
+
+#videoFondoRestaurantes{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	z-index: -100;
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+	background-size: cover;
+}
+
+
+
+/*--------------------------------------------------------------------------------Estilos Seccion Bares-----------------------------------------------------------------------------------------------*/
+
+#navBares {
+    width: 80%;
+    height: 100px;
+}
+#navBares ul {
+    width: 90%;
+    height: 40px;
+}
+#navBares li {
+    display: inline;
+    float: left;
+	width: 25%;
+	height: auto;
+	margin-top: 23px;
+	margin-left: 45px;
+}
+.botonMenuSeccionRestaurantes{
+	font-size: 200%;
+	font-family: Simplifica;
+	text-decoration: none;
+	font-weight: bold;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 30px;
+	padding-right: 30px;
+	color: #eeeeee;
+	border-radius: 20px;
+	font-size: 150%;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-transition-property: box-shadow;
+	transition-property: box-shadow;
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+#menuFijoBares{
+    position: fixed;
+    top: 0;
+	width: 100%;
+}
+
+.imagenRellenoBares1{
+	background-image: url("../img/bar5.jpg");
+}
+.imagenRellenoBares2{
+	background-image: url("../img/bar6.jpg");
+}
+.imagenRellenoBares3{
+	background-image: url("../img/bar7.jpg");
+}
+
+
+
+
+/*--------------------------------------------------------------------------------Estilos Seccion Nuevo Registro Bares-----------------------------------------------------------------------------------------------*/
+#capaNuevoRegistro p{
+	text-align: center;
+
+	padding-top: 150px;
+	margin-bottom: -80px;
+	font-size: 250%;
+	font-style: italic;
+	font-weight: bold;
+
+}
+#capaNuevoRegistro a{
+	color: #74FF51;
+}
+#capaNuevoRegistro h2{
+
+	text-align: center;
+	font-family: Simplifica;
+	font-size: 300%;
+	font-weight: bold;
+
+	margin-top: 50px;
+}
+#formNuevoRegistroBares div{
+	width: 100%;
+	margin-top: 50px;
+	font-size: 140%;
+	font-style: italic;
+}
+#formNuevoRegistroBares div input{
+	width: 35%;
+	float: right;
+	height: 40px;
+	text-align: center;
+	margin-right: 12%;
+	
+}
+#formNuevoRegistroBares div label{
+	margin-left: 19%;
+	font-weight: bold;
+}
+
+#aceptarNuevoRegistroBares{
+	font-size: 200%;
+	font-family: Simplifica;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	margin-left: 40%;
+	width: 250px;
+	border-radius: 20px;
+}
+
+#aceptarNuevoRegistroBares:hover{
+	background-color: #AF3C3C;
+	color: #eeeeee;
+}
+
+
+#videoFondoBares{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	z-index: -100;
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+	background-size: cover;
+}
+
+
+
+/*--------------------------------------------------------------------------------Estilos Seccion Hoteles-----------------------------------------------------------------------------------------------*/
+
+#navHoteles {
+    width: 80%;
+    height: 100px;
+}
+#navHoteles ul {
+    width: 90%;
+    height: 40px;
+}
+#navHoteles li {
+    display: inline;
+    float: left;
+	width: 30%;
+	height: auto;
+	margin-top: 23px;
+	margin-left: 10px;
+}
+.botonMenuSeccionHoteles{
+	font-size: 200%;
+	font-family: Simplifica;
+	text-decoration: none;
+	font-weight: bold;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 30px;
+	padding-right: 30px;
+	color: #eeeeee;
+	border-radius: 20px;
+	font-size: 150%;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-transition-property: box-shadow;
+	transition-property: box-shadow;
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+#menuFijoBares{
+    position: fixed;
+    top: 0;
+	width: 100%;
+}
+
+.imagenRellenoHoteles1{
+	background-image: url("../img/hotel5.jpg");
+}
+.imagenRellenoHoteles2{
+	background-image: url("../img/hotel6.jpg");
+}
+.imagenRellenoHoteles3{
+	background-image: url("../img/hotel7.jpg");
+}
+
+
+/*--------------------------------------------------------------------------------Estilos Seccion Nuevo Registro Hoteles-----------------------------------------------------------------------------------------------*/
+#capaNuevoRegistro p{
+	text-align: center;
+	padding-top: 150px;
+	margin-bottom: -80px;
+	font-size: 250%;
+	font-style: italic;
+	font-weight: bold;
+}
+#capaNuevoRegistro a{
+	color: #74FF51;
+}
+#capaNuevoRegistro h2{
+	text-align: center;
+	font-family: Simplifica;
+	font-size: 300%;
+	font-weight: bold;
+	margin-top: 50px;
+}
+#formNuevoRegistroHoteles div{
+	width: 100%;
+	margin-top: 50px;
+	font-size: 140%;
+	font-style: italic;
+}
+#formNuevoRegistroHoteles div input{
+	width: 35%;
+	float: right;
+	height: 40px;
+	text-align: center;
+	margin-right: 12%;
+	
+}
+#formNuevoRegistroHoteles div label{
+	margin-left: 19%;
+	font-weight: bold;
+}
+
+#aceptarNuevoRegistroHoteles{
+	font-size: 200%;
+	font-family: Simplifica;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	margin-left: 40%;
+	width: 250px;
+	border-radius: 20px;
+}
+
+#aceptarNuevoRegistroHoteles:hover{
+	background-color: #AF3C3C;
+	color: #eeeeee;
+}
+
+
+#videoFondoHoteles{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	z-index: -100;
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+	background-size: cover;
+}
+
+
+
+/*--------------------------------------------------------------------------------Estilos Seccion Perfil del Negocio-----------------------------------------------------------------------------------------------*/
+
+.Restaurante{
+	width: 100%;
+	background-image: url("../img/restaurante8.jpg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	height: 1000px;
+	overflow: hidden;
+}
+
+.Bar{
+	width: 100%;
+	background-image: url("../img/bar8.jpg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	height: 1000px;
+	overflow: hidden;
+}
+
+.Hotel{
+	width: 100%;
+	background-image: url("../img/hotel8.jpg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	height: 1000px;
+	overflow: hidden;
+}
+
+#tablaDatosNegocios{
+	float: right;
+	background-color: rgba(0,0,0,0.6);
+	border-radius: 10px;
+	margin-top: 9%;
+	width: 40%;
+	font-size: 200%;
+	color: #eeeeee;
+	font-weight: bold;
+	height: auto;
+}
+#tablaDatosNegocios td{
+	padding-top: 5%;
+	width: 50%;
+	text-align: right;
+}
+.textoDatoNegocio{
+	float: left;
+	padding-left: 15px;
+}
+
+
+
+
+
+/*--------------------------------------------------------------------------------Estilos Seccion Perfil del Negocio-----------------------------------------------------------------------------------------------*/
+
+#formuEditarPerfilNegocio{
+	display: none;
+	float: right;
+	margin-top: 9%;
+	background-color: rgba(0,0,0,0.6);
+	border-radius: 10px;
+	width: 60%;
+	font-size: 200%;
+	color: #eeeeee;
+	font-weight: bold;
+	height: 700px;
+}
+
+#formuEditarPerfilNegocio{
+	display: none;
+	float: right;
+	margin-top: 9%;
+	background-color: rgba(0,0,0,0.6);
+	border-radius: 10px;
+	width: 60%;
+	font-size: 200%;
+	color: #eeeeee;
+
+	font-weight: bold;
+	height: 1000px;
+}
+
+#formuEditarPerfilNegocio input{
+	width: 35%;
+	height: 40px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	margin-right: 10%;
+	float: right;
+	text-align: center;
+}
+#formuEditarPerfilNegocio select{
+	width: 35%;
+	height: 40px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	margin-right: 10%;
+	float: right;
+}
+#formuEditarPerfilNegocio label{
+	margin-top: 15px;
+	margin-bottom: 15px;
+	width: 50%;
+	float: left;
+	text-align: center;
+	font-weight: bold;
+}
+
+
+#spanNegociosAdvertencia{
+	display: none;
+	font-size: 200%;
+	font-style: italic;
+	margin-top: 40%;
+	font-weight: bold;
+}
+
+#botonEditarPerfilNegocio{
+	float: left;
+	margin-top: 27%;
+	margin-left: 210px;
+	position: fixed;
+	width: 120px;
+	height : 60px;
+	border: 1px solid #000;
+	border-radius: 20px;
+	font-family: Simplifica;
+	font-size: 150%;
+	background-color: rgba(92, 0, 0, 0.5);
+	color: #eeeeee;
+}
+#botonEditarPerfilNegocio:hover{
+	background-color: rgba(255, 137, 0, 0.5);
+}
+
+#aceptarCambiosPerfilNegocio{
+	display: none;
+	float: right;
+	margin-top: 40%;
+	margin-right: -25%;
+	width: 150px;
+	height : 60px;
+	border-radius: 20px;
+	font-family: Simplifica;
+	font-size: 150%;
+	background-color: rgba(31, 176, 65, 0.3);
+	color: #eeeeee;
+	border: 0px solid white;
+}
+#aceptarCambiosPerfilNegocio:hover{
+	background-color: rgba(85, 255, 0, 0.6);
+}
+
+#cancelarCambiosPerfilNegocio{
+	display: none;
+	float: right;
+	margin-top: 40%;
+	margin-right: -50%;
+	width: 150px;
+	height : 60px;
+	border: 1px solid #FFFFF;
+	border-radius: 20px;
+	font-family: Simplifica;
+	font-size: 150%;
+	background-color: rgba(177, 74, 74, 0.3);
+	color: #eeeeee;
+	border: 0px solid white;
+}
+#cancelarCambiosPerfilNegocio:hover{
+	background-color: rgba(255, 0, 0, 0.6);
+}
+
+#eliminarDatosPerfilNegocio{
+	display: none;
+	float: right;
+	margin-top: 40%;
+	margin-right: -38%;
+	width: 150px;
+	height : 60px;
+	border: 1px solid #FFFFF;
+	border-radius: 20px;
+	font-family: Simplifica;
+	font-size: 150%;
+	background-color: rgba(255, 255, 255, 0.3);
+	color: #eeeeee;
+	border: 0px solid white;
+}
+#eliminarDatosPerfilNegocio:hover{
+	background-color: rgba(255, 255, 255, 0.6);
+	color: #000;
+}
+
+
+#botonNuevoProductoOferta{
+	float: left;
+	margin-top: 33%;
+	margin-left: 175px;
+	position: fixed;
+	width: 190px;
+	height : 60px;
+	border: 1px solid #000;
+	border-radius: 20px;
+	font-family: Simplifica;
+	font-size: 150%;
+	background-color: rgba(227, 204, 2, 0.5);
+	color: #eeeeee;
+}
+#botonNuevoProductoOferta:hover{
+	background-color: rgba(255, 196, 0, 0.8);
+}
+
+
+
+
+
+
+
+/*--------------------------------------------------------------------------------Estilos Seccion Mostrar Negocios-----------------------------------------------------------------------------------------------*/
+
+.tablaNegocios{
+	background-color: rgba(0,0,0,0.4);
+	border-radius: 10px;
+	width: 100%;
+	margin-top: 12%;
+}
+
+#tablaRestaurantes thead tr th{
+	padding-bottom: 3%;
+	text-align: center;
+	font-size: 200%;
+}
+
+#tablaRestaurantes tbody tr td{
+	padding-top: 1%;
+	padding-bottom: 1%;
+	text-align: center;
+	font-size: 200%;
+}
+
+
+
+
+#tablaHoteles thead tr th{
+	padding-bottom: 3%;
+	text-align: center;
+	font-size: 200%;
+}
+
+#tablaHoteles tbody tr td{
+	padding-top: 1%;
+	padding-bottom: 1%;
+	text-align: center;
+	font-size: 200%;
+}
+
+
+
+
+#tablaBares thead tr th{
+	padding-bottom: 3%;
+	text-align: center;
+	font-size: 200%;
+}
+
+#tablaBares tbody tr td{
+	padding-top: 1%;
+	padding-bottom: 1%;
+	text-align: center;
+	font-size: 200%;
+}
+
+
+#tablaOfertas thead tr th{
+	padding-bottom: 3%;
+	text-align: center;
+	font-size: 200%;
+}
+
+#tablaOfertas tbody tr td{
+	padding-top: 1%;
+	padding-bottom: 1%;
+
+	text-align: center;
+	font-size: 200%;
+}
+
+
+
+.botonIrPerfilNegocio{
+	font-family: Simplifica;
+	font-size: 70%;
+	text-align: center;
+	color: #eeeeee;
+	background-color: rgba(0,0,0, 0.8);
+	border: 0px solid;
+	width: 100px;
+	border-radius: 8px;
+}
+.botonIrPerfilNegocio:hover{
+	background-color: #eeeeee;
+	color: black;
+}
+
+.botonApuntarOferta{
+	font-family: Simplifica;
+	font-size: 70%;
+	text-align: center;
+	color: #eeeeee;
+	background-color: rgba(0,0,0, 0.8);
+	border: 0px solid;
+	width: 200px;
+	border-radius: 8px;
+}
+.botonApuntarOferta:hover{
+	background-color: #eeeeee;
+	color: black;
+}
+
+.Restaurantes{
+	width: 100%;
+	background-image: url("../img/fondoNegocio.jpg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	height: 1000px;
+	overflow: hidden;
+}
+.Hoteles{
+	width: 100%;
+	background-image: url("../img/fondoNegocioHotel.jpg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	height: 1000px;
+	overflow: hidden;
+}
+.Bares{
+	width: 100%;
+	background-image: url("../img/fondoNegocioBar.jpg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	height: 1000px;
+	overflow: hidden;
+}
+
+
+.imagenListadoNegocios{
+	width: 150px;
+	height: 80px;
+}
+
+
+
+
+
+
+/*--------------------------------------------------------------------------------Estilos Seccion Productos-----------------------------------------------------------------------------------------------*/
+
+#tablaDatosProductos{
+	float: right;
+	background-color: rgba(0,0,0,0.6);
+	border-radius: 10px;
+	margin-top: 9%;
+	width: 55%;
+	font-size: 200%;
+	color: #eeeeee;
+	font-weight: bold;
+	height: auto;
+}
+#tablaDatosProductos td{
+	padding-top: 5%;
+	width: 50%;
+	text-align: right;
+}
+.textoDatoProducto{
+	float: left;
+	padding-left: 15px;
+}
+
+#botonEditarPerfilProducto{
+	float: left;
+	margin-top: 27%;
+	margin-left: 210px;
+	position: fixed;
+	width: 120px;
+	height : 60px;
+	border: 1px solid #000;
+	border-radius: 20px;
+	font-family: Simplifica;
+	font-size: 150%;
+	background-color: rgba(92, 0, 0, 0.5);
+	color: #eeeeee;
+}
+#botonEditarPerfilProducto:hover{
+	background-color: rgba(255, 137, 0, 0.5);
+}
+
+#aceptarCambiosPerfilProducto{
+	display: none;
+	float: right;
+	margin-top: 40%;
+	margin-right: -25%;
+	width: 150px;
+	height : 60px;
+	border-radius: 20px;
+	font-family: Simplifica;
+	font-size: 150%;
+	background-color: rgba(31, 176, 65, 0.3);
+	color: #eeeeee;
+	border: 0px solid white;
+}
+#aceptarCambiosPerfilProducto:hover{
+
+	background-color: rgba(85, 255, 0, 0.6);
+}
+
+#cancelarCambiosPerfilProducto{
+	display: none;
+	float: right;
+	margin-top: 40%;
+	margin-right: -50%;
+	width: 150px;
+	height : 60px;
+	border: 1px solid #FFFFF;
+	border-radius: 20px;
+	font-family: Simplifica;
+	font-size: 150%;
+	background-color: rgba(177, 74, 74, 0.3);
+	color: #eeeeee;
+	border: 0px solid white;
+}
+#cancelarCambiosPerfilProducto:hover{
+	background-color: rgba(255, 0, 0, 0.6);
+}
+
+#eliminarDatosPerfilProducto{
+	display: none;
+	float: right;
+	margin-top: 40%;
+	margin-right: -38%;
+	width: 150px;
+	height : 60px;
+	border: 1px solid #FFFFF;
+	border-radius: 20px;
+	font-family: Simplifica;
+	font-size: 150%;
+	background-color: rgba(255, 255, 255, 0.3);
+	color: #eeeeee;
+	border: 0px solid white;
+}
+#eliminarDatosPerfilProducto:hover{
+	background-color: rgba(255, 255, 255, 0.6);
+	color: #000;
+}
+
+
+
+#spanProductosAdvertencia{
+	display: none;
+	font-size: 200%;
+	font-style: italic;
+	margin-top: 40%;
+	font-weight: bold;
+}
+
+
+
+#cuerpoPerfilProducto{
+	width: 100%;
+	background-image: url("../img/producto1.jpg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	height: 1000px;
+	overflow: hidden;
+}
+
+
+
+#formuEditarPerfilProducto{
+	display: none;
+	float: right;
+	margin-top: 9%;
+	background-color: rgba(0,0,0,0.6);
+	border-radius: 10px;
+	width: 60%;
+	font-size: 200%;
+	color: #eeeeee;
+
+	font-weight: bold;
+	height: 1000px;
+}
+
+#formuEditarPerfilProducto input{
+	width: 35%;
+	height: 40px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	margin-right: 10%;
+	float: right;
+	text-align: center;
+}
+#formuEditarPerfilProducto select{
+	width: 35%;
+	height: 40px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	margin-right: 10%;
+	float: right;
+}
+#formuEditarPerfilProducto label{
+	margin-top: 15px;
+	margin-bottom: 15px;
+	width: 50%;
+	float: left;
+	text-align: center;
+	font-weight: bold;
+}
+
+
+#botonNuevaOferta{
+	float: left;
+	margin-top: 33%;
+	margin-left: 175px;
+	position: fixed;
+	width: 190px;
+	height : 60px;
+	border: 1px solid #000;
+	border-radius: 20px;
+	font-family: Simplifica;
+	font-size: 150%;
+	background-color: rgba(227, 204, 2, 0.5);
+	color: #eeeeee;
+}
+#botonNuevaOferta:hover{
+	background-color: rgba(255, 196, 0, 0.8);
+}
+
+
+
+
+/*--------------------------------------------------------------------------------Estilos Seccion Nuevo Registro Productos-----------------------------------------------------------------------------------------------*/
+#capaNuevoRegistro p{
+	text-align: center;
+	padding-top: 150px;
+	margin-bottom: -80px;
+	font-size: 250%;
+	font-style: italic;
+	font-weight: bold;
+}
+#capaNuevoRegistro a{
+	color: #74FF51;
+}
+#capaNuevoRegistro h2{
+	text-align: center;
+	font-family: Simplifica;
+	font-size: 300%;
+	font-weight: bold;
+	margin-top: 50px;
+}
+#formNuevoRegistroProductos div{
+	width: 100%;
+	margin-top: 50px;
+	font-size: 140%;
+	font-style: italic;
+}
+#formNuevoRegistroProductos div input{
+	width: 35%;
+	float: right;
+	height: 40px;
+	text-align: center;
+	margin-right: 12%;
+	
+}
+#formNuevoRegistroProductos div label{
+	margin-left: 19%;
+	font-weight: bold;
+}
+
+#aceptarNuevoRegistroProductos{
+	font-size: 200%;
+	font-family: Simplifica;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	margin-left: 40%;
+	width: 250px;
+	border-radius: 20px;
+}
+
+#aceptarNuevoRegistroProductos:hover{
+	background-color: #AF3C3C;
+	color: #eeeeee;
+}
+
+
+#videoFondoProductos{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	z-index: -100;
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+	background-size: cover;
+}
+
+
+
+#botonMostrarOfertas{
+	width: 250px;
+	float: right;
+	margin-top: 42%;
+	margin-right: -35%;
+	height : 60px;
+	border: 0px solid #000;
+	border-radius: 20px;
+	font-family: Simplifica;
+	font-size: 150%;
+	background-color: rgba(4, 0, 255, 0.5);
+	color: #eeeeee;
+}
+#botonMostrarOfertas:hover{
+	background-color: rgba(4, 0, 255, 0.8);
+}
+
+
+
+
+
+
+/*--------------------------------------------------------------------------------Estilos Seccion Nuevo Registro Ofertas-----------------------------------------------------------------------------------------------*/
+#capaNuevoRegistro p{
+	text-align: center;
+	padding-top: 150px;
+	margin-bottom: -80px;
+	font-size: 250%;
+	font-style: italic;
+	font-weight: bold;
+}
+#capaNuevoRegistro a{
+	color: #74FF51;
+}
+#capaNuevoRegistro h2{
+	text-align: center;
+	font-family: Simplifica;
+	font-size: 300%;
+	font-weight: bold;
+	margin-top: 50px;
+}
+
+#formNuevoRegistroOfertas #aceptarNuevoRegistroOfertas{
+	font-size: 200%;
+	font-family: Simplifica;
+	margin-top: 10%;
+	margin-bottom: 5%;
+	margin-right: 0px;
+	width: 250px;
+	border-radius: 20px;
+}
+
+#formNuevoRegistroOfertas #aceptarNuevoRegistroOfertas:hover{
+	background-color: #AF3C3C;
+	color: #eeeeee;
+}
+
+#videoFondoOfertas{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	z-index: -100;
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+	background-size: cover;
+}
+
+
+
+#formNuevoRegistroOfertas input{
+	width: 35%;
+	height: 40px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	margin-right: 10%;
+	float: right;
+	text-align: center;
+}
+#formNuevoRegistroOfertas select{
+	width: 35%;
+	height: 40px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	margin-right: 10%;
+	float: right;
+}
+
+#formNuevoRegistroOfertas #formNuevoRegistroOfertas_fechaInicialOfertas_year, #formNuevoRegistroOfertas #formNuevoRegistroOfertas_fechaInicialOfertas_month, #formNuevoRegistroOfertas #formNuevoRegistroOfertas_fechaInicialOfertas_day{
+	width: 11%;
+}
+
+#formNuevoRegistroOfertas #formNuevoRegistroOfertas_fechaInicialOfertas_year{
+	margin-right: 10%;
+}
+
+#formNuevoRegistroOfertas #formNuevoRegistroOfertas_fechaInicialOfertas_month{
+	margin-right: 16.5%;
+}
+
+#formNuevoRegistroOfertas #formNuevoRegistroOfertas_fechaInicialOfertas_day{
+	margin-right: 16.5%;
+}
+
+
+
+
+
+#formNuevoRegistroOfertas #formNuevoRegistroOfertas_fechaFinalOfertas_year, #formNuevoRegistroOfertas #formNuevoRegistroOfertas_fechaFinalOfertas_month, #formNuevoRegistroOfertas #formNuevoRegistroOfertas_fechaFinalOfertas_day{
+	width: 11%;
+}
+
+#formNuevoRegistroOfertas #formNuevoRegistroOfertas_fechaFinalOfertas_year{
+	margin-right: -21%;
+}
+
+#formNuevoRegistroOfertas #formNuevoRegistroOfertas_fechaFinalOfertas_month{
+	margin-right: -8.5%;
+}
+
+#formNuevoRegistroOfertas #formNuevoRegistroOfertas_fechaFinalOfertas_day{
+	margin-right: 4.5%;
+}
+
+
+
+
+
+
+
+
+#formNuevoRegistroOfertas label{
+	margin-top: 15px;
+	margin-bottom: 20px;
+	width: 50%;
+	float: left;
+	text-align: center;
+	font-weight: bold;
+	font-size: 190%;
+}
+
+
+
+
+
+/*--------------------------------------------------------------------------------Estilos Seccion Mostrar PDF Ofertas-----------------------------------------------------------------------------------------------*/
+#cuerpoPDF{
+	background-color: #FFFFFF;
+	text-align: justify;
+}
+
+.contenedorPDF{
+	width: 210mm;
+	height: 297mm;
+	margin: 0px auto 0px;
+	border: 1px solid black;
+	background-color: #eeeeee;
+}
+
+#fotoNegocio{
+	width: 150px;
+	border-radius: 20px;
+	float: left;
+	margin-top: 50px;
+	margin-left: 35px;
+}
+#logoExplorapp{
+	width: 300px;
+	border-radius: 20px;
+	float: right;
+	margin-top: 80px;
+	margin-right: 200px;
+}
+
+#cuerpoPDF p{
+	clear: both;
+	font-size: 22px;
+	margin: 50px;
+	color: black;
+}
+
+.textoAgradecimiento{
+	padding-top: 80px;
+}
+

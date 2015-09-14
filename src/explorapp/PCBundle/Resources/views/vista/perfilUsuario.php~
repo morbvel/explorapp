@@ -1,0 +1,399 @@
+<?php
+	session_start();
+	
+	if( !array_key_exists("Usuarios_ID", $_SESSION) )
+		header("Location:index.php");
+	
+	header('Content-Type: text/html; charset=UTF-8'); 
+	
+	include_once('doctrine.inc.php');
+	use PDOCTRINE\Entidades\Negocio;
+	use PDOCTRINE\Entidades\Usuarios;
+?>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Perfil de Usuario</title>
+		<meta name="author" content="Miguel Orbañanos">
+		<link rel="shortcut icon" href="./img/favicon.ico" />
+		
+		<!--Importarmos nuestra hoja de estilos-->
+		<link rel="stylesheet" type="text/css" media="(max-width: 3500px)" href="./css/estilosEscritorio.css"/>
+		<link rel="stylesheet" type="text/css" media="(max-width: 1030px)" href="./css/estilosTablets1.css"/>
+		<link rel="stylesheet" type="text/css" media="(max-width: 770px)" href="./css/estilosTablets2.css"/>
+		
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		
+		<!-- Archivo con nuestros métodos Javascript -->
+		<script src="./js/metodosJavaScript.js"></script>
+		<!--descargamos la versión más reciente de jQuery-->
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<!-- AjaxUpload Javascript file -->
+		<script src="./js/AjaxUpload.2.0.min.js"></script>
+		
+		
+		
+		
+		
+		<!--Script para dejar fijo el menu-->
+		<script>
+			$(window).bind('scroll', function () {
+				var w = $(window).width();
+				if( w > 1300 && $(window).scrollTop() > 80 ){
+					$('.contenedorMenu2').addClass('menuFijo2');
+				}
+				else if ( w < 1300 && $(window).scrollTop() > 100 ){
+					$('.contenedorMenu2').addClass('menuFijo2');
+				}
+				else{
+					$('.contenedorMenu2').removeClass('menuFijo2');
+				}
+			});
+		</script>
+		
+		
+		<!--Script para la apertura de nuevas paginas o capas-->
+		<script>
+			$(document).ready(function(){
+				
+				$('#abrirPerfilUsuario').click(function(){
+					window.open ('buscarDatosPersonales.php', '_self', config='height=100, width=400, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, directories=no, status=no')
+				});
+				
+				//Abrir PopUp de subir imagenes
+				$('#imagenPerfil').click(function(){
+					$('#popupSubirImagenes').fadeIn('slow');
+					$('.popup-overlay').fadeIn('slow');
+					$('.popup-overlay').height($(window).height());
+					return false;
+				});
+				
+				$('#close').click(function(){
+					$('#popupSubirImagenes').fadeOut('slow');
+					$('.popup-overlay').fadeOut('slow');
+					return false;
+				});
+				
+				//Abrir PopUp de eliminar perfil
+				$('#eliminarDatosPerfil').click(function(){
+					$('#popupEliminarPerfil').fadeIn('slow');
+					$('.popup-overlay').fadeIn('slow');
+					$('.popup-overlay').height($(window).height());
+					return false;
+				});
+				
+				$('#closeCapaPerfil').click(function(){
+					$('#popupEliminarPerfil').fadeOut('slow');
+					$('.popup-overlay').fadeOut('slow');
+					return false;
+				});
+				$('#cancelarEliminarPerfil').click(function(){
+					$('#popupEliminarPerfil').fadeOut('slow');
+					$('.popup-overlay').fadeOut('slow');
+					return false;
+				});
+				
+			});
+		</script>
+		
+		
+		
+		
+		
+		
+		
+	</head>
+	<body>
+	
+		<!--Capa del PopUp de subir imagenes-->
+		<div id="popupSubirImagenes">
+			<div class="content-popup">
+				<div class="close"><a href="#" id="close">&nbsp;X&nbsp;</a></div>
+				
+				<header class="contenidoSubirImagenes">
+					<h2>Cambiar la imagen de perfil de usuario</h2>
+				</header>
+				
+				<form name="formularioFicheros" id="formularioFicheros" action="subidaImagenes.php" method="post" enctype="multipart/form-data">
+					<table id="tablaCambiarFoto">
+						<tr>
+							<td>
+								<output id="list"></output>
+								<img src="<?php if( file_exists("./DirectoriosUsuarios/".$_SESSION['userName']."/FotoPerfil.jpg") ){
+											echo './DirectoriosUsuarios/'.$_SESSION['userName'].'/FotoPerfil.jpg';
+										}
+										else{
+											echo "./img/botonAccederPerfil.gif";
+										}?>" name="imagen" id="previsualizarImagenPerfil">
+							</td>
+						</tr>
+						<tr>
+							<td><input type="file" name="files" id="files" ></td>
+							<td><input type="submit" value="Subir Fichero"></td>
+						</tr>
+					</table>
+				</form>
+				
+				
+			</div>
+		</div>
+	
+	
+		<!--Capa del PopUp de aceptar eliminar perfil-->
+		<div id="popupEliminarPerfil">
+			<div class="content-popup">
+				<div class="close"><a href="#" id="closeCapaPerfil">&nbsp;X&nbsp;</a></div>
+				
+				<form action="eliminarPerfil.php" method="POST">
+					<input type="hidden" name="codigoEliminarPerfil" value="1000at200j">
+					
+					<table id="tablaPopupEliminarPerfil">
+						<tr>
+							<td colspan="2" ><h2>Esperamos haber sido de gran utilidad tanto para ti como para tu bolsillo. ¡Hasta pronto!</h2></td>
+						</tr>
+						<tr>
+							<td><input type="submit" id="aceptarEliminarPerfil" value="Darse de baja"></input></td>
+							<td><input type="button" id="cancelarEliminarPerfil" value="Cancelar"></input></td>
+						</tr>
+					</table>
+				</form>
+				
+			</div>
+		</div>
+	
+		<div id="barraInicial">
+			<div id="contenedorInicial">
+				<a href="index.php" ><img id="logoEmpresa" src="./img/logoCerveza.jpg" /></a>
+			</div>
+		</div>
+		
+		<!--Barra del Menu-->
+		<div class="contenedorMenu2">
+			<nav>
+				<ul>
+					<li><a href="restaurantes.php" id="botonGrande">Restaurantes</a></li>
+					<li><a href="hoteles.php" id="botonMediano">Hoteles</a></li>
+					<li><a href="bares.php" id="botonPequeño">Bares</a></li>
+				</ul>
+				<input type="image" id=<?php if (array_key_exists("Usuarios_ID", $_SESSION)){
+												echo "abrirPerfilUsuario";
+											}
+											else{
+												echo "abrirPopUp";
+											}?> class="enlaceAcceder" src="<?php
+																					if( file_exists("./DirectoriosUsuarios/".$_SESSION['userName']."/FotoPerfil.jpg") ){
+																						echo './DirectoriosUsuarios/'.$_SESSION['userName'].'/FotoPerfil.jpg';
+																					}
+																					else{
+																						echo './img/botonAccederPerfil.gif';
+																					}
+																				?>" title="Acceder a la zona de usuarios" />
+				<a href="cerrarSesion.php" id="enlaceCerrarSesion" 	style:visibility="hidden">Cerrar Sesi&oacute;n</a>
+			</nav>
+		</div>
+		
+		
+		
+		<div id="cuerpoPerfilUsuario">
+		
+			<input type="image" id="imagenPerfil" class="enlaceAcceder" src="<?php
+																					if( file_exists("./DirectoriosUsuarios/".$_SESSION['userName']."/FotoPerfil.jpg") ){
+																						echo './DirectoriosUsuarios/'.$_SESSION['userName'].'/FotoPerfil.jpg';
+																					}
+																					else{
+																						echo './img/botonAcceder.gif';
+																					}
+																				?>"/>
+			
+																	
+			<form action="guardarDatos.php" method="POST">
+				<input type="hidden" name="codigoDatosPersonales" value="1000at200j">
+				
+				
+				<table id="tablaDatosPersonales">
+					<tr>
+						<td>Nombre: </td>
+						<td><span class="textoDatoPersonal" id="spanNombre" ><?php if(array_key_exists("nombrePersonal", $_SESSION))
+								echo $_SESSION['nombrePersonal'];
+							?></span>
+							<input type="text" class="inputDatoPersonal" id="inputNombre" name="nombrePersonal" placeholder="<?php if(array_key_exists("nombrePersonal", $_SESSION))
+								echo $_SESSION['nombrePersonal'];
+							?>"/>
+						</td>
+					</tr>
+					<tr>
+						<td>Apellidos: </td>
+						<td><span class="textoDatoPersonal" id="spanApellido"><?php if(array_key_exists("apellido1Personal", $_SESSION)){
+								if (array_key_exists("apellido2Personal", $_SESSION)){
+									echo $_SESSION['apellido1Personal']." ".$_SESSION['apellido2Personal'];
+								}
+								else
+									echo $_SESSION['apellido1Personal'];
+						}
+							?></span>
+							<input type="text" class="inputDatoPersonal" id="inputApellido1" name="apellidoPersonal1" placeholder="<?php if(array_key_exists("apellido1Personal", $_SESSION)){
+									echo $_SESSION['apellido1Personal'];
+								}
+							?>"/><input type="text" class="inputDatoPersonal" id="inputApellido2" name="apellidoPersonal2" placeholder="<?php if(array_key_exists("apellido2Personal", $_SESSION)){
+									echo $_SESSION['apellido2Personal'];
+								}
+							?>"/></td>
+					</tr>
+					<tr>
+						<td>Sexo: </td>
+						<td><span class="textoDatoPersonal" id="spanSexo"><?php if(array_key_exists("sexoPersonal", $_SESSION))
+								echo $_SESSION['sexoPersonal'];
+							?></span>
+							<select id="inputSexo" class="inputDatoPersonal" title="Sexo" name="sexoPersonal">
+								<option value="0">Hombre</option>
+								<option value="1">Mujer</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Fecha de Nacimiento: </td>
+						<td><span class="textoDatoPersonal" id="spanFechaNacimiento"><?php if(array_key_exists("fechaNacimientoPersonal", $_SESSION))
+								echo $_SESSION['fechaNacimientoPersonal']->format('d-m-Y');
+							?></span>
+							<input type="date" class="inputDatoPersonal" id="inputFechaNacimiento" name="fechaNacimientoPersonal" placeholder="<?php if(array_key_exists("fechaNacimientoPersonal", $_SESSION))
+								echo $_SESSION['fechaNacimientoPersonal']->format('d-m-Y');
+							?>"/>
+							</td>
+					</tr>
+					<tr>
+						<td>DNI: </td>
+						<td><span class="textoDatoPersonal" id="spanDNI"><?php if(array_key_exists("DNIPersonal", $_SESSION))
+								echo $_SESSION['DNIPersonal'];
+							?></span>
+							<input type="text" class="inputDatoPersonal" id="inputDNI" name="DNIPersonal" placeholder="<?php if(array_key_exists("DNIPersonal", $_SESSION))
+								echo $_SESSION['DNIPersonal'];
+							?>"/>
+							</td>
+					</tr>
+					<tr>
+						<td>Tel&eacute;fono: </td>
+						<td><span class="textoDatoPersonal" id="spanTelefono"><?php if(array_key_exists("telefonoPersonal", $_SESSION))
+								echo $_SESSION['telefonoPersonal'];
+							?></span>
+							<input type="text" class="inputDatoPersonal" id="inputTelefono" name="telefonoPersonal" placeholder="<?php if(array_key_exists("telefonoPersonal", $_SESSION))
+								echo $_SESSION['telefonoPersonal'];
+							?>"/></td>
+					</tr>
+					<tr>
+						<td>Direcci&oacute;n: </td>
+						<td><span class="textoDatoPersonal" id="spanDireccion"><?php if(array_key_exists("direccionPersonal", $_SESSION))
+								echo $_SESSION['direccionPersonal'];
+							?></span>
+							<input type="text" class="inputDatoPersonal" id="inputDireccion" name="direccionPersonal" placeholder="<?php if(array_key_exists("direccionPersonal", $_SESSION))
+								echo $_SESSION['direccionPersonal'];
+							?>"/></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="barraSeparacion">-----------</td>
+					</tr>
+					<tr>
+						<td>Correo Electr&oacute;nico: </td>
+						<td><span class="textoDatoPersonal colorOscuro"><?php if(array_key_exists("correoPersonal", $_SESSION))
+								echo $_SESSION['correoPersonal'];
+							?></span></td>
+					</tr>
+					<tr>
+						<td>Contraseña: </td>
+						<td><span id="contrasena" class="textoDatoPersonal colorOscuro contrasena" title="Haga click para mostrar la contraseña" onclick="mostrarOcultarContrasena('<?php if(array_key_exists("userPass", $_SESSION)) echo $_SESSION['userPass']; ?>')">*************</span></td>
+					</tr>
+					
+					<?php
+						$em = GetEntityManager();
+		
+						//Obtengo la tupla del usuario conectado
+						$repoUsuarios = $em->getRepository('PDOCTRINE\Entidades\Usuarios');
+						$user  = $repoUsuarios->findOneBy( array('userName'=>$_SESSION['userName']) );
+
+						//A partir del ID del usuario, obtengo la tupla con los datos del negocio
+						$repoNegocios = $em->getRepository('PDOCTRINE\Entidades\Negocio');
+						$negocio = $repoNegocios->findBy( array('Usuarios'=>$user->getId()) );
+							
+						//Si el usuario tiene negocios asociados a él
+						if( count($negocio) != 0 ){
+							echo 	"<tr>
+										<td colspan='2' class='barraSeparacion'>-----------</td>
+									</tr>";
+							//Se recorren todos los negocios y se muestran
+							$contador = 0;
+							foreach ($negocio as $neg){
+								$contador++;
+									
+								if( file_exists("./DirectoriosUsuarios/".$_SESSION['userName']."/Negocios/FotoNegocio".$contador.".jpg") ){
+									$fotoNegocio = './DirectoriosUsuarios/'.$_SESSION['userName'].'/Negocios/FotoNegocio'.$contador.'.jpg';
+								}
+								else{
+									$fotoNegocio = './img/explorapp.jpg';
+								}
+									
+								echo 	"<tr>
+											<td><input type='image' id='fotoNegocio".$contador."' class='fotoNegocioPerfilUsuario' src='".$fotoNegocio."' name='fotoNegocio".$contador."' title='Acceder a la pagina del negocio ".$neg->getNombreNegocio()."'></input></td>
+											<td>".$neg->getNombreNegocio()."</td>
+										</tr>";
+							}
+						}
+					?>
+				</table>
+				
+				
+				
+				
+				
+				
+				
+				
+				<input type="button" value="Editar Perfil" id="botonEditarPerfil" onclick="empezarInput()"/>
+				<input type="submit" value="Aceptar Cambios" id="aceptarCambiosPerfil" />
+				<input type="button" value="Cancelar Cambios" id="cancelarCambiosPerfil" onclick="cancelarInput()"/>
+				<input type="button" value="Darse de Baja" id="eliminarDatosPerfil"/>
+				
+			
+			</form>
+			
+			
+			
+			
+		</div>
+		
+		
+		
+		
+		<script>
+            function archivo(evt) {
+                var files = evt.target.files; // FileList object
+             
+                // Obtenemos la imagen del campo "file".
+                for (var i = 0, f; f = files[i]; i++) {
+					//Solo admitimos imágenes.
+                    if (!f.type.match('image.*')) {
+                        continue;
+                    }
+             
+                    var reader = new FileReader();
+             
+                    reader.onload = (function(theFile) {
+                        return function(e) {
+							// Insertamos la imagen
+							document.getElementById("list").innerHTML = ['<img src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
+							document.getElementById("previsualizarImagenPerfil").style.display = 'none';
+						};
+                    })(f);
+             
+                    reader.readAsDataURL(f);
+                }
+            }
+             
+            document.getElementById('files').addEventListener('change', archivo, false);
+		</script>
+		
+		
+		
+		
+	</body>
+</html>

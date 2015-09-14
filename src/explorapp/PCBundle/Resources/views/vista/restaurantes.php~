@@ -1,0 +1,84 @@
+{% extends 'PCBundle::plantillaInicial.html.twig' %}
+
+{%block title%}
+	Restaurantes
+{%endblock%}
+
+
+{%block slider%}
+	<ul class="bxslider">	
+		<li class="contenedorSlider">
+			<img src="{{ asset('img/restaurante2.jpg') }}" />
+			<span>Restaurantes Asociados</span>
+			<a href="#cuerpo1">Ir a sección Restaurantes Asociados</a>
+		</li>
+		<li class="contenedorSlider">
+			<img src="{{ asset('img/restaurante3.jpg') }}" />
+			<span>¿Algo Especial?</span>
+			<a href="#cuerpo2">Ir a ¿Algo Especial?</a>
+		</li>
+		<li class="contenedorSlider">
+			<img src="{{ asset('img/restaurante4.jpg') }}" />
+			<span>Darse de Alta</span>
+			<a href="#cuerpo3">Ir a Darse de Alta</a>
+		</li>
+	</ul>
+{%endblock%}
+
+
+{%block barraMenu%}
+	<div class="contenedorMenu">
+		<nav>
+			<ul>
+				<li><a href="#cuerpo1" id="botonGrande">Restaurantes Asociados</a></li>
+				<li><a href="#cuerpo2" id="botonMediano">¿Algo Especial?</a></li>
+				<li><a href="#cuerpo3" id="botonPequeño">Darse de Alta</a></li>
+			</ul>
+			<input type="image" id="{{ idFotoBarraMenu }}" class="enlaceAcceder" src="{{ asset(rutaImagenPerfil) }}" title="Acceder a la zona de usuarios" />
+			<a href="cerrarSesion.php" id="enlaceCerrarSesion" >Cerrar Sesi&oacute;n</a>
+		</nav>
+	</div>
+{%endblock%}
+
+
+
+{%block cuerpoPagina%}
+	<div id="relleno1" class="pagina imagenRellenoRestaurantes1 parallax" data-movimiento="10">
+	</div>
+		
+	<div id="cuerpo1">
+	<h1>Restaurantes</h1>
+	<table class="tablaCuerpos">
+		<tr>
+			<td>En esta sección podrás encontrar todo tipo de restaurante en los que empezar a disfrutar de los descuentos más increíbles que conseguirás gracias a Explorapp.</td>
+			<td><a class="botonSecciones" href="#">Ir a Restaurantes Asociados</a></td>
+		</tr>
+	</table>
+	</div>
+		
+	<div id="relleno2" class="pagina imagenRellenoRestaurantes2 parallax" data-movimiento="10">
+	</div>
+		
+	<div id="cuerpo2">
+		<h1>Hoteles</h1>
+		<table class="tablaCuerpos">
+			<tr>
+				<td>Déjanos sorprenderte con algo increíble. Seleccionaremos de entre nuestros asociados, un restaurante al azar que os emocionará a ti y a tu paladar.</td>
+				<td><a class="botonSecciones" href="#">Ir a ¿Algo Especial?</a></td>
+			</tr>
+		</table>
+	</div>
+		
+	<div id="relleno3" class="pagina imagenRellenoRestaurantes3 parallax" data-movimiento="10">
+	</div>
+		
+	<div id="cuerpo3">
+		<h1>Bares</h1>
+		<table class="tablaCuerpos">
+			<tr>
+				<td>Pasar a formar parte de la gran familia ExplorApp es un gran paso tanto para ti como para tu restaurante. ¡Bienvenido al mundo de los descuentos!</td>
+				<td><a class="botonSecciones" href="#">Ir a Darse de Alta</a></td>
+			</tr>
+		</table>
+	</div>
+{%endblock%}

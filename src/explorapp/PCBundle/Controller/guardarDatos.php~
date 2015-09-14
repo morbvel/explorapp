@@ -1,0 +1,31 @@
+<?php
+
+namespace explorapp\PCBundle\Controller;
+
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use explorapp\PCBundle\Form\UsuariosForm;
+
+
+class guardardatosController extends Controller
+{
+
+	public function nuevoRegistroAction(Request $request)
+	{
+
+		$formLogin =$this->createForm(new UsuariosForm(),null);
+		$formLogin->handleRequest($request);
+		$datos =$formLogin->getData();
+
+		//Comprueba con la base de datos
+		$em = $this->getDoctrine()->getManager();
+		$usuario = $em->getRepository('PCBundle:Usuarios')->findOneby(array('userName'=>$datos['userName']);
+
+		if( $usuario ){
+			return $this->render( 'PCBundle:vista:usuarioExistente.html.twig' );
+		}
+
+	}
+
+
+}

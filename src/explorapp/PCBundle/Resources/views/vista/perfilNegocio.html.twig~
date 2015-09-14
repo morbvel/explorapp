@@ -1,0 +1,56 @@
+{% extends 'PCBundle::plantillaPerfilesNegocios.html.twig' %}
+
+{%block titlePerfiles%}
+	{{ negocio.nombreNegocio }}
+{%endblock%}
+
+{%block idCuerpoPerfil%}
+cuerpoPerfilNegocio{%endblock%}
+
+{%block urlDestino%}
+	'{{path('pc_perfilusuario')}}'
+{%endblock%}
+
+{%block urlDestino2%}
+	'{{path('pc_nuevoregistroproductos')}}'
+{%endblock%}
+
+
+{%block inputHidden%}
+	<input type="hidden" name="codigoLoginPerfilNegocio" value="1000at200j">
+{%endblock%}
+
+
+{%block hiddenPerfiles%}
+	<input type="hidden" name="codigoPerfilNegocio" value="1000at200j">
+{%endblock%}
+
+
+
+{%block tablaDatosPerfil%}
+
+	<table id="tablaDatosNegocios">
+		<tr>
+			<td>Nombre: </td>
+			<td><span class="textoDatoNegocio" id="spanNombreNegocio" >{{ negocio.nombreNegocio }}</span></td>
+		</tr>
+		<tr>
+			<td>Dirección: </td>
+			<td><span class="textoDatoNegocio" id="spanDireccionNegocio">{{ negocio.direccionNegocio }}</span></td>
+		</tr>
+		<tr>
+			<td>Ciudad: </td>
+			<td><span class="textoDatoNegocio" id="spanCiudadNegocio">{{ negocio.ciudadNegocio }}</span></td>
+		</tr>
+		<tr>
+			<td>Teléfono: </td>
+			<td><span class="textoDatoNegocio" id="spanSexo">{{ negocio.telefonoNegocio }}</span></td>
+		</tr>
+		<tr>
+			<td>Correo: </td>
+			<td><span class="textoDatoNegocio" id="spanCorreoNegocio">{{ negocio.correoNegocio }}</span></td>
+		</tr>
+					
+	</table>
+
+{%endblock%}

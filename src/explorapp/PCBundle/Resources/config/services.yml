@@ -1,0 +1,4 @@
+services:
+#    pc.example:
+#        class: explorapp\PCBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,40 @@
+/*------------------------------------------------------------PARTES GENERALES----------------------------------------------------------*/
+@font-face{
+	font-family: Simplifica;
+	src: local("?"), url(SIMPLIFICA%20Typeface.ttf) format("woff");
+}
+
+@charset "UTF-8";
+
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+.ui-body-c, .ui-overlay-c {
+	background-image: url("../img/fondoPantalla.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	color: #eeeeee;
+	font-family: Simplifica;
+	font-size: 120%;
+}
+
+
+img{
+	width: 100%;
+	height: auto;
+	margin: 0px auto 0px;
+}
+
+p{
+	text-align: justify;
+	padding: 10px;	
+}
+
+input{
+	background-color: white !important;
+	color: black !important;
+	text-align: center !important;
+}

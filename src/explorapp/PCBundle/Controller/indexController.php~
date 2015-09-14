@@ -1,0 +1,43 @@
+<?php
+
+namespace explorapp\PCBundle\Controller;
+
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+class indexController extends Controller
+{
+    public function indexAction(Request $request)
+    {
+	//Se crea la sesion que recoge los datos del usuario
+        $session = $request->getSession();
+
+	//Para cambiar el id segun si se esta logueado o no
+	if ( $session->get('Usuarios_ID') != null ){
+		
+		$visibleCerrarSesion = 'inherit';
+				
+		$idFotoBarraMenu = "abrirPerfilUsuarios";
+		
+		if( file_exists("/home/uemc/Proyectos/explorapp/web/DirectoriosUsuarios/".$session['userName']."/FotoPerfil.jpg") ){
+			$rutaImagenPerfil = "DirectoriosUsuarios/".$session['userName']."/FotoPerfil.jpg";
+		}
+		else{
+			$rutaImagenPerfil = "img/botonAccederPerfil.gif";
+		}	
+	}	
+	else{
+		$idFotoBarraMenu = "abrirPopUp";
+
+		$rutaImagenPerfil = "img/botonAcceder.gif";
+
+		$visibleCerrarSesion = 'none';
+	}
+
+	
+
+
+
+        return $this->render( 'PCBundle:vista:index.html.twig', array('idFotoBarraMenu'=>$idFotoBarraMenu, 'rutaImagenPerfil'=> $rutaImagenPerfil, 'visibleCerrarSesion'=>$visibleCerrarSesion) );
+    }
+}

@@ -1,0 +1,42 @@
+{% extends 'PCBundle::plantillaRegistros.html.twig' %}
+
+
+{%block titleRegistros%}
+	Nuevo Registro Restaurantes
+{%endblock%}
+
+
+{%block videoRegistro%}
+	<video id="videoFondo" autoplay loop>
+		<source src="{{ asset('videos/videoNuevoRegistroProductos.mp4') }}" type="video/mp4"></source>
+	</video>
+{%endblock%}
+
+{%block tituloRegistro%}
+	Nuevo Registro Productos
+{%endblock%}
+
+
+{%block urlDestino%}
+	'{{path('pc_perfilusuario')}}'
+{%endblock%}
+
+
+{%block inputHidden%}
+	<input type="hidden" name="loginNuevoRegistroProductos" value="1000at200j">	
+{%endblock%}			
+
+
+{%block textoAcceder%}
+	<p id="parrafoAccederUsuarios">Para registrar un nuevo producto, primero debe iniciar sesión o darse de alta como usuario en <a id="abrirPopUpEnlace" href="#">este enlace</a>.</p>
+{%endblock%}
+
+{%block formularioRegistro%}			
+	<form action="{{path('pc_nuevoregistroproductos')}}" method="post" id="formNuevoRegistroProductos" {{ form_enctype(formNuevoRegistroProductos) }}>
+		
+		{{form_widget(formNuevoRegistroProductos)}}
+		<input type="submit" id="aceptarNuevoRegistroProductos" name="nuevoRegistroProductos" value="Aceptar Nuevo Registro"/>
+	</form>
+{%endblock%}
+
+
