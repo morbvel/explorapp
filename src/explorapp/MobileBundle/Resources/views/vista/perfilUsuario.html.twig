@@ -1,0 +1,85 @@
+{% extends 'MobileBundle::plantillaPerfiles.html.twig' %}
+
+{%block tituloPagina%}
+	Perfil de Usuario
+{%endblock%}
+
+{%block contenidoPerfil%}
+
+	<div id="contenidoPerfilUsuario" class="contenidoPerfiles">
+		<table class="tablaPerfiles">
+			<tr colspan="3">
+				<td>
+					<img src='{{asset(rutaImagenPerfilUsuario)}}' class="imagenPerfil"></img>
+				</td>
+			</tr>
+			<tr>
+				<td class="tdPerfiles">Nombre: </td>
+				<td class="tdDatos">{{datospersonales.nombrePersonal}}</td>
+			</tr>
+			<tr>
+				<td class="tdPerfiles">Apellidos: </td>
+				<td class="tdDatos">{{ datospersonales.apellido1Personal~'  '~datospersonales.apellido2Personal }}</td>
+			</tr>
+			<tr>
+				<td class="tdPerfiles">Sexo: </td>
+				<td class="tdDatos">{{ datospersonales.sexoPersonal }}</td>
+			</tr>
+			<tr>
+				<td class="tdPerfiles">Nacimiento: </td>
+				<td class="tdDatos">{{ datospersonales.fechaNacimientoPersonal|date("d/m/Y") }}</td>
+			</tr>
+			<tr>
+				<td class="tdPerfiles">DNI: </td>
+				<td class="tdDatos">{{ datospersonales.DNIPersonal }}</td>
+			</tr>
+			<tr>
+				<td class="tdPerfiles">Teléfono: </td>
+				<td class="tdDatos">{{ datospersonales.telefonoPersonal }}</td>
+			</tr>
+			<tr>
+				<td class="tdPerfiles">Mail: </td>
+				<td class="tdDatos">{{ datospersonales.correoPersonal }}</td>
+			</tr>
+
+			{%if negocios|length>0%}
+				<tr>
+					<td colspan="2" class="tdPerfiles barraSeparacion">---------------------</td>
+				</tr>
+				{% set contador=0 %}
+				{% for negocio in negocios %}
+					
+					<tr>	
+						<td class="tdPerfiles" colspan="2" ><span id="{{"negocio%d"|format(contador)}}" title="Click para acceder a la página del negocio" >{{ negocio.nombreNegocio }}</span>
+						<input type="image" class="fotoNegocio" style="width: 30%; height: auto; float: right; border-radius: 100px; margin-top: -20px;" src="{{ asset('DirectoriosUsuarios/'~usuario.userName~'/Negocios/'~negocio.nombreNegocio~'.jpg') }}" onclick="location.href='{{ path('mobile_perfilnegocio', {'idNegocio': negocio.idNegocio, 'idUsuario':negocio.idUsuario}) }}';"/>
+						</td>
+						
+					</tr>
+					{% set contador=contador+1 %}
+				{%endfor%}
+			{%endif%}
+
+			{%if ofertasCliente|length>0%}
+				<tr>
+					<td colspan="2" class="tdPerfiles barraSeparacion">---------------------</td>
+				</tr>
+				{% set contador=0 %}
+				{% for ofertaCliente in ofertasCliente %}
+					
+					<tr>	
+						<td class="tdPerfiles" ><span id="{{"ofertaCliente%d"|format(contador)}}" title="Click para ver el PDF de la oferta" onclick="location.href='{{ path('pc_crearpdf', {'idOferta': ofertaCliente.getOfertas().idOfertas, 'idUsuario': ofertaCliente.getUsuarios().userName}) }}';" >{{ofertaCliente.getOfertas().descripcionOfertas}}</span></td>
+					</tr>
+					{% set contador=contador+1 %}
+				{%endfor%}
+			{%endif%}
+
+		</table>
+	</div>
+
+{%endblock%}
+
+{%block contenidoFooterPerfil%}
+	<ul data-role="listview" data-inset="true" style="display: {{cerrarSesion}}">
+		<li><a href="{{path('mobile_cerrarsesion')}}" data-transition="fade">Terminar la Sesión</a></li>
+	</ul>
+{%endblock%}

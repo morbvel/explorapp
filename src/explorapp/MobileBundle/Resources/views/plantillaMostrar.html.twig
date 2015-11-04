@@ -14,10 +14,13 @@
 	<div data-role="page" id="paginaNuevoRegistro"> 
 		<div data-role="content">
 			<a href="{{path('mobile_homepage')}}" data-transition="fade"><img src="{{asset('img/logoCerveza.jpg')}}" ></img></a>
-					
 			
+			{%block contenidoInicial%}{%endblock%}
 		</div>
 	</div>
 
+	<div data-role="footer">	
+		{%block contenidoFooterMostrar%}{%endblock%}
+	</div>
     </body>
 </html>

@@ -14,7 +14,7 @@
 			->add('apellido1Personal', 'text', array('required'=>true, 'label'=>'Primer Apellido', 'attr'=>array('placeholder'=>'Primer Apellido')))
 			->add('apellido2Personal', 'text', array('required'=>false, 'label'=>'Segundo Apellido', 'attr'=>array('placeholder'=>'Segundo Apellido')))
 			->add('sexoPersonal', 'choice', array( 'choices' => array( 'h' => 'Hombre', 'm' => 'Mujer' ), 'required' => false, 'label'=>'Sexo', 'attr'=>array('placeholder'=>'Sexo') ))
-			->add('fechaNacimientoPersonal', 'date', array('required'=>true, 'label'=>'Fecha de Nacimiento', 'attr'=>array('placeholder'=>'Fecha de Nacimiento')))
+			->add('fechaNacimientoPersonal', 'date', array('years' => range(1950, date('Y')), 'required'=>true, 'label'=>'Fecha de Nacimiento', 'attr'=>array('placeholder'=>'Fecha de Nacimiento')))
 			->add('DNIPersonal', 'text', array('required'=>true, 'label'=>'DNI Personal', 'attr'=>array('placeholder'=>'DNI Personal')))
 			->add('telefonoPersonal', 'text', array('required'=>false, 'label'=>'Teléfono Personal', 'attr'=>array('placeholder'=>'Teléfono Personal')))
 			->add('correoPersonal', 'text', array('required'=>true, 'label'=>'Correo Personal', 'attr'=>array('placeholder'=>'Correo Personal')))

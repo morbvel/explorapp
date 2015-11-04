@@ -40,7 +40,7 @@ class buscardatosController extends Controller
 			$idFotoBarraMenu = "abrirPerfilUsuarios";
 			
 
-			if( file_exists("/home/uemc/Proyectos/explorapp/web/DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg") ){
+			if( file_exists("/Users/Miguel/Sites/explorapp/web/DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg") ){
 				$rutaImagenPerfilUsuario = "DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg";
 				$rutaImagenPerfil = "DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg";
 			}
@@ -78,12 +78,12 @@ class buscardatosController extends Controller
 				
 			$idFotoBarraMenu = "abrirPerfilUsuarios";
 
-			if( file_exists("/home/uemc/Proyectos/explorapp/web/DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg") ){
+			if( file_exists("/Users/Miguel/Sites/explorapp/web/DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg") ){
 				$rutaImagenPerfilUsuario = "DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg";
 			}
 			else{
 				$rutaImagenPerfilUsuario = "img/botonAccederPerfil.gif";
-			}	
+			}
 		}
 		else{
 			$idFotoBarraMenu = "abrirPopUp";
@@ -100,7 +100,7 @@ class buscardatosController extends Controller
 
 		if( $negocio ){
 
-			if( file_exists("/home/uemc/Proyectos/explorapp/web/DirectoriosUsuarios/".$usuarioDuenio->getUserName()."/Negocios/".$negocio->getNombreNegocio().".jpg") ){
+			if( file_exists("/Users/Miguel/Sites/explorapp/web/DirectoriosUsuarios/".$usuarioDuenio->getUserName()."/Negocios/".$negocio->getNombreNegocio().".jpg") ){
 				$rutaImagenPerfil = "DirectoriosUsuarios/".$usuarioDuenio->getUserName()."/Negocios/".$negocio->getNombreNegocio().".jpg";
 			}
 			else{
@@ -141,7 +141,7 @@ class buscardatosController extends Controller
 
 
 
-		return $this->render( 'PCBundle:vista:perfilNegocio.html.twig', array( 'rutaImagenPerfilUsuario'=>$rutaImagenPerfilUsuario, 'rutaImagenPerfil'=>$rutaImagenPerfil , 'idFotoBarraMenu'=>$idFotoBarraMenu, 'negocio'=>$negocio, 'usuario'=>$usuarioConectado, 'isNegocio'=>'true', 'tipoNegocio'=>$negocio->getTipoNegocio(), 'visibleCerrarSesion'=>$visibleCerrarSesion, 'visibleEditarPerfilNegocio'=>$visibleEditarPerfilNegocio, 'formLogin'=>$formLogin->createView(), 'formEditarDatosNegocio'=>$formEditarDatosNegocio->createView(), 'productos'=>$productos ) );
+		return $this->render( 'PCBundle:vista:perfilNegocio.html.twig', array( 'formEditarDatosNegocio'=>$formEditarDatosNegocio->createView(), 'tipoNegocio'=>$negocio->getTipoNegocio(), 'rutaImagenPerfilUsuario'=>$rutaImagenPerfilUsuario, 'idFotoBarraMenu'=>$idFotoBarraMenu, 'visibleEditarPerfilNegocio'=>$visibleEditarPerfilNegocio, 'formLogin'=>$formLogin->createView(), 'isNegocio'=>'true', 'negocio'=>$negocio, 'usuario'=>$usuarioConectado, 'rutaImagenPerfil'=>$rutaImagenPerfil , 'visibleCerrarSesion'=>$visibleCerrarSesion, 'productos'=>$productos ) );
 	}
 
 
@@ -170,7 +170,7 @@ class buscardatosController extends Controller
 				
 			$idFotoBarraMenu = "abrirPerfilUsuarios";
 
-			if( file_exists("/home/uemc/Proyectos/explorapp/web/DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg") ){
+			if( file_exists("/Users/Miguel/Sites/explorapp/web/DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg") ){
 				$rutaImagenPerfilUsuario = "DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg";
 			}
 			else{
@@ -200,7 +200,7 @@ class buscardatosController extends Controller
 
 		if( $producto ){
 
-			if( file_exists("/home/uemc/Proyectos/explorapp/web/DirectoriosUsuarios/".$usuarioDuenio->getUserName()."/Negocios/".$producto->getNombreProducto().".jpg") ){
+			if( file_exists("/Users/Miguel/Sites/explorapp/web/DirectoriosUsuarios/".$usuarioDuenio->getUserName()."/Negocios/".$producto->getNombreProducto().".jpg") ){
 				$rutaImagenPerfil = "DirectoriosUsuarios/".$usuarioDuenio->getUserName()."/Negocios/".$producto->getNombreProducto().".jpg";
 			}
 			else{
@@ -266,7 +266,7 @@ class buscardatosController extends Controller
 				
 			$idFotoBarraMenu = "abrirPerfilUsuarios";
 
-			if( file_exists("/home/uemc/Proyectos/explorapp/web/DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg") ){
+			if( file_exists("/Users/Miguel/Sites/explorapp/web/DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg") ){
 				$rutaImagenPerfil = "DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg";
 			}
 			else{
@@ -370,7 +370,7 @@ class buscardatosController extends Controller
 			$idFotoBarraMenu = "abrirPerfilUsuarios";
 			
 
-			if( file_exists("/home/uemc/Proyectos/explorapp/web/DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg") ){
+			if( file_exists("/Users/Miguel/Sites/explorapp/web/DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg") ){
 				$rutaImagenPerfilUsuario = "DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg";
 				$rutaImagenPerfil = "DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg";
 			}
@@ -415,7 +415,7 @@ class buscardatosController extends Controller
 			$idFotoBarraMenu = "abrirPerfilUsuarios";
 			
 
-			if( file_exists("/home/uemc/Proyectos/explorapp/web/DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg") ){
+			if( file_exists("/Users/Miguel/Sites/explorapp/web/DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg") ){
 				$rutaImagenPerfilUsuario = "DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg";
 				$rutaImagenPerfil = "DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg";
 			}
@@ -460,7 +460,7 @@ class buscardatosController extends Controller
 			$idFotoBarraMenu = "abrirPerfilUsuarios";
 			
 
-			if( file_exists("/home/uemc/Proyectos/explorapp/web/DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg") ){
+			if( file_exists("/Users/Miguel/Sites/explorapp/web/DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg") ){
 				$rutaImagenPerfilUsuario = "DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg";
 				$rutaImagenPerfil = "DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg";
 			}
@@ -511,7 +511,7 @@ class buscardatosController extends Controller
 			$idFotoBarraMenu = "abrirPerfilUsuarios";
 			
 
-			if( file_exists("/home/uemc/Proyectos/explorapp/web/DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg") ){
+			if( file_exists("/Users/Miguel/Sites/explorapp/web/DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg") ){
 				$rutaImagenPerfilUsuario = "DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg";
 				$rutaImagenPerfil = "DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg";
 			}
@@ -563,7 +563,7 @@ class buscardatosController extends Controller
 			$idFotoBarraMenu = "abrirPerfilUsuarios";
 			
 
-			if( file_exists("/home/uemc/Proyectos/explorapp/web/DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg") ){
+			if( file_exists("/Users/Miguel/Sites/explorapp/web/DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg") ){
 				$rutaImagenPerfilUsuario = "DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg";
 				$rutaImagenPerfil = "DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg";
 			}
@@ -616,7 +616,7 @@ class buscardatosController extends Controller
 			$idFotoBarraMenu = "abrirPerfilUsuarios";
 			
 
-			if( file_exists("/home/uemc/Proyectos/explorapp/web/DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg") ){
+			if( file_exists("/Users/Miguel/Sites/explorapp/web/DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg") ){
 				$rutaImagenPerfilUsuario = "DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg";
 				$rutaImagenPerfil = "DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg";
 			}

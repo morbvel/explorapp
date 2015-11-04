@@ -188,16 +188,11 @@
 			</div>
 		</div>
 		
-		<!--Barra Inicial-->
-		<div id="barraInicial">
-			<div id="contenedorInicial">
-				<a href="{{path('pc_homepage')}}" ><img id="logoEmpresa" src="{{ asset('img/logoCerveza.jpg') }}" /></a>
-			</div>
-		</div>
-		
 
 <!-------------------------------------------------------------------------------------------------------------------------------------------------------->
 		<!--Plantillas para el slider-->
+		<div id="top" style="height: 0px; width: 100%;">
+		</div>
 		{%block slider%}{%endblock%}
 <!-------------------------------------------------------------------------------------------------------------------------------------------------------->		
 
@@ -214,7 +209,7 @@
 		{%block cuerpoPagina%}
 		{%endblock%}
 		
-		<a href="#barraInicial" class="boton-top">▲</a>
+		<a href="#top" class="boton-top">▲</a>
 		
 		<!--Codigo jQuery para crear el boton 'Hacia arriba'-->
 		<script>	

@@ -1,0 +1,50 @@
+{% extends 'MobileBundle::plantillaMostrar.html.twig' %}
+
+{%block tituloPagina%}
+	Mostrar Ofertas
+{%endblock%}
+
+{%block contenidoInicial%}
+	<ul data-role="listview" data-inset="true" >
+		<li>
+			<a href="{{path('mobile_formlogin')}}" id="abrirNuevoRegistro">
+				<img src="{{asset(rutaImagenPerfil)}}" alt="Login" class="ui-li-icon" i>
+				{{textoRecuadro}}
+			</a>
+			<a href="{{path('mobile_perfilusuario')}}" id="abrirPerfilUsuario">
+				<img src="{{asset(rutaImagenPerfil)}}" alt="Perfil de Usuario" class="ui-li-icon" i>
+				{{textoRecuadro}}
+			</a>
+		</li>
+	</ul>
+
+
+	<div id="contenidoMostrarOfertas" class="contenidoMostrarNegocios">
+		<table class="tablaNegocios">
+			<thead>
+				<tr colspan="4">
+				   	<th class="columnaFechaOferta">Inicio</th>
+					<th class="columnaFechaOferta">Fin</th>
+					<th class="columnaFechaOferta">Descripción</th>
+				</tr>
+		    </thead>
+		    <tbody>
+		    	{% for oferta in listadoOfertas %}
+					<tr colspan="4">
+					    <td class="columnaFechaOferta">{{oferta.fechaInicialOferta|date("d/m/Y")}}</td>
+						<td class="columnaFechaOferta">{{oferta.fechaFinalOferta|date("d/m/Y")}}</td>
+						<td>{{oferta.descripcionOfertas}}</td>
+						<td style="width: 15%;"><a class="eliminarOferta" style="display: {{visibleEditarOferta}}" href="{{ path('mobile_eliminaroferta', {'descripcionOferta': oferta.descripcionOfertas, 'idProducto': oferta.idProducto}) }}">X<a/></td>
+						<td><a href="{{ path('mobile_aceptaroferta', {'descripcionOferta': oferta.descripcionOfertas, 'idProducto': oferta.idProducto}) }}" class="eliminarOferta"  style="display: {{visibleApuntarOferta}}">√</a></td>
+					</tr>
+				{%endfor%}
+		    </tbody>
+
+		</table>
+{%endblock%}
+
+{%block contenidoFooterMostrar%}
+	<ul data-role="listview" data-inset="true" style="display: {{cerrarSesion}}">
+		<li><a href="{{path('mobile_cerrarsesion')}}" data-transition="fade">Terminar la Sesión</a></li>
+	</ul>
+{%endblock%}

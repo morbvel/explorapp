@@ -1,0 +1,47 @@
+{% extends 'MobileBundle::plantillaMostrar.html.twig' %}
+
+{%block tituloPagina%}
+	Mostrar Hoteles
+{%endblock%}
+
+{%block contenidoInicial%}
+	<ul data-role="listview" data-inset="true" >
+		<li>
+			<a href="{{path('mobile_formlogin')}}" id="abrirNuevoRegistro">
+				<img src="{{asset(rutaImagenPerfil)}}" alt="Login" class="ui-li-icon" i>
+				{{textoRecuadro}}
+			</a>
+			<a href="{{path('mobile_perfilusuario')}}" id="abrirPerfilUsuario">
+				<img src="{{asset(rutaImagenPerfil)}}" alt="Perfil de Usuario" class="ui-li-icon" i>
+				{{textoRecuadro}}
+			</a>
+		</li>
+	</ul>
+
+
+	<div id="contenidoMostrarHoteles" class="contenidoMostrarNegocios">
+		<table class="tablaNegocios">
+			<thead>
+				<tr colspan="3">
+				   	<th>Nombre</th>
+					<th>Ciudad</th>
+					<th></th>
+				</tr>
+		    </thead>
+		    <tbody>
+		    	{% for hotel in listadoHoteles %}
+					<tr colspan="3">
+					    <td >{{hotel.nombreNegocio}}</td>
+						<td >{{hotel.ciudadNegocio}}</td>
+						{% for usuario in usuarios %}
+							{%if usuario.Id == hotel.idUsuario%}
+								{% set rutaImagen = 'DirectoriosUsuarios/'~usuario.userName~'/Negocios/'~hotel.nombreNegocio~'.jpg' %}
+								<td class="tdImagenNegocio"><input type="image" src="{{ asset(rutaImagen) }}" class="fotoNegocio2" onclick="location.href='{{ path('mobile_perfilnegocio', {'idNegocio': hotel.idNegocio, 'idUsuario':hotel.idUsuario}) }}';" /></td>
+							{%endif%}
+						{%endfor%}
+					</tr>
+				{%endfor%}
+		    </tbody>
+
+		</table>
+{%endblock%}

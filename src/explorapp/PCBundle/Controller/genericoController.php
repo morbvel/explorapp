@@ -31,7 +31,7 @@ class genericoController extends Controller
 				
 		$idFotoBarraMenu = "abrirPerfilUsuarios";
 		
-		if( file_exists("/home/uemc/Proyectos/explorapp/web/DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg") ){
+		if( file_exists("/Users/Miguel/Sites/explorapp/web/DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg") ){
 			$rutaImagenPerfil = "DirectoriosUsuarios/".$session->get('userName')."/FotoPerfil.jpg";
 		}
 		else{

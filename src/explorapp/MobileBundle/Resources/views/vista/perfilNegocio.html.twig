@@ -1,0 +1,67 @@
+{% extends 'MobileBundle::plantillaPerfiles.html.twig' %}
+
+{%block tituloPagina%}
+	{{negocio.nombreNegocio}}
+{%endblock%}
+
+
+{%block contenidoPerfil%}
+
+	<div id="contenidoPerfilUsuario" class="contenidoPerfiles">
+
+		<table class="tablaPerfiles">
+			<tr colspan="2">
+				<td>
+					<img src='{{asset(rutaImagenPerfil)}}' class="imagenPerfil"></img>
+				</td>
+			</tr>
+			<tr>
+				<td class="tdPerfiles">Nombre: </td>
+				<td class="tdDatos">{{negocio.nombreNegocio}}</td>
+			</tr>
+			<tr>
+				<td class="tdPerfiles">Dirección: </td>
+				<td class="tdDatos">{{negocio.direccionNegocio}}</td>
+			</tr>
+			<tr>
+				<td class="tdPerfiles">Ciudad: </td>
+				<td class="tdDatos">{{negocio.ciudadNegocio}}</td>
+			</tr>
+			<tr>
+				<td class="tdPerfiles">Teléfono: </td>
+				<td class="tdDatos">{{negocio.telefonoNegocio}}</td>
+			</tr>
+			<tr>
+				<td class="tdPerfiles">Correo: </td>
+				<td class="tdDatos">{{negocio.correoNegocio}}</td>
+			</tr>
+
+			{%if productos|length>0%}
+				<tr>
+					<td colspan="2" class="tdPerfiles barraSeparacion">---------------------</td>
+				</tr>
+				{% set contador=0 %}
+				{% for producto in productos %}
+					
+					<tr>	
+						<td class="tdPerfiles" colspan="2" ><span id="{{"producto%d"|format(contador)}}" title="Click para acceder a la página del producto" >{{ producto.nombreProducto }}</span>
+						<input type="image" class="fotoNegocio" style="width: 30%; height: auto; float: right; border-radius: 100px; margin-top: -20px;" src="{{ asset('DirectoriosUsuarios/'~usuarioDuenio.userName~'/Negocios/'~producto.nombreProducto~'.jpg') }}" onclick="location.href='{{ path('mobile_perfilproducto', {'nombreProducto': producto.nombreProducto, 'idNegocio': negocio.idNegocio}) }}';"/>
+						</td>
+						
+					</tr>
+					{% set contador=contador+1 %}
+				{%endfor%}
+			{%endif%}
+
+		</table>
+
+	</div>
+
+{%endblock%}
+
+
+{%block contenidoFooterPerfil%}
+	<ul data-role="listview" data-inset="true" style="display: {{cerrarSesion}}">
+		<li><a href="{{path('mobile_cerrarsesion')}}" data-transition="fade">Terminar la Sesión</a></li>
+	</ul>
+{%endblock%}

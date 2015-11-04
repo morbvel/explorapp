@@ -5,6 +5,8 @@
 	Nuevo Registro de Usuarios
 {%endblock%}
 
+{%block urlDestino%}{{path('mobile_nuevoregistroguardar')}}{%endblock%}
+
 {%block formulario%}
 	<form action="#" method="post" id="formNuevoRegistroUsuarios" {{ form_enctype(RegistrosForm) }}>
 		{{form_widget(RegistrosForm)}}

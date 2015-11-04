@@ -4,13 +4,19 @@
 	Página Principal
 {%endblock%}
 
+{%block urlDestino%}{{path('mobile_nuevoregistro')}}{%endblock%}
+{%block urlDestino2%}{{path('mobile_perfilusuario')}}{%endblock%}
 
 
 {%block contenidoInicial%}
 	<ul data-role="listview" data-inset="true" >
 		<li>
-			<a href="{{path('mobile_formlogin')}}">
-				<img src="{{asset(rutaImagenPerfil)}}" alt="Login" class="ui-li-icon">
+			<a href="{{path('mobile_formlogin')}}" id="abrirNuevoRegistro">
+				<img src="{{asset(rutaImagenPerfil)}}" alt="Login" class="ui-li-icon" i>
+				{{textoRecuadro}}
+			</a>
+			<a href="{{path('mobile_perfilusuario')}}" id="abrirPerfilUsuario">
+				<img src="{{asset(rutaImagenPerfil)}}" alt="Perfil de Usuario" class="ui-li-icon" i>
 				{{textoRecuadro}}
 			</a>
 		</li>
@@ -59,8 +65,7 @@
 
 {%block menuRestaurantes%}
 	<ul data-role="listview" data-inset="true">
-		<li><a href="#" data-transition="fade">Listado de Restaurantes</a></li>
-		<li><a href="#">Busqueda de Restaurantes</a></li>
+		<li><a href="{{path('mobile_mostrarrestaurantes')}}" data-transition="fade">Listado de Restaurantes</a></li>
 	</ul>
 {%endblock%}
 
@@ -69,6 +74,11 @@
 		<li>
 			<a href="{{path('mobile_formlogin')}}">
 				<img src="{{asset(rutaImagenPerfil)}}" alt="Login" class="ui-li-icon">
+				{{textoRecuadro}}
+			</a>
+
+			<a href="{{path('mobile_perfilusuario')}}" id="abrirPerfilUsuario">
+				<img src="{{asset(rutaImagenPerfil)}}" alt="Perfil de Usuario" class="ui-li-icon" i>
 				{{textoRecuadro}}
 			</a>
 		</li>
@@ -93,8 +103,7 @@
 
 {%block menuHoteles%}
 	<ul data-role="listview" data-inset="true">
-		<li><a href="#" data-transition="fade">Listado de Hoteles</a></li>
-		<li><a href="#">Busqueda de Hoteles</a></li>
+		<li><a href="{{path('mobile_mostrarhoteles')}}" data-transition="fade">Listado de Hoteles</a></li>
 	</ul>
 {%endblock%}
 
@@ -103,6 +112,11 @@
 		<li>
 			<a href="{{path('mobile_formlogin')}}">
 				<img src="{{asset(rutaImagenPerfil)}}" alt="Login" class="ui-li-icon">
+				{{textoRecuadro}}
+			</a>
+
+			<a href="{{path('mobile_perfilusuario')}}" id="abrirPerfilUsuario">
+				<img src="{{asset(rutaImagenPerfil)}}" alt="Perfil de Usuario" class="ui-li-icon" i>
 				{{textoRecuadro}}
 			</a>
 		</li>
@@ -125,8 +139,7 @@
 
 {%block menuBares%}
 	<ul data-role="listview" data-inset="true">
-		<li><a href="#" data-transition="fade">Listado de Bares</a></li>
-		<li><a href="#">Busqueda de Bares</a></li>
+		<li><a href="{{path('mobile_mostrarbares')}}" data-transition="fade">Listado de Bares</a></li>
 	</ul>
 {%endblock%}
 
@@ -135,6 +148,11 @@
 		<li>
 			<a href="{{path('mobile_formlogin')}}">
 				<img src="{{asset(rutaImagenPerfil)}}" alt="Login" class="ui-li-icon">
+				{{textoRecuadro}}
+			</a>
+
+			<a href="{{path('mobile_perfilusuario')}}" id="abrirPerfilUsuario">
+				<img src="{{asset(rutaImagenPerfil)}}" alt="Perfil de Usuario" class="ui-li-icon" i>
 				{{textoRecuadro}}
 			</a>
 		</li>

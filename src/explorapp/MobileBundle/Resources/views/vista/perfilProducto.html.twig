@@ -1,0 +1,52 @@
+{% extends 'MobileBundle::plantillaPerfiles.html.twig' %}
+
+{%block tituloPagina%}
+	{{producto.nombreProducto}}
+{%endblock%}
+
+
+
+{%block contenidoPerfil%}
+
+	<div id="contenidoPerfilUsuario" class="contenidoPerfiles">
+		<table class="tablaPerfiles">
+			<tr colspan="2">
+				<td>
+					<img src='{{asset(rutaImagenPerfil)}}' class="imagenPerfil"></img>
+				</td>
+			</tr>
+			<tr>
+				<td class="tdPerfiles">Nombre: </td>
+				<td class="tdDatos">{{producto.nombreProducto}}</td>
+			</tr>
+			<tr>
+				<td class="tdPerfiles">Descripción: </td>
+				<td class="tdDatos">{{producto.descripcionProducto}}</td>
+			</tr>
+			<tr>
+				<td class="tdPerfiles">Precio: </td>
+				<td class="tdDatos">{{producto.precioProducto}}</td>
+			</tr>
+			<tr>
+				<td class="tdPerfiles">Alérgenos: </td>
+				<td class="tdDatos">{{producto.alergenosProducto}}</td>
+			</tr>
+		</table>
+
+		<ul data-role="listview" data-inset="true" >
+			<li>
+				<a href="{{path('mobile_mostrarofertas', {'nombreProducto': producto.nombreProducto, 'idNegocio':producto.idNegocio})}}">Mostrar Ofertas</a>
+			</li>
+		</ul>
+	</div>
+
+{%endblock%}
+
+
+
+
+{%block contenidoFooterPerfil%}
+	<ul data-role="listview" data-inset="true" style="display: {{cerrarSesion}}">
+		<li><a href="{{path('mobile_cerrarsesion')}}" data-transition="fade">Terminar la Sesión</a></li>
+	</ul>
+{%endblock%}

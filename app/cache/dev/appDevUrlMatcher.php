@@ -140,8 +140,14 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             if (0 === strpos($pathinfo, '/mobile/login')) {
                 // mobile_formlogin
                 if ($pathinfo === '/mobile/login') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_mobile_formlogin;
+                    }
+
                     return array (  '_controller' => 'explorapp\\MobileBundle\\Controller\\GenericoController::genericoAction',  '_route' => 'mobile_formlogin',);
                 }
+                not_mobile_formlogin:
 
                 // mobile_autentificar
                 if ($pathinfo === '/mobile/login') {
@@ -156,10 +162,135 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             }
 
-            // mobile_nuevoregistro
-            if ($pathinfo === '/mobile/nuevo-registro') {
-                return array (  '_controller' => 'explorapp\\MobileBundle\\Controller\\GenericoController::genericoAction',  '_route' => 'mobile_nuevoregistro',);
+            if (0 === strpos($pathinfo, '/mobile/nuevo-registro')) {
+                // mobile_nuevoregistro
+                if ($pathinfo === '/mobile/nuevo-registro') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_mobile_nuevoregistro;
+                    }
+
+                    return array (  '_controller' => 'explorapp\\MobileBundle\\Controller\\GenericoController::genericoAction',  '_route' => 'mobile_nuevoregistro',);
+                }
+                not_mobile_nuevoregistro:
+
+                // mobile_nuevoregistroguardar
+                if ($pathinfo === '/mobile/nuevo-registro') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_mobile_nuevoregistroguardar;
+                    }
+
+                    return array (  '_controller' => 'explorapp\\MobileBundle\\Controller\\GuardarDatosController::nuevoRegistroMobileAction',  '_route' => 'mobile_nuevoregistroguardar',);
+                }
+                not_mobile_nuevoregistroguardar:
+
             }
+
+            if (0 === strpos($pathinfo, '/mobile/perfil-')) {
+                // mobile_perfilusuario
+                if ($pathinfo === '/mobile/perfil-usuario') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_mobile_perfilusuario;
+                    }
+
+                    return array (  '_controller' => 'explorapp\\MobileBundle\\Controller\\BuscarDatosController::BuscarDatosUsuarioAction',  '_route' => 'mobile_perfilusuario',);
+                }
+                not_mobile_perfilusuario:
+
+                // mobile_perfilnegocio
+                if (0 === strpos($pathinfo, '/mobile/perfil-negocio') && preg_match('#^/mobile/perfil\\-negocio/(?P<idNegocio>[^/]++)/(?P<idUsuario>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_mobile_perfilnegocio;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mobile_perfilnegocio')), array (  '_controller' => 'explorapp\\MobileBundle\\Controller\\BuscarDatosController::BuscarDatosNegocioAction',));
+                }
+                not_mobile_perfilnegocio:
+
+                // mobile_perfilproducto
+                if (0 === strpos($pathinfo, '/mobile/perfil-producto') && preg_match('#^/mobile/perfil\\-producto/(?P<nombreProducto>[^/]++)/(?P<idNegocio>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_mobile_perfilproducto;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mobile_perfilproducto')), array (  '_controller' => 'explorapp\\MobileBundle\\Controller\\BuscarDatosController::BuscarDatosProductoAction',));
+                }
+                not_mobile_perfilproducto:
+
+            }
+
+            if (0 === strpos($pathinfo, '/mobile/mostrar-')) {
+                // mobile_mostrarrestaurantes
+                if ($pathinfo === '/mobile/mostrar-restaurantes') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_mobile_mostrarrestaurantes;
+                    }
+
+                    return array (  '_controller' => 'explorapp\\MobileBundle\\Controller\\BuscarDatosController::MostrarRestaurantesAction',  '_route' => 'mobile_mostrarrestaurantes',);
+                }
+                not_mobile_mostrarrestaurantes:
+
+                // mobile_mostrarbares
+                if ($pathinfo === '/mobile/mostrar-bares') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_mobile_mostrarbares;
+                    }
+
+                    return array (  '_controller' => 'explorapp\\MobileBundle\\Controller\\BuscarDatosController::MostrarBaresAction',  '_route' => 'mobile_mostrarbares',);
+                }
+                not_mobile_mostrarbares:
+
+                // mobile_mostrarhoteles
+                if ($pathinfo === '/mobile/mostrar-hoteles') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_mobile_mostrarhoteles;
+                    }
+
+                    return array (  '_controller' => 'explorapp\\MobileBundle\\Controller\\BuscarDatosController::MostrarHotelesAction',  '_route' => 'mobile_mostrarhoteles',);
+                }
+                not_mobile_mostrarhoteles:
+
+                // mobile_mostrarofertas
+                if (0 === strpos($pathinfo, '/mobile/mostrar-ofertas') && preg_match('#^/mobile/mostrar\\-ofertas/(?P<nombreProducto>[^/]++)/(?P<idNegocio>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_mobile_mostrarofertas;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mobile_mostrarofertas')), array (  '_controller' => 'explorapp\\MobileBundle\\Controller\\BuscarDatosController::MostrarOfertasAction',));
+                }
+                not_mobile_mostrarofertas:
+
+            }
+
+            // mobile_eliminaroferta
+            if (0 === strpos($pathinfo, '/mobile/eliminar-oferta') && preg_match('#^/mobile/eliminar\\-oferta/(?P<descripcionOferta>[^/]++)/(?P<idProducto>[^/]++)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_mobile_eliminaroferta;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mobile_eliminaroferta')), array (  '_controller' => 'explorapp\\MobileBundle\\Controller\\GuardarDatosController::EliminarOfertaAction',));
+            }
+            not_mobile_eliminaroferta:
+
+            // mobile_aceptaroferta
+            if (0 === strpos($pathinfo, '/mobile/aceptar-oferta') && preg_match('#^/mobile/aceptar\\-oferta/(?P<descripcionOferta>[^/]++)/(?P<idProducto>[^/]++)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_mobile_aceptaroferta;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mobile_aceptaroferta')), array (  '_controller' => 'explorapp\\MobileBundle\\Controller\\GuardarDatosController::AceptarOfertaAction',));
+            }
+            not_mobile_aceptaroferta:
 
             // mobile_cerrarsesion
             if ($pathinfo === '/mobile/cerrar-sesion') {

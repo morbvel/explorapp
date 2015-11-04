@@ -87,7 +87,6 @@ cuerpoPerfilUsuario{%endblock%}
 				<tr>	
 					<td></td>
 					<td><span id="{{"ofertaCliente%d"|format(contador)}}" class="textoDatoPersonal textoNegocio" style="margin-right: 100px;" title="Click para ver el PDF de la oferta" onclick="location.href='{{ path('pc_crearpdf', {'idOferta': ofertaCliente.getOfertas().idOfertas, 'idUsuario': ofertaCliente.getUsuarios().userName}) }}';" >{{ofertaCliente.getOfertas().descripcionOfertas}}</span></td>
-					<td><input type="image" src="{{ asset('img/erase.png') }}" class="iconoBorrarOferta" /></td>
 				</tr>
 				{% set contador=contador+1 %}
 			{%endfor%}

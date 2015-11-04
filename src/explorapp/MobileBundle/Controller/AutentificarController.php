@@ -26,7 +26,6 @@ class AutentificarController extends Controller
 		$enviarLogin = $request->request->get('enviarlogin');
 
 		if( $enviarLogin ){
-		
 			//Comprueba con la base de datos
 		    	$em = $this->getDoctrine()->getManager();
 		    	$usuario = $em->getRepository('PCBundle:Usuarios')->findOneby(array('userName'=>$datos['userName'],'userPass'=>$datos['userPass']));

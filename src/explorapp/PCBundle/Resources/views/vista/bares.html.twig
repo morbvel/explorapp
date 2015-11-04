@@ -9,13 +9,13 @@
 	<ul class="bxslider">	
 		<li class="contenedorSlider">
 			<img src="{{ asset('img/bar2.jpg') }}" />
-			<span>Bares Cercanos a Ti</span>
-			<a href="#cuerpo1">Ir a sección Bares Cercanos a Ti</a>
+			<span>Bares Asociados</span>
+			<a href="#cuerpo1">Bares Asociados</a>
 		</li>
 		<li class="contenedorSlider">
 			<img src="{{ asset('img/bar3.jpg') }}" />
-			<span>Vida Nocturna</span>
-			<a href="#cuerpo2">Ir a sección Vida Nocturna</a>
+			<span>Búsqueda de bares</span>
+			<a href="#cuerpo2">Ir a Búsqueda de bares</a>
 		</li>
 		<li class="contenedorSlider">
 			<img src="{{ asset('img/bar4.jpg') }}" />
@@ -39,8 +39,10 @@
 {%block barraMenu%}
 	<div class="contenedorMenu">
 		<nav id="navBares">
+			<a href="{{path('pc_homepage')}}"><img src="./img/home_icon.png" class="iconoIndex izquierdaIcono" /></a>
+			<a href="{{path('mobile_homepage')}}"><img src="./img/mobile_icon.png" class="iconoIndex" /></a>
 			<ul>
-				<li><a href="#cuerpo1" class="botonMenuSeccionRestaurantes">Bares Cercanos a Ti</a></li>
+				<li><a href="#cuerpo1" class="botonMenuSeccionRestaurantes">Bares Asociados</a></li>
 				<li><a href="#cuerpo2" class="botonMenuSeccionRestaurantes">Búsqueda de Bares</a></li>
 				<li><a href="#cuerpo3" class="botonMenuSeccionRestaurantes">Darse de Alta</a></li>
 			</ul>
@@ -61,11 +63,11 @@
 	</div>
 		
 	<div id="cuerpo1">
-	<h1>Bares Cercanos a Ti</h1>
+	<h1>Bares Asociados</h1>
 	<table class="tablaCuerpos">
 		<tr>
 			<td>Tienes toda la tarde por delante y amigos esperándote. Entra aquí y descubre cuáles son los bares que más destacan cerca de ti.</td>
-			<td><a class="botonSecciones" href="{{ path('pc_mostrarbares') }}">Ir a Bares Cercanos a Ti</a></td>
+			<td><a class="botonSecciones" href="{{ path('pc_mostrarbares') }}">Ir a Bares Asociados</a></td>
 		</tr>
 	</table>
 	</div>

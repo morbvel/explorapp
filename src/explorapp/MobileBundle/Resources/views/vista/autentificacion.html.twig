@@ -5,9 +5,7 @@
 	Acceso al sistema
 {%endblock%}
 
-{%block urlDestino%}
-{{path('mobile_autentificar')}}
-{%endblock%}
+{%block urlDestino%}{{path('mobile_autentificar')}}{%endblock%}
 
 {%block nombreFormulario%}
 	{{ form_enctype(UsuariosForm) }}

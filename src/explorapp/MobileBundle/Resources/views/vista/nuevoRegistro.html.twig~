@@ -1,6 +1,0 @@
-{% extends 'MobileBundle::plantillaRegistros.html.twig' %}
-
-
-{%block tituloPagina%}
-	Nuevo Registro de Usuarios
-{%endblock%}

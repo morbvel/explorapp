@@ -5,6 +5,7 @@ mobile_homepage:
 mobile_formlogin:
     path:     /login
     defaults: { _controller: MobileBundle:Generico:generico }
+    methods: [GET]
 
 mobile_autentificar:
     path:     /login
@@ -14,6 +15,57 @@ mobile_autentificar:
 mobile_nuevoregistro:
     path:     /nuevo-registro
     defaults: { _controller: MobileBundle:Generico:generico }
+    methods: [GET]
+
+mobile_nuevoregistroguardar:
+    path:     /nuevo-registro
+    defaults: { _controller: MobileBundle:GuardarDatos:nuevoRegistroMobile }
+    methods: [POST]
+
+mobile_perfilusuario:
+    path:     /perfil-usuario
+    defaults: { _controller: MobileBundle:BuscarDatos:BuscarDatosUsuario }
+    methods: [GET]
+
+mobile_perfilnegocio:
+    path:     /perfil-negocio/{idNegocio}/{idUsuario}
+    defaults: { _controller: MobileBundle:BuscarDatos:BuscarDatosNegocio }
+    methods: [GET]
+
+mobile_perfilproducto:
+    path: /perfil-producto/{nombreProducto}/{idNegocio}
+    defaults: { _controller: MobileBundle:BuscarDatos:BuscarDatosProducto }
+    methods: [GET]
+
+mobile_mostrarrestaurantes:
+    path:     /mostrar-restaurantes
+    defaults: { _controller: MobileBundle:BuscarDatos:MostrarRestaurantes }
+    methods: [GET]
+
+mobile_mostrarbares:
+    path:     /mostrar-bares
+    defaults: { _controller: MobileBundle:BuscarDatos:MostrarBares}
+    methods: [GET]
+
+mobile_mostrarhoteles:
+    path:     /mostrar-hoteles
+    defaults: { _controller: MobileBundle:BuscarDatos:MostrarHoteles}
+    methods: [GET]
+
+mobile_mostrarofertas:
+    path:     /mostrar-ofertas/{nombreProducto}/{idNegocio}
+    defaults: { _controller: MobileBundle:BuscarDatos:MostrarOfertas}
+    methods: [GET]
+
+mobile_eliminaroferta:
+    path:     /eliminar-oferta/{descripcionOferta}/{idProducto}
+    defaults: { _controller: MobileBundle:GuardarDatos:EliminarOferta}
+    methods: [GET]
+
+mobile_aceptaroferta:
+    path:     /aceptar-oferta/{descripcionOferta}/{idProducto}
+    defaults: { _controller: MobileBundle:GuardarDatos:AceptarOferta}
+    methods: [GET]
 
 mobile_cerrarsesion:
     path:     /cerrar-sesion

@@ -10,8 +10,8 @@
 	    public function buildForm(FormBuilderInterface $builder, array $options)
 	    {
 		$builder
-			->add('fechaInicialOfertas','date',array('required'=>false, 'label'=>'Fecha Inicial de la Oferta', 'attr'=>array('placeholder'=>'Fecha Inicial de la Oferta')))
-			->add('fechaFinalOfertas', 'date', array('required'=>false, 'label'=>'Fecha Final de la Oferta', 'attr'=>array('placeholder'=>'Fecha Final de la Oferta')))
+			->add('fechaInicialOfertas','date',array('years' => range(1950, 2050), 'required'=>false, 'label'=>'Fecha Inicial de la Oferta', 'attr'=>array('placeholder'=>'Fecha Inicial de la Oferta')))
+			->add('fechaFinalOfertas', 'date', array('years' => range(1950, 2050), 'required'=>false, 'label'=>'Fecha Final de la Oferta', 'attr'=>array('placeholder'=>'Fecha Final de la Oferta')))
 			->add('edadPublicoOfertas', 'text', array('required'=>false, 'label'=>'Edad del Público de la Oferta', 'attr'=>array('placeholder'=>'Edad del Público de la Oferta')))
 			->add('descripcionOfertas', 'text', array('required'=>true, 'label'=>'Descripción de la Oferta', 'attr'=>array('placeholder'=>'Descripción de la Oferta')));
 	    }

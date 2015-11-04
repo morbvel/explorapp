@@ -359,7 +359,7 @@ class guardardatosController extends Controller
 			$formRegistroProductos->handleRequest($request);
 			$datos =$formRegistroProductos->getData();
 
-			$producto = $em->getRepository('PCBundle:Producto')->findOneBy( array('nombreProducto'=>$datos['nombreProducto'], 'idNegocio'=>$negocio->getId()) );
+			$producto = $em->getRepository('PCBundle:Producto')->findOneBy( array('nombreProducto'=>$datos['nombreProducto'], 'idNegocio'=>$negocio->getIdNegocio()) );
 
 			if( $producto ){
 				$producto->setNombreProducto($datos['nombreProducto']);
@@ -415,7 +415,7 @@ class guardardatosController extends Controller
 		$negocio = $em->getRepository('PCBundle:Negocio')->findOneBy( array('nombreNegocio'=>$session->get('nombreNegocio'), 'idUsuario'=>$usuarioDuenio->getId() ));
 
 		if( $negocio ){
-			$producto = $em->getRepository('PCBundle:Producto')->findOneBy( array('nombreProducto'=>$session->get('nombreProducto'), 'idNegocio'=>$negocio->getId()) );
+			$producto = $em->getRepository('PCBundle:Producto')->findOneBy( array('nombreProducto'=>$session->get('nombreProducto'), 'idNegocio'=>$negocio->getIdNegocio()) );
 
 			if( $producto ){
 				$formRegistroOfertas =$this->createForm(new RegistroOfertasForm(),null);
@@ -622,7 +622,7 @@ class guardardatosController extends Controller
 				$negocio = $em->getRepository('PCBundle:Negocio')->findOneBy(array('nombreNegocio'=>$session->get('nombreNegocio'), 'idUsuario'=>$usuario->getId()));
 
 				if( $negocio ){
-					$producto = $em->getRepository('PCBundle:Producto')->findOneBy(array('nombreProducto'=>$session->get('nombreProducto'), 'idNegocio'=>$negocio->getId()));
+					$producto = $em->getRepository('PCBundle:Producto')->findOneBy(array('nombreProducto'=>$session->get('nombreProducto'), 'idNegocio'=>$negocio->getIdNegocio()));
 
 					if($datos['nombreProducto']!='')
 						$producto->setNombreProducto($datos['nombreProducto']);
@@ -654,7 +654,7 @@ class guardardatosController extends Controller
 				$negocio = $em->getRepository('PCBundle:Negocio')->findOneBy(array('nombreNegocio'=>$session->get('nombreNegocio'), 'idUsuario'=>$usuario->getId()));
 						
 				if( $negocio ){
-					$producto = $em->getRepository('PCBundle:Producto')->findOneBy(array('nombreProducto'=>$session->get('nombreProducto'), 'idNegocio'=>$negocio->getId()));
+					$producto = $em->getRepository('PCBundle:Producto')->findOneBy(array('nombreProducto'=>$session->get('nombreProducto'), 'idNegocio'=>$negocio->getIdNegocio()));
 
 					$em->remove($producto);
 					$em->flush();

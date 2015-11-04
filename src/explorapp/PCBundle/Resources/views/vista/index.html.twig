@@ -39,6 +39,8 @@
 {%block barraMenu%}
 	<div class="contenedorMenu">
 		<nav>
+			<a href="{{path('pc_homepage')}}"><img src="{{ asset('./img/home_icon.png')}}" class="iconoIndex" style="margin-left: 30px; margin-right: 30px;" /></a>
+			<a href="{{path('mobile_homepage')}}"><img src="{{ asset('./img/mobile_icon.png') }}" class="iconoIndex" /></a>
 			<ul>
 				<li><a href="#cuerpo1" id="botonGrande">Restaurantes</a></li>
 				<li><a href="#cuerpo2" id="botonMediano">Hoteles</a></li>
